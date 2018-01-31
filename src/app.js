@@ -6,14 +6,14 @@ export class App
 
     configureRouter(config, router)
     {
-        config.title = 'HTL Krems';
-        config.options.pushState = false;
+        config.title = 'INTER!ACT';
+        config.options.pushState = true;
 
         config.map([
             {
-                route: ['demo'],
+                route: ['demo', 'example'],
                 name: 'demo',
-                moduleId: './components/demo',
+                moduleId: './components/example',
                 nav: true,
                 title: 'Demo Page'
             }
