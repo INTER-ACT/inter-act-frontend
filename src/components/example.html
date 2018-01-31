@@ -1,0 +1,13 @@
+<template>
+    <h2>Demo Component</h2>
+
+    <p>${someText}</p>
+    <ul>
+        <li repeat.for="item of someElements">${item}</li>
+    </ul>
+
+    <form>
+        <input type="text" value.bind="someInputText" />
+    </form>
+
+</template>
