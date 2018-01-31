@@ -1,4 +1,5 @@
-export default {
-  debug: true,
-  testing: true
+export default
+{
+    debug: true,
+    testing: true
 };
