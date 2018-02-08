@@ -23,7 +23,8 @@ export function configure(aurelia)
     http.configure(config =>
     {
         config
-            .useStandardConfiguration();
+            .useStandardConfiguration()
+            .withBaseUrl('http://api.inter-act.net/');
     });
     container.registerInstance(HttpClient, http);
 
