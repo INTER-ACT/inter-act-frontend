@@ -1,4 +1,5 @@
 import environment from './environment';
+import { HttpClient } from 'aurelia-fetch-client';
 
 export function configure(aurelia)
 {
@@ -15,6 +16,16 @@ export function configure(aurelia)
     {
         aurelia.use.plugin('aurelia-testing');
     }
+
+    let container = aurelia.container;
+
+    let http = new HttpClient();
+    http.configure(config =>
+    {
+        config
+            .useStandardConfiguration();
+    });
+    container.registerInstance(HttpClient, http);
 
     aurelia.start().then(() =>
     {
