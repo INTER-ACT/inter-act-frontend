@@ -4,6 +4,11 @@ export class App
     {
     }
 
+    attached()
+    {
+        $(document).foundation();
+    }
+
     configureRouter(config, router)
     {
         config.title = 'INTER!ACT';

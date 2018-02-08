@@ -1,13 +1,23 @@
 <template>
-    <h2>Demo Component</h2>
 
-    <p>${someText}</p>
-    <ul>
-        <li repeat.for="item of someElements">${item}</li>
-    </ul>
+    <div class="grid-x">
+        <div class="large-3 cell"></div>
 
-    <form>
-        <input type="text" value.bind="someInputText" />
-    </form>
+        <div class="large-6 cell main">
+            <h2>Demo Component</h2>
+
+            <p>${someText}</p>
+
+            <ul>
+                <li repeat.for="item of someElements">${item}</li>
+            </ul>
+
+            <form>
+                <input type="text" value.bind="someInputText" />
+            </form>
+        </div>
+
+        <div class="large-3 cell"></div>
+    </div>
 
 </template>
