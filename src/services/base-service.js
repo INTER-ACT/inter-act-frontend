@@ -1,17 +1,32 @@
 import { inject } from 'aurelia-framework';
-import { HttpClient } from 'aurelia-fetch-client';
+import { HttpClient, json } from 'aurelia-fetch-client';
 
 @inject(HttpClient)
 export class BaseService
 {
-    constructor(http)
+    constructor(http: HttpClient)
     {
         this.http = http;
     }
 
-    get(target, requestParams)
+    delete(target: string)
     {
-        let encodedGetParams = (requestParams) ? $.param(requestParams) : '';
+        return this.http.fetch(
+            target,
+            {
+                method: 'delete'
+            }
+        );
+    }
+
+    deleteIntoJSON(target: string)
+    {
+        return this.delete(target).then(response => response.json());
+    }
+
+    get(target: string, getParams: object)
+    {
+        let encodedGetParams = (getParams) ? $.param(getParams) : '';
 
         return this.http.fetch(
             target + '?' + encodedGetParams,
@@ -21,8 +36,49 @@ export class BaseService
         );
     }
 
-    getJSON(target, requestParams)
+    getIntoJSON(target: string, getParams: object)
     {
-        return get(target, requestParams).then(response => response.json());
+        return this.get(target, requestParams).then(response => response.json());
+    }
+
+    patch(target: string, requestBody: object)
+    {
+        return this.sendBodyAsJSON(target, requestBody, 'patch');
+    }
+
+    patchIntoJSON(target: string, requestBody: object)
+    {
+        return this.patch(target, requestBody).then(response => response.json());
+    }
+
+    post(target: string, requestBody: object)
+    {
+        return this.sendBodyAsJSON(target, requestBody, 'post').then(response => response.json());
+    }
+
+    postIntoJSON(target: string, requestBody: object)
+    {
+        return this.post(target, requestBody).then(response => response.json());
+    }
+
+    put(target: string, requestBody: object)
+    {
+        return this.sendBodyAsJSON(target, requestBody, 'put');
+    }
+
+    putIntoJSON(target: string, requestBody: object)
+    {
+        return this.put(target, requestBody).then(response => response.json());
+    }
+
+    sendBodyAsJSON(target: string, requestBody: object, httpMethod: string)
+    {
+        return this.http.fetch(
+            target,
+            {
+                method: httpMethod,
+                body: json(requestBody)
+            }
+        );
     }
 }
