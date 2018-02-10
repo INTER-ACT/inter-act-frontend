@@ -26,10 +26,10 @@ export class BaseService
 
     get(target: string, getParams: object)
     {
-        let encodedGetParams = (getParams) ? $.param(getParams) : '';
+        let targetWithParams = (getParams) ? target + '?' + $.param(getParams) : target;
 
         return this.http.fetch(
-            target + '?' + encodedGetParams,
+            targetWithParams,
             {
                 method: 'get'
             }
