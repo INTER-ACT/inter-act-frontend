@@ -1,53 +1,28 @@
 <template>
 
-<div class="grid-x">
-    <div class="large-3 cell"></div>
+    <div class="grid-x">
+        <template repeat.for="dsc of discussions">
+                <div class="large-3 cell"></div>
 
-    <div class="large-6 cell mainshow">
-        <h3>§ Kunst in der Öffentlichkeit</h3>
+                <div class="large-6 cell mainshow">
+                    <h4 class="titlecolor">§ ${dsc.title}</h4>
 
-        <div class="grid-x">
+                    <div class="grid-x">
 
-            <div class="large-2 cell"></div>
+                        <div class="large-2 cell"></div>
 
-            <div class="large-8 cell showparagraph">
-                <h4>Gesetz</h4>
-                <p>wueivbe nwvc wes rewijfo jfwjfopj jiof iowefJOEF Üw jfe 30q  wjf0dew0 f fj0 jg0ejrü a j fj<br>
-                cidosovidsov  osdjovisdaoj ids püwed psdhjvfv he8es  psac+pvj p psp csdpj cs jcj pcpj üs +jc+ <br>
-                divhbofdhv ds jscpjsdvj üscjdsiojüpo sdpojdspjpj+p sdcp +jsdp jpssafckbsakfbodsfsdfids  fhfd hfh</p>
-                <a href="about.html" class="button">zur Diskussion</a>
-            </div>
+                        <div class="large-8 cell showparagraph">
+                            <h5>Gesetz</h5>
+                            <p>${dsc.law_text}</p>
+                            <a route-href="demo" class="button">zur Diskussion</a>
+                        </div>
 
-            <div class="large-2 cell"></div>
+                        <div class="large-2 cell"></div>
 
-        </div>
+                    </div>
+                </div>
+            <div class="large-3 cell"></div>
+        </template>
     </div>
-
-    <div class="large-3 cell"></div>
-
-    <div class="large-3 cell"></div>
-
-    <div class="large-6 cell mainshow">
-        <h3>§ Kunst in der Öffentlichkeit</h3>
-
-        <div class="grid-x">
-
-            <div class="large-2 cell"></div>
-
-            <div class="large-8 cell showparagraph">
-                <h4>Gesetz</h4>
-                <p>wueivbe nwvc wes rewijfo jfwjfopj jiof iowefJOEF Üw jfe 30q  wjf0dew0 f fj0 jg0ejrü a j fj<br>
-                    cidosovidsov  osdjovisdaoj ids püwed psdhjvfv he8es  psac+pvj p psp csdpj cs jcj pcpj üs +jc+ <br>
-                    divhbofdhv ds jscpjsdvj üscjdsiojüpo sdpojdspjpj+p sdcp +jsdp jpssafckbsakfbodsfsdfids  fhfd hfh</p>
-                <a href="about.html" class="button">zur Diskussion</a>
-            </div>
-
-            <div class="large-2 cell"></div>
-
-        </div>
-    </div>
-
-    <div class="large-3 cell"></div>
-</div>
 
 </template>

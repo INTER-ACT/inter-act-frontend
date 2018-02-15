@@ -21,6 +21,13 @@ export class App
                 moduleId: './components/example',
                 nav: true,
                 title: 'Demo Page'
+            },
+            {
+                route: ['discussions', 'paragraphs'],
+                name: 'discussions',
+                moduleId: './components/paragraph',
+                nav: true,
+                title: 'Diskussionen'
             }
         ]);
 
