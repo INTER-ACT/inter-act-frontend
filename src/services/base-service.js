@@ -38,7 +38,7 @@ export class BaseService
 
     getIntoJSON(target: string, getParams: object)
     {
-        return this.get(target, requestParams).then(response => response.json());
+        return this.get(target, getParams).then(response => response.json());
     }
 
     patch(target: string, requestBody: object)
