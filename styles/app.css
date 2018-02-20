@@ -21,7 +21,27 @@
     margin: 20px 0px;
 }
 
-footer {
+.mainshow{
+    height: 300px;
+    background-color: #E8E8E8;
+    padding: 30px 30px;
+    margin: 20px 0px;
+}
+
+.showparagraph{
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    margin-top: 20px;
+}
+
+.titlecolor{
+    color: #1468a0;
+}
+
+
+
+footer{
     background-color: #3b3b3b;
     padding: 50px 0px;
 }
