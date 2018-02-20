@@ -1,0 +1,18 @@
+<template>
+    <div class="grid-x">
+        <div class="large-3 cell"></div>
+
+        <div class="large-6 cell mainshow">
+            <h2 class="titlecolor">Login</h2>
+
+            <form submit.trigger="submitLogin()">
+                <input type="email" value.bind="email" />
+                <input type="password" value.bind="password" />
+                <input type="submit" value="Login" class="button" />
+            </form>
+
+        </div>
+
+        <div class="large-3 cell"></div>
+    </div>
+</template>
