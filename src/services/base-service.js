@@ -56,6 +56,16 @@ export class BaseService
         return this.sendBodyAsJSON(target, requestBody, 'post').then(response => response.json());
     }
 
+    postFormData(target: string, requestFormData: FormData)
+    {
+        return this.sendBodyFormData(target, requestFormData, 'POST');
+    }
+
+    postFormDataIntoJSON(target: string, requestFormData: FormData)
+    {
+        return this.postFormData(target, requestFormData).then(response => response.json());
+    }
+
     postIntoJSON(target: string, requestBody: object)
     {
         return this.post(target, requestBody).then(response => response.json());
@@ -78,6 +88,17 @@ export class BaseService
             {
                 method: httpMethod,
                 body: json(requestBody)
+            }
+        );
+    }
+
+    sendBodyFormData(target: string, requestBody: FormData, httpMethod: string)
+    {
+        return this.http.fetch(
+            target,
+            {
+                method: httpMethod,
+                body: requestBody
             }
         );
     }

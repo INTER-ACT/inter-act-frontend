@@ -11,20 +11,17 @@ export class AuthService
 
     login(email: string, password: string)
     {
-        this.bsSrvc.get('');
-        this.bsSrvc.postIntoJSON(
-            'token',
-            {
-                form_params:
-                {
-                    grant_type: 'password',
-                    client_id: '?',
-                    client_secret: '?',
-                    email: email,
-                    password: password,
-                    scope: '*'
-                }
-            }
+        let fd = new FormData();
+        fd.append('grant_type', 'password');
+        fd.append('client_id', 1);
+        fd.append('client_secret', '9mCwDpMOVoFJNwzuHwFJAg0Jh2WYIrW3pMMSdoDc');
+        fd.append('username', email);
+        fd.append('password', password);
+        fd.append('scope', '*');
+
+        this.bsSrvc.postFormDataIntoJSON(
+            'oauth/token',
+            fd
         ).then(response =>
         {
             console.log(response);
@@ -33,6 +30,6 @@ export class AuthService
 
     logout()
     {
-        this.bsSrvc.delete('/token');
+        this.bsSrvc.delete('oauth/token');
     }
 }
