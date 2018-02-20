@@ -1,12 +1,32 @@
 import { inject } from 'aurelia-framework';
 import { BaseService } from './base-service';
 
+const LOCALSTORAGE_ACCESSTOKEN = 'access_token';
+const LOCALSTORAGE_REFRESHTOKEN = 'refresh_token';
+
 @inject(BaseService)
 export class AuthService
 {
-    constructor(bsSrvc: BaseService)
+    constructor(baseService: BaseService)
     {
-        this.bsSrvc = bsSrvc;
+        this.baseService = baseService;
+    }
+
+    createHeadersWithAccessToken(): object
+    {
+        return {
+            Authorization: 'Bearer ' + this.getAccessToken()
+        };
+    }
+
+    getAccessToken(): string
+    {
+        return window.localStorage.getItem(LOCALSTORAGE_ACCESSTOKEN);
+    }
+
+    isLoggedIn(): boolean
+    {
+        return (this.getAccessToken() && true);
     }
 
     login(email: string, password: string)
@@ -19,17 +39,23 @@ export class AuthService
         fd.append('password', password);
         fd.append('scope', '*');
 
-        this.bsSrvc.postFormDataIntoJSON(
+        return this.baseService.postFormDataIntoJSON(
             'oauth/token',
             fd
         ).then(response =>
         {
-            console.log(response);
+            window.localStorage.setItem(LOCALSTORAGE_ACCESSTOKEN, response.access_token);
+            window.localStorage.setItem(LOCALSTORAGE_REFRESHTOKEN, response.refresh_token);
+            return response;
         });
     }
 
     logout()
     {
-        this.bsSrvc.delete('oauth/token');
+        return this.baseService.deleteIntoJSON('oauth/token', this.createHeadersWithAccessToken()).then(response =>
+        {
+            window.localStorage.removeItem(LOCALSTORAGE_ACCESSTOKEN);
+            window.localStorage.removeItem(LOCALSTORAGE_REFRESHTOKEN);
+        });
     }
 }
