@@ -9,19 +9,20 @@ export class BaseService
         this.http = http;
     }
 
-    delete(target: string)
+    delete(target: string, headers: object = {})
     {
         return this.http.fetch(
             target,
             {
-                method: 'delete'
+                method: 'delete',
+                headers: headers
             }
         );
     }
 
-    deleteIntoJSON(target: string)
+    deleteIntoJSON(target: string, headers: object = {})
     {
-        return this.delete(target).then(response => response.json());
+        return this.delete(target, headers).then(response => response.json());
     }
 
     get(target: string, getParams: object)
