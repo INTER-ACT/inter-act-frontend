@@ -56,6 +56,7 @@ export class AuthService
         {
             window.localStorage.removeItem(LOCALSTORAGE_ACCESSTOKEN);
             window.localStorage.removeItem(LOCALSTORAGE_REFRESHTOKEN);
+            return response;
         });
     }
 }

@@ -16,6 +16,12 @@ export class App
 
         config.map([
             {
+                route: ['home', ''],
+                name: 'home',
+                moduleId: './components/home',
+                nav: true
+            },
+            {
                 route: ['demo', 'example'],
                 name: 'demo',
                 moduleId: './components/example',
@@ -30,7 +36,7 @@ export class App
                 title: 'Diskussionen'
             },
             {
-                route: ['login', 'auth'],
+                route: ['auth', 'login'],
                 name: 'login',
                 moduleId: './components/login',
                 nav: true,
