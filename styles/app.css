@@ -28,6 +28,13 @@
     margin: 20px 0px;
 }
 
+.mainshow2{
+    height: auto;
+    background-color: #E8E8E8;
+    padding: 30px 30px;
+    margin: 20px 0px;
+}
+
 .showparagraph{
     text-overflow: ellipsis;
     overflow: hidden;
