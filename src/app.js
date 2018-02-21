@@ -28,6 +28,20 @@ export class App
                 moduleId: './components/paragraph',
                 nav: true,
                 title: 'Diskussionen'
+            },
+            {
+                route: ['tags', 'categories'],
+                name: 'tags',
+                moduleId: './components/tag',
+                nav: true,
+                title: 'Kategorien'
+            },
+            {
+                route: ['discussion', 'discuss'],
+                name: 'discussion',
+                moduleId: './components/discussion',
+                nav: true,
+                title: 'Diskussion'
             }
         ]);
 
