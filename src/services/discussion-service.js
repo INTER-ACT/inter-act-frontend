@@ -23,4 +23,9 @@ export class DiscussionService
     {
         return this.bsSrvc.getIntoJSON('tags');
     }
+
+    getTagById(id: number) {
+        return this.bsSrvc.getIntoJSON('tags/' + id);
+    }
 }
+
