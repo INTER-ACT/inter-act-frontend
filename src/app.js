@@ -42,6 +42,27 @@ export class App
                 moduleId: './components/discussion',
                 nav: true,
                 title: 'Diskussion'
+            },
+            {
+                route: ['startscreen', 'start'],
+                name: 'startscreen',
+                moduleId: './components/startscreen',
+                nav: true,
+                title: 'Startseite'
+            },
+            {
+                route: ['agb', 'agbs'],
+                name: 'agb',
+                moduleId: './components/agb',
+                nav: true,
+                title: 'AGB'
+            },
+            {
+                route: ['impressum', 'imp'],
+                name: 'impressum',
+                moduleId: './components/impressum',
+                nav: true,
+                title: 'Impressum'
             }
         ]);
 
