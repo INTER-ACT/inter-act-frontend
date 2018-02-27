@@ -27,5 +27,14 @@ export class DiscussionService
     getTagById(id: number) {
         return this.bsSrvc.getIntoJSON('tags/' + id);
     }
+
+    getComments()
+    {
+        return this.bsSrvc.getIntoJSON('comments');
+    }
+
+    getCommentsById(id: number){
+        return this.bsSrvc.getIntoJSON('comments' + id);
+    }
 }
 
