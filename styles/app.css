@@ -1,3 +1,7 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+
+
 .navbar a {
     top: 50%;
     -webkit-transform: translateY(50%);
@@ -47,10 +51,21 @@
 }
 
 
+body {
+    position: relative;
+    min-height:100vh;
+    padding-bottom: 215px;
+}
 
 footer{
     background-color: #3b3b3b;
     padding: 50px 0px;
+
+    position:absolute;
+    bottom:0;
+    right:0;
+    left:0;
+    width:100%;
 }
 
 footer a {
@@ -66,3 +81,92 @@ footer a:hover {
 footer h4 {
     color: #fff;
 }
+
+/*
+#################################################
+REAKTIONS BUTTONS
+#################################################
+*/
+
+input[type=radio] {
+    position: absolute;
+    visibility: hidden;
+    display: none;
+}
+
+label {
+    color: #332f35;
+    display: inline-block;
+    cursor: pointer;
+    font-weight: bold;
+    /*padding: 5px 20px;*/
+}
+
+input[type=radio]:checked + label{
+    color: #ffffff;
+    background: #1468a0;
+}
+
+label + input[type=radio] + label {
+    border-left: solid 3px;
+}
+.radio-group {
+    border: solid 3px;
+    display: inline-block;
+    margin: 10px;
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.center-logo{
+    margin-left: auto;
+}
+
+.change-mobile-color{
+    background-color: gainsboro;
+}
+
+menu-icon {
+    -webkit-box-shadow: 0 10px 0 1px #1468a0, 0 16px 0 1px #1468a0, 0 22px 0 1px #1468a0;
+    box-shadow: 0px 10px 0px 1px #1468a0, 0px 16px 0px 1px #1468a0, 0px 22px 0px 1px #1468a0;
+}
+
+@media screen and (max-width: 640px)
+{
+    .mobile_nav {
+        display: none;
+    }
+
+    .mobile_footer{
+        margin-top: 30px;
+    }
+
+    .mobile_footer_bold{
+        font-weight: bolder;
+    }
+
+    .navbar a {
+        top: -15%;
+        -webkit-transform: translateY(-15%);
+        -moz-transform: translateY(-15%);
+        -ms-transform: translateY(-15%);
+        -o-transform: translateY(-15%);
+        transform: translateY(-15%);
+        font-size: 1.2em;
+        margin-left: 20px;
+    }
+
+    body{
+        padding-bottom: 470px;
+    }
+
+    .navbar i {
+        transform: translateY(25%);
+        size: 2em;
+    }
+}
+
+
+
+
+
