@@ -5,6 +5,8 @@
             <div class="large-3 cell"></div>
 
             <div class="large-6 cell mainshow2">
+
+
                 <div class="grid-x">
                     <div class="large-10 cell">
 
@@ -12,7 +14,7 @@
                     </div>
                     <div class="large-2 cell"></div>
                 </div>
-
+                <!-- INNERER TEIL -->
                 <div class="grid-x">
 
                     <div class="large-1 cell"></div>
@@ -25,16 +27,45 @@
 
                         <a route-href="demo" class="button">Kommentar</a> <a route-href="demo" class="button">Änderungsvorschlag</a>
                     </div>
-
                     <div class="large-1 cell"></div>
-
                     <div class="large-3 cell">
                         <h5><b>Reaktion</b></h5>
+                        <div class="radio-group">
+                            <input type="radio" id="option-one" name="selector"><label for="option-one">fair</label><input type="radio" id="option-two" name="selector"><label for="option-two">neutral</label><input type="radio" id="option-three" name="selector"><label for="option-three">unfair</label>
+                        </div>
                     </div>
-
                 </div>
+                <!-- INNERER TEIL ENDE -->
+            </div>
+            <div class="large-3 cell"></div>
+        </template>
+    </div>
 
+    <!-- COMMENT -->
 
+    <div class="grid-x">
+        <template repeat.for="com of comments">
+            <div class="large-3 cell"></div>
+            <div class="large-6 cell mainshow2">
+                <div class="grid-x">
+                    <div class="large-10 cell">
+                        <h4 class="titlecolor">Kommentare</h4>
+                    </div>
+                    <div class="large-2 cell"></div>
+                </div>
+                <!-- INNERER TEIL -->
+                <div class="grid-x">
+                    <div class="large-1 cell"></div>
+                    <div class="large-7 cell">
+                        <!--<h5><b>Gesetz</b></h5>-->
+                        <p>USERNAME</p>
+                        <!--<h5><b>Erklärung</b></h5>-->
+                        <p>${com.content}</p>
+                        <a route-href="demo" class="button">Kommentieren</a> <a route-href="demo" class="button">Melden</a>
+                    </div>
+                    <div class="large-1 cell"></div>
+                </div>
+                <!-- INNERER TEIL ENDE -->
             </div>
             <div class="large-3 cell"></div>
         </template>

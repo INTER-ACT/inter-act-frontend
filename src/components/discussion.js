@@ -10,6 +10,8 @@ export class Discussion
 
 
         this.discussions = [];
+        this.comments = [];
+
 
 
         this.discussionService.getDiscussions().then(jsonResponse =>
@@ -19,6 +21,18 @@ export class Discussion
                 this.discussionService.getDiscussionById(d.id).then(dsc =>
                 {
                     this.discussions.push(dsc);
+
+                    this.discussionService.getComments().then(jsonResponse =>
+                    {
+                        jsonResponse.data.comments.forEach(c =>
+                        {
+                            this.discussionService.getCommentsById(c.id).then(com =>
+                            {
+                                this.comments[d.id].push(com);
+
+                            });
+                        });
+                    });
                 });
             });
         });
