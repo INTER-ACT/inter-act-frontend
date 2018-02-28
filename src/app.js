@@ -63,6 +63,13 @@ export class App
                 moduleId: './components/impressum',
                 nav: true,
                 title: 'Impressum'
+            },
+            {
+                route: ['createDiscussion', 'create'],
+                name: 'createDiscussion',
+                moduleId: './components/createDiscussion',
+                nav: true,
+                title: 'Erstellen'
             }
         ]);
 
