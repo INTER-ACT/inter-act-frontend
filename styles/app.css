@@ -1,7 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto');
 
 
-
 .navbar a {
     top: 50%;
     -webkit-transform: translateY(50%);
@@ -48,6 +47,22 @@
 
 .titlecolor{
     color: #1468a0;
+
+}
+
+.menu-icon::after{
+    display: none;
+}
+
+#buttonstyler{
+    font-size: 40px;
+
+    top: -60%;
+    -webkit-transform: translateY(-60%);
+    -moz-transform: translateY(-60%);
+    -ms-transform: translateY(-60%);
+    -o-transform: translateY(-60%);
+    transform: translateY(-60%);
 }
 
 
