@@ -10,7 +10,29 @@ export class Discussion
 
 
         this.discussions = [];
-        this.comments = [];
+
+        this.comments = [
+            {
+                id: '7',
+                user: 'HansiAusTirol123',
+                content: 'Ich bin nicht dieser Meinung da wir in Tirol auch Kühe haben.'
+            },
+            {
+                id: '8',
+                user: 'Maxi4',
+                content: 'Morgen soll es viel Schnee geben. Ich bin nicht dieser Meinung da wir in Tirol auch Kühe haben.'
+            },
+            {
+                id: '10',
+                user: 'DerDönerMann',
+                content: 'Morgen soll es viel Schnee geben. Das ist eine wahre Katastophe wenn man bedenkt das es im Wladviertel -21°C hat'
+            },
+            {
+                id: '9',
+                user: 'User445566',
+                content: 'Ich bin nicht dieser Meinung da wir in Tirol auch Kühe haben.Ich bin nicht dieser Meinung da wir in Tirol auch Kühe haben.Ich bin nicht dieser Meinung da wir in Tirol auch Kühe haben.'
+            }
+        ];
 
 
 
@@ -22,7 +44,7 @@ export class Discussion
                 {
                     this.discussions.push(dsc);
 
-                    this.discussionService.getComments().then(jsonResponse =>
+                   /* this.discussionService.getComments().then(jsonResponse =>
                     {
                         jsonResponse.data.comments.forEach(c =>
                         {
@@ -32,7 +54,7 @@ export class Discussion
 
                             });
                         });
-                    });
+                    }); */
                 });
             });
         });
