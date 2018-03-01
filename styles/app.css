@@ -45,6 +45,12 @@
 
 }
 
+#comment-line{
+    border-left: solid 1px black;
+    padding-left: 10px;
+}
+
+
 .showparagraph{
     text-overflow: ellipsis;
     overflow: hidden;
@@ -85,16 +91,6 @@ body {
     background-color: #ebebeb;
 }
 
-/*
-REAKTIONS
- */
-
-
-
-
-
-
-
 
 footer{
     background-color: #3b3b3b;
@@ -114,7 +110,7 @@ footer a {
 }
 
 footer a:hover {
-    color: #1468a0;
+    color: #e9300b;
 }
 
 footer h4 {
@@ -126,42 +122,26 @@ footer h4 {
 REAKTIONS BUTTONS
 #################################################
 */
-.btn-group button {
-    background-color: white; /* Green background */
-    border: 1px solid #1468a0; /* Green border */
-    color: #1468a0; /* White text */
-    padding: 0px 24px; /* Some padding */
-    cursor: pointer; /* Pointer/hand icon */
-    float: left; /* Float the buttons side by side */
-    height: 30px;
+.button-group input {
+    display: none;
+
 }
 
-.btn-group button:not(:last-child) {
-    border-right: none; /* Prevent double borders */
+.button-group input:checked + label,
+.button-group input:checked + label:active {
+    background-color: #e9300b;
+    color: #ffffff;
 }
 
-/* Clear floats (clearfix hack) */
-.btn-group:after {
-    content: "";
-    clear: both;
-    display: table;
-}
-.btn-group {
-    border-radius: 15px;
+.btn-color{
+    background-color: #E8E8E8;
+    color: #e9300b;
+    width: 105px;
 }
 
-/* Add a background color on hover */
-.btn-group button:hover {
-    background-color: #1468a0;
-    color: white;
-}
-.btn-group button:focus {
-    background-color: #1468a0;
-    color: white;
-}
-
-.bottom-spacer{
-    margin-bottom: 10px;
+.button-group label:hover{
+    background-color: #e9300b;
+    color: #ffffff;
 }
 
 /*
