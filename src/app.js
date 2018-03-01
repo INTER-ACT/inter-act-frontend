@@ -82,6 +82,13 @@ export class App
                 moduleId: './components/createDiscussion',
                 nav: true,
                 title: 'Erstellen'
+            },
+            {
+                route: ['comment', 'com'],
+                name: 'comment',
+                moduleId: './components/comment',
+                nav: true,
+                title: 'Kommentar'
             }
         ]);
 
