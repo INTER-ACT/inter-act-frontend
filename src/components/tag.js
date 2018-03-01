@@ -31,17 +31,16 @@ export class Tag
                 {
                     this.discussions.push(dsc);
 
-                    this.discussionService.getTags().then(jsonResponse =>
-                     {
-                         jsonResponse.data.tags.forEach(t =>
-                         {
-                             this.discussionService.getTagById(t.id).then(tag =>
-                             {
-                                 this.tags[d.id].push(tag);
-
-                             });
-                         });
-                     });
+                    this.discussionService.getTags().then(jsonResponse2 =>
+                    {
+                        jsonResponse2.data.tags.forEach(t =>
+                        {
+                            this.discussionService.getTagById(t.id).then(tag =>
+                            {
+                                this.tags[d.id].push(tag);
+                            });
+                        });
+                    });
                 });
             });
         });
