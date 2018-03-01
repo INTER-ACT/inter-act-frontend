@@ -1,3 +1,5 @@
+import { RouterConfiguration, Router } from 'aurelia-router';
+
 export class App
 {
     constructor()
@@ -8,7 +10,7 @@ export class App
         $(document).foundation();
     }
 
-    configureRouter(config, router)
+    configureRouter(config: RouterConfiguration, router: Router)
     {
         config.title = 'INTER!ACT';
         config.options.pushState = true;
@@ -35,11 +37,10 @@ export class App
                 title: 'Diskussionen'
             },
             {
-                route: ['auth', 'login'],
-                name: 'login',
-                moduleId: './components/login',
-                nav: true,
-                title: 'Login'
+                route: ['auth'],
+                name: 'auth',
+                moduleId: './components/auth',
+                nav: true
             },
             {
                 route: ['tags', 'categories'],

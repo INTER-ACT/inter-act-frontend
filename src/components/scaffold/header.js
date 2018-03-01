@@ -7,6 +7,7 @@ export class Header
     constructor(authService: AuthService)
     {
         this.authService = authService;
+        this.isLoggedIn = this.authService.isLoggedIn();
     }
 
     attached()

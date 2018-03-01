@@ -1,0 +1,20 @@
+<template>
+    <div class="grid-x">
+        <div class="large-3 cell"></div>
+
+        <div class="large-6 cell mainshow2">
+            <form class="childPageSwitch">
+                <div class="button-group round toggle">
+                    <input type="radio" id="rdLogin" name="rd-Login-group" change.trigger="submitShowLogin()" ref="rdLogin">
+                    <label class="button btn-color" for="rdLogin">Login</label>
+                    <input type="radio" id="rdSignup" name="rd-Login-group" change.trigger="submitShowSignup()" ref="rdSignup">
+                    <label class="button btn-color" for="rdSignup">Registrierung</label>
+                </div>
+            </form>
+
+            <router-view></router-view>
+        </div>
+
+        <div class="large-3 cell"></div>
+    </div>
+</template>
