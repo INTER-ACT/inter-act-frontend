@@ -41,6 +41,48 @@ export class App
                 moduleId: './components/login',
                 nav: true,
                 title: 'Login'
+            },
+{
+                route: ['tags', 'categories'],
+                name: 'tags',
+                moduleId: './components/tag',
+                nav: true,
+                title: 'Kategorien'
+            },
+            {
+                route: ['discussion', 'discuss'],
+                name: 'discussion',
+                moduleId: './components/discussion',
+                nav: true,
+                title: 'Diskussion'
+            },
+            {
+                route: ['startscreen', 'start'],
+                name: 'startscreen',
+                moduleId: './components/startscreen',
+                nav: true,
+                title: 'Startseite'
+            },
+            {
+                route: ['agb', 'agbs'],
+                name: 'agb',
+                moduleId: './components/agb',
+                nav: true,
+                title: 'AGB'
+            },
+            {
+                route: ['impressum', 'imp'],
+                name: 'impressum',
+                moduleId: './components/impressum',
+                nav: true,
+                title: 'Impressum'
+            },
+            {
+                route: ['createDiscussion', 'create'],
+                name: 'createDiscussion',
+                moduleId: './components/createDiscussion',
+                nav: true,
+                title: 'Erstellen'
             }
         ]);
 

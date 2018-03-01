@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+
 .navbar a {
     top: 50%;
     -webkit-transform: translateY(50%);
@@ -23,10 +26,30 @@
 
 .mainshow{
     height: 300px;
-    background-color: #E8E8E8;
+    background-color: #ffffff;
     padding: 30px 30px;
     margin: 20px 0px;
 }
+
+.mainshow2{
+    height: auto;
+    background-color: #ffffff;
+    padding: 30px 30px;
+    margin: 20px 0px;
+}
+
+.comment{
+    height: auto;
+    background-color: #ffffff;
+    padding: 30px 30px;
+
+}
+
+#comment-line{
+    border-left: solid 1px black;
+    padding-left: 10px;
+}
+
 
 .showparagraph{
     text-overflow: ellipsis;
@@ -37,13 +60,47 @@
 
 .titlecolor{
     color: #1468a0;
+
 }
 
+.menu-icon::after{
+    display: none;
+}
+
+#buttonstyler{
+    font-size: 40px;
+    color: #1468a0;
+
+    top: -60%;
+    -webkit-transform: translateY(-60%);
+    -moz-transform: translateY(-60%);
+    -ms-transform: translateY(-60%);
+    -o-transform: translateY(-60%);
+    transform: translateY(-60%);
+}
+
+.unorder-list{
+    list-style: none;
+}
+
+
+body {
+    position: relative;
+    min-height:100vh;
+    padding-bottom: 215px;
+    background-color: #ebebeb;
+}
 
 
 footer{
     background-color: #3b3b3b;
     padding: 50px 0px;
+
+    position:absolute;
+    bottom:0;
+    right:0;
+    left:0;
+    width:100%;
 }
 
 footer a {
@@ -53,9 +110,102 @@ footer a {
 }
 
 footer a:hover {
-    color: deeppink;
+    color: #e9300b;
 }
 
 footer h4 {
     color: #fff;
 }
+
+/*
+#################################################
+REAKTIONS BUTTONS
+#################################################
+*/
+.button-group input {
+    display: none;
+
+}
+
+.button-group input:checked + label,
+.button-group input:checked + label:active {
+    background-color: #e9300b;
+    color: #ffffff;
+}
+
+.btn-color{
+    background-color: #E8E8E8;
+    color: #e9300b;
+    width: 105px;
+}
+
+.button-group label:hover{
+    background-color: #e9300b;
+    color: #ffffff;
+}
+
+/*
+
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+ */
+
+.center-logo{
+    margin-left: auto;
+}
+
+.change-header-color{
+    background-color: #f6f6f6;
+}
+
+.top-bar{
+    background-color: #f6f6f6;
+}
+
+.top-bar ul{
+    background-color: #f6f6f6;
+}
+
+menu-icon {
+    -webkit-box-shadow: 0 10px 0 1px #1468a0, 0 16px 0 1px #1468a0, 0 22px 0 1px #1468a0;
+    box-shadow: 0px 10px 0px 1px #1468a0, 0px 16px 0px 1px #1468a0, 0px 22px 0px 1px #1468a0;
+}
+
+@media screen and (max-width: 640px)
+{
+    .mobile_nav {
+        display: none;
+    }
+
+    .mobile_footer{
+        margin-top: 30px;
+    }
+
+    .mobile_footer_bold{
+        font-weight: bolder;
+    }
+
+    .navbar a {
+        top: -15%;
+        -webkit-transform: translateY(-15%);
+        -moz-transform: translateY(-15%);
+        -ms-transform: translateY(-15%);
+        -o-transform: translateY(-15%);
+        transform: translateY(-15%);
+        font-size: 1.2em;
+        margin-left: 20px;
+    }
+
+    body{
+        padding-bottom: 470px;
+    }
+
+    .navbar i {
+        transform: translateY(25%);
+        size: 2em;
+    }
+}
+
+
+
+
+

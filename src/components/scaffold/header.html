@@ -1,15 +1,15 @@
 <template>
     <div>
-        <div class="title-bar" data-responsive-toggle="responsive-menu" data-hide-for="medium">
-            <button class="menu-icon" type="button" data-toggle="responsive-menu"></button>
-            <div class="title-bar-title">Menu</div>
+        <div class="title-bar change-header-color" data-responsive-toggle="responsive-menu" data-hide-for="medium">
+            <button class="menu-icon" id="buttonstyler" type="button" data-toggle="responsive-menu">☰</button>
+            <div class="title-bar-title center-logo"><img src="images/INTER-ACT.png" height="5px" /></div>
         </div>
 
         <div class="top-bar" id="responsive-menu">
             <div class="top-bar-left">
                 <ul class="dropdown menu" data-dropdown-menu>
                     <a route-href="home">
-                        <img src="images/INTER-ACT.png" height="15px" />
+                        <img src="images/INTER-ACT.png" height="15px" class="mobile_nav" />
                     </a>
                     <li class="navbar">
                         <a href="#">Dashboard</a>
