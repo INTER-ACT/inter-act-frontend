@@ -27,34 +27,29 @@
 
                         <a route-href="demo" class="button">Kommentar</a> <a route-href="demo" class="button">Änderungsvorschlag</a>
                     </div>
-                    <div class="large-1 cell"></div>
-                    <div class="large-4 cell">
+
+                    <div class="large-5 small-12 cell">
                         <h5><b>Reaktion</b></h5>
-                        <div class="btn-group bottom-spacer">
-                            <button>fair</button>
-                            <button>neutral</button>
-                            <button>unfair</button>
-                        </div>
-                        <div class="btn-group bottom-spacer">
-                            <button>fair</button>
-                            <button>neutral</button>
-                            <button>unfair</button>
-                        </div>
-                        <div class="btn-group bottom-spacer">
-                            <button>fair</button>
-                            <button>neutral</button>
-                            <button>unfair</button>
-                        </div>
-                        <div class="btn-group bottom-spacer">
-                            <button>fair</button>
-                            <button>neutral</button>
-                            <button>unfair</button>
-                        </div>
-                        <div class="btn-group">
-                            <button>fair</button>
-                            <button>neutral</button>
-                            <button>unfair</button>
-                        </div>
+                        <form>
+                            <div class="button-group round toggle">
+                                <input type="radio" id="r1" name="r-group">
+                                <label class="button btn-color" for="r1">fair</label>
+                                <input type="radio" id="r2" name="r-group">
+                                <label class="button btn-color" for="r2">neutral</label>
+                                <input type="radio" id="r3" name="r-group">
+                                <label class="button btn-color" for="r3">unfair</label>
+                            </div>
+                        </form>
+                        <form>
+                            <div class="button-group round toggle">
+                                <input type="radio" id="r4" name="r-group">
+                                <label class="button btn-color" for="r4">zustimmend</label>
+                                <input type="radio" id="r5" name="r-group">
+                                <label class="button btn-color" for="r5">neutral</label>
+                                <input type="radio" id="r6" name="r-group">
+                                <label class="button btn-color" for="r6">ablehnend</label>
+                            </div>
+                        </form>
                     </div>
 
 
@@ -75,10 +70,12 @@
 
                         <div class="large-1 cell"></div>
                         <div class="large-9 cell">
+                            <div id="comment-line">
                             <!--<h5><b>Gesetz</b></h5>-->
                             <h5 class="titlecolor">${com.user}</h5>
-                            <!--<h5><b>Erklärung</b></h5>-->
+                                <!--<h5><b>Erklärung</b></h5>-->
                             <p>${com.content}</p>
+                            </div>
                             <a route-href="demo" class="button">Kommentieren</a> <a route-href="demo"
                                                                                     class="button">Melden</a>
                         </div>
