@@ -89,6 +89,20 @@ export class App
                 moduleId: './components/comment',
                 nav: true,
                 title: 'Kommentar'
+            },
+            {
+                route: ['amendent'],
+                name: 'amendent',
+                moduleId: './components/amendent',
+                nav: true,
+                title: 'Änderungsvorschlag'
+            },
+            {
+                route: ['ams'],
+                name: 'ams',
+                moduleId: './components/ams',
+                nav: true,
+                title: 'Änderungsvorschlag'
             }
         ]);
 
