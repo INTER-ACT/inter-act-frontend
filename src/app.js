@@ -1,8 +1,7 @@
 export class App
 {
     constructor()
-    {
-    }
+    {}
 
     attached()
     {
@@ -16,7 +15,7 @@ export class App
 
         config.map([
             {
-                route: ['home', ''],
+                route: ['home', 'default', 'index', ''],
                 name: 'home',
                 moduleId: './components/home',
                 nav: true
@@ -42,7 +41,7 @@ export class App
                 nav: true,
                 title: 'Login'
             },
-{
+            {
                 route: ['tags', 'categories'],
                 name: 'tags',
                 moduleId: './components/tag',
@@ -64,7 +63,7 @@ export class App
                 title: 'Startseite'
             },
             {
-                route: ['agb', 'agbs'],
+                route: ['agb'],
                 name: 'agb',
                 moduleId: './components/agb',
                 nav: true,
