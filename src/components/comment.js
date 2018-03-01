@@ -1,12 +1,12 @@
 import { inject } from 'aurelia-framework';
 import { DiscussionService } from '../services/discussion-service';
 
-@inject(DiscussionService)
+/*@inject(DiscussionService)*/
 export class Comment
 {
     constructor(discussionService)
     {
-        this.discussionService = discussionService;
+        /*this.discussionService = discussionService;
 
 
         this.discussions = [];
@@ -21,6 +21,6 @@ export class Comment
                     this.discussions.push(dsc);
                 });
             });
-        });
+        });*/
     }
 }
