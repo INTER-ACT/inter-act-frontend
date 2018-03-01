@@ -50,6 +50,11 @@
     padding-left: 10px;
 }
 
+#amendent{
+    padding-left: 20px;
+    color: dimgrey;
+}
+
 
 .showparagraph{
     text-overflow: ellipsis;

@@ -83,6 +83,27 @@ export class App
                 moduleId: './components/createDiscussion',
                 nav: true,
                 title: 'Erstellen'
+            },
+            {
+                route: ['comment', 'com'],
+                name: 'comment',
+                moduleId: './components/comment',
+                nav: true,
+                title: 'Kommentar'
+            },
+            {
+                route: ['amendent'],
+                name: 'amendent',
+                moduleId: './components/amendent',
+                nav: true,
+                title: 'Änderungsvorschlag'
+            },
+            {
+                route: ['ams'],
+                name: 'ams',
+                moduleId: './components/ams',
+                nav: true,
+                title: 'Änderungsvorschlag'
             }
         ]);
 

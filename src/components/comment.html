@@ -1,35 +1,20 @@
 <template>
-
     <div class="grid-x">
-        <template repeat.for="dsc of discussions">
-            <div class="large-3 cell"></div>
-
-            <div class="large-6 cell mainshow">
-                <h4 class="titlecolor">§ ${dsc.title}</h4>
-
-                <div class="grid-x">
-
-                    <div class="large-2 cell"></div>
-
-                    <div class="large-8 cell showparagraph">
-                        <h5>Gesetz</h5>
-                        <p>${dsc.law_text}</p>
-                        <a route-href="demo" class="button">zur Diskussion</a>
+        <div class="large-3 cell"></div>
+        <div class="large-6 cell mainshow2">
+            <div class="grid-x">
+                <div class="large-1 cell"></div>
+                <div class="large-9 cell">
+                    <div>
+                        <input type="text" placeholder="Kommentar">
                     </div>
-
-                    <div class="large-2 cell"></div>
-
+                    <a route-href="demo" class="button">Kommentieren</a>
                 </div>
+                <div class="large-2 cell"></div>
             </div>
-            <div class="large-3 cell"></div>
-        </template>
-    </div>
 
+            <!-- INNERER TEIL ENDE -->
+        </div>
+        <div class="large-3 cell"></div>
+    </div>
 </template>
-
-
-<form>
-    <div class="radio-group">
-        <input type="radio" id="option-one" name="selector"><label for="option-one">fair</label><input type="radio" id="option-two" name="selector"><label for="option-two">neutral</label><input type="radio" id="option-three" name="selector"><label for="option-three">unfair</label>
-    </div>
-</form>

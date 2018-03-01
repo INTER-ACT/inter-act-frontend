@@ -19,6 +19,16 @@ export class DiscussionService
         return this.bsSrvc.getIntoJSON('discussions', {start: 0, count: 100});
     }
 
+    getAmendentById(id: number)
+    {
+        return this.bsSrvc.getIntoJSON('amendents/' + id);
+    }
+
+    getAmendents()
+    {
+        return this.bsSrvc.getIntoJSON('amendents', {start: 0, count: 100});
+    }
+
     getTags()
     {
         return this.bsSrvc.getIntoJSON('tags');
