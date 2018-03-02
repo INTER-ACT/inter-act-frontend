@@ -19,7 +19,7 @@
                         </a>
                     </li>
 
-                    <li if.bind="isLoggedIn()" class="navbar">
+                    <li if.bind="isLoggedIn" class="navbar">
                         <a href="#">Dashboard</a>
                     </li>
 
@@ -37,7 +37,7 @@
                         <button type="button" class="button">Search</button>
                     </li>
                     <li class="navbar">
-                        <a if.bind="isLoggedIn()" click.trigger="submitLogout()">
+                        <a if.bind="isLoggedIn" click.trigger="submitLogout()">
                             <i class="fa fa-cog" aria-hidden="false"></i>
                         </a>
                         <a else route-href="auth">

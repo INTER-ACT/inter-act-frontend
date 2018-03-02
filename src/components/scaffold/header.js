@@ -4,10 +4,16 @@ import { AuthService } from '../../services/auth-service';
 @inject(AuthService)
 export class Header
 {
+    isLoggedIn = false;
+
     constructor(authService: AuthService)
     {
         this.authService = authService;
+
         this.isLoggedIn = this.authService.isLoggedIn();
+
+        this.authService.onLogin.push(() => this.updateLogin());
+        this.authService.onLogout.push(() => this.updateLogout());
     }
 
     attached()
@@ -17,9 +23,16 @@ export class Header
 
     submitLogout()
     {
-        this.authService.logout().catch(error => {
-            alert('Logout failed. Check console.');
-            console.log(error);
-        });
+        this.authService.logout();
+    }
+
+    updateLogin()
+    {
+        this.isLoggedIn = true;
+    }
+
+    updateLogout()
+    {
+        this.isLoggedIn = false;
     }
 }

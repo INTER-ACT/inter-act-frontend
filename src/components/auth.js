@@ -51,7 +51,6 @@ export class Auth
 
     submitShowSignup()
     {
-        console.log(this.router.routes);
         this.router.navigateToRoute('auth-signup');
     }
 }
