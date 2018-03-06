@@ -1,0 +1,22 @@
+<template>
+
+    <div class="grid-x">
+        <div class="large-3 cell"></div>
+
+        <div class="large-6 cell mainshow2">
+            <form class="childPageSwitch">
+                <div class="button-group round toggle">
+                    <input type="radio" id="rdParagraphs" name="rd-Groups-group" change.trigger="submitShowParagraphs()" ref="rdParagraphs">
+                    <label class="button btn-color" for="rdParagraphs">Paragraphen</label>
+                    <input type="radio" id="rdTags" name="rd-Groups-group" change.trigger="submitShowTags()" ref="rdTags">
+                    <label class="button btn-color" for="rdTags">Kategorien</label>
+                </div>
+            </form>
+
+            <router-view></router-view>
+        </div>
+
+        <div class="large-3 cell"></div>
+    </div>
+
+</template>
