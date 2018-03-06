@@ -101,6 +101,13 @@ export class App
                 title: 'Änderungsvorschlag'
             },
             {
+                route: ['guide', 'manual', 'help'],
+                name: 'guide',
+                moduleId: './components/guide',
+                nav: true,
+                title: 'Hilfe'
+            },
+            {
                 route: ['ams'],
                 name: 'ams',
                 moduleId: './components/ams',
