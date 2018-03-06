@@ -43,6 +43,12 @@ export class App
                 nav: true
             },
             {
+                route: 'groups',
+                name: 'groups',
+                moduleId: './components/groups',
+                nav: true
+            },
+            {
                 route: ['tags', 'categories'],
                 name: 'tags',
                 moduleId: './components/tag',

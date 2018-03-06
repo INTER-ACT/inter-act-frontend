@@ -1,5 +1,5 @@
 import { inject } from 'aurelia-framework';
-import { DiscussionService } from '../services/discussion-service';
+import { DiscussionService } from '../../services/discussion-service';
 
 @inject(DiscussionService)
 export class Tag
@@ -33,7 +33,8 @@ export class Tag
 
                     this.discussionService.getTags().then(jsonResponse2 =>
                     {
-                        jsonResponse2.data.tags.forEach(t =>
+                        console.log(jsonResponse2);
+                        jsonResponse2.tags.forEach(t =>
                         {
                             this.discussionService.getTagById(t.id).then(tag =>
                             {
