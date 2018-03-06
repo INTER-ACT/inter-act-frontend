@@ -2,8 +2,6 @@ import { RouterConfiguration, Router } from 'aurelia-router';
 
 export class Auth
 {
-    constructor() {}
-
     attached()
     {
         switch (this.router.currentInstruction.config.name.valueOf())

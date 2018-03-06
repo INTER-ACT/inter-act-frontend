@@ -23,11 +23,24 @@ export class Login
         }
     }
 
+    lockForm()
+    {
+        Array.from(this.loginForm.children).forEach(c => c.disabled = 'disabled');
+    }
+
+    unlockForm()
+    {
+        Array.from(this.loginForm.children).forEach(c => c.removeAttribute('disabled'));
+    }
+
     submitLogin()
     {
+        this.lockForm();
+
         this.authService.login(this.email, this.password).then(x =>
         {
             this.router.navigate('dashboard');
+            this.unlockForm();
         }).catch(error =>
         {
             if (error.status === 401)
@@ -35,6 +48,13 @@ export class Login
                 // bad credentials
                 this.alerts.push('Die eingegebenen Zugangsdaten waren falsch. Bitte überprüfe deine Eingaben!');
             }
+            else
+            {
+                this.alerts.push('Unbekannter Fehler: ' + error.status + ' ' + error.statusText);
+                console.log(error); // eslint-disable-line no-console
+            }
+
+            this.unlockForm();
         });
     }
 }
