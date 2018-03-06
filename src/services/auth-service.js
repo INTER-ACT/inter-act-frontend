@@ -98,4 +98,30 @@ export class AuthService
     {
         this.onLogout.forEach(callback => callback(this));
     }
+
+    signup(sud: UserData)
+    {
+        return this.baseService.postIntoJSON('users', sud);
+    }
+}
+
+export class UserData
+{
+    /* eslint-disable camelcase */
+    username: string;
+    email: string;
+    password: string;
+
+    first_name: string;
+    last_name: string;
+
+    sex: string;
+    year_of_birth: number;
+
+    postal_code: number;
+    residence: string;
+
+    job: string;
+    highest_education: string;
+    /* eslint-enable camelcase */
 }
