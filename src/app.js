@@ -64,19 +64,21 @@ export class App
                 title: 'Startseite'
             },
             {
-                route: ['agb'],
-                name: 'agb',
-                moduleId: './components/agb',
+                route: ['terms-of-service', 'tos'],
+                name: 'terms-of-service',
+                moduleId: './components/terms-of-service',
                 nav: true,
-                title: 'AGB'
+                title: 'Nutzungsbedingungen'
             },
             {
-                route: ['impressum', 'imp'],
-                name: 'impressum',
-                moduleId: './components/impressum',
+                route: 'imprint',
+                name: 'imprint',
+                moduleId: './components/imprint',
                 nav: true,
                 title: 'Impressum'
             },
+
+
             {
                 route: ['createDiscussion', 'create'],
                 name: 'createDiscussion',
