@@ -8,7 +8,6 @@ export class Discussion
     {
         this.discussionService = discussionService;
 
-
         this.discussions = [];
 
         this.comments = [
@@ -33,8 +32,6 @@ export class Discussion
                 content: 'Ich bin nicht dieser Meinung da wir in Tirol auch Kühe haben.Ich bin nicht dieser Meinung da wir in Tirol auch Kühe haben.Ich bin nicht dieser Meinung da wir in Tirol auch Kühe haben.'
             }
         ];
-
-
 
         this.discussionService.getDiscussions().then(jsonResponse =>
         {

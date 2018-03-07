@@ -1,0 +1,24 @@
+<template>
+    <h2 class="titlecolor">Registrierung</h2>
+
+    <form submit.trigger="submitSignup()">
+        <input type="text" value.bind="signupData.username" placeholder="Benutzername" minlength="3" maxlength="64" required />
+        <input type="email" value.bind="signupData.email" placeholder="E-Mail-Adresse" minlength="3" maxlength="254" required />
+
+        <input type="password" value.bind="signupData.password" placeholder="Passwort" minlength="10" maxlength="72" required ref="pwInput"
+        />
+        <input type="password" placeholder="Passwort wiederholen" minlength.bind="pwInput.value.length" maxlength="pwInput.value.length"
+            required ref="pwInputConfirm" />
+
+        <input type="text" value.bind="signupData.first_name" placeholder="Vorname" maxlength="254" required />
+        <input type="text" value.bind="signupData.last_name" placeholder="Nachname" maxlength="254" required />
+        <input type="number" value.bind="signupData.year_of_birth" placeholder="Geburtsjahr" min="1900" required />
+
+        <input type="number" value.bind="signupData.postal_code" placeholder="PLZ" min="1000" max="9999" required />
+        <input type="text" value.bind="signupData.residence" placeholder="Wohnort" maxlength="254" required />
+        <input type="text" value.bind="signupData.job" placeholder="Beruf" maxlength="254" required />
+        <input type="text" value.bind="highest_education" placeholder="Höchster Schulabschluss" maxlength="254" required />
+
+        <input type="submit" value="Registrieren" class="button" />
+    </form>
+</template>

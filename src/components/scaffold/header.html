@@ -2,20 +2,29 @@
     <div>
         <div class="title-bar change-header-color" data-responsive-toggle="responsive-menu" data-hide-for="medium">
             <button class="menu-icon" id="buttonstyler" type="button" data-toggle="responsive-menu">☰</button>
-            <div class="title-bar-title center-logo"><img src="images/INTER-ACT.png" height="5px" /></div>
+            <div class="title-bar-title center-logo">
+                <a route-href="home">
+                    <img src="images/INTER-ACT.png" height="5px" />
+                </a>
+            </div>
         </div>
 
         <div class="top-bar" id="responsive-menu">
             <div class="top-bar-left">
                 <ul class="dropdown menu" data-dropdown-menu>
-                    <a route-href="home">
-                        <img src="images/INTER-ACT.png" height="15px" class="mobile_nav" />
-                    </a>
-                    <li class="navbar">
+
+                    <li>
+                        <a route-href="home">
+                            <img src="images/INTER-ACT.png" height="15px" class="mobile_nav" />
+                        </a>
+                    </li>
+
+                    <li if.bind="isLoggedIn" class="navbar">
                         <a href="#">Dashboard</a>
                     </li>
+
                     <li class="navbar">
-                        <a route-href="discussions">Diskussion</a>
+                        <a route-href="groups">Diskussion</a>
                     </li>
                 </ul>
             </div>
@@ -28,7 +37,10 @@
                         <button type="button" class="button">Search</button>
                     </li>
                     <li class="navbar">
-                        <a click.trigger="submitLogout()">
+                        <a if.bind="isLoggedIn" click.trigger="submitLogout()">
+                            <i class="fa fa-cog" aria-hidden="false"></i>
+                        </a>
+                        <a else route-href="auth">
                             <i class="fa fa-cog" aria-hidden="false"></i>
                         </a>
                     </li>

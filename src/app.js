@@ -1,3 +1,5 @@
+import { RouterConfiguration, Router } from 'aurelia-router';
+
 export class App
 {
     constructor()
@@ -8,7 +10,7 @@ export class App
         $(document).foundation();
     }
 
-    configureRouter(config, router)
+    configureRouter(config: RouterConfiguration, router: Router)
     {
         config.title = 'INTER!ACT';
         config.options.pushState = true;
@@ -35,11 +37,16 @@ export class App
                 title: 'Diskussionen'
             },
             {
-                route: ['auth', 'login'],
-                name: 'login',
-                moduleId: './components/login',
-                nav: true,
-                title: 'Login'
+                route: ['auth'],
+                name: 'auth',
+                moduleId: './components/auth',
+                nav: true
+            },
+            {
+                route: 'groups',
+                name: 'groups',
+                moduleId: './components/groups',
+                nav: true
             },
             {
                 route: ['tags', 'categories'],
@@ -63,19 +70,21 @@ export class App
                 title: 'Startseite'
             },
             {
-                route: ['agb'],
-                name: 'agb',
-                moduleId: './components/agb',
+                route: ['terms-of-service', 'tos'],
+                name: 'terms-of-service',
+                moduleId: './components/terms-of-service',
                 nav: true,
-                title: 'AGB'
+                title: 'Nutzungsbedingungen'
             },
             {
-                route: ['impressum', 'imp'],
-                name: 'impressum',
-                moduleId: './components/impressum',
+                route: 'imprint',
+                name: 'imprint',
+                moduleId: './components/imprint',
                 nav: true,
                 title: 'Impressum'
             },
+
+
             {
                 route: ['createDiscussion', 'create'],
                 name: 'createDiscussion',
@@ -96,6 +105,13 @@ export class App
                 moduleId: './components/amendent',
                 nav: true,
                 title: 'Änderungsvorschlag'
+            },
+            {
+                route: ['guide', 'manual', 'help'],
+                name: 'guide',
+                moduleId: './components/guide',
+                nav: true,
+                title: 'Hilfe'
             },
             {
                 route: ['ams'],

@@ -154,6 +154,19 @@ REAKTIONS BUTTONS
 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
  */
 
+form.childPageSwitch {
+    margin-bottom: 5vh;
+}
+
+form.childPageSwitch div {
+    display: flex;
+    justify-content: center;
+}
+
+form.childPageSwitch div label {
+    width: 50%;
+}
+
 .center-logo{
     margin-left: auto;
 }
