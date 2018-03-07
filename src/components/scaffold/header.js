@@ -5,6 +5,8 @@ import { AuthService } from '../../services/auth-service';
 export class Header
 {
     isLoggedIn = false;
+    isScientist = false;
+    isAdmin = false;
 
     constructor(authService: AuthService)
     {
