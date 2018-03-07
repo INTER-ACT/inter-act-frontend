@@ -55,7 +55,7 @@ export class AuthService
         let fd = new FormData();
         fd.append('grant_type', 'password');
         fd.append('client_id', 1);
-        fd.append('client_secret', '9mCwDpMOVoFJNwzuHwFJAg0Jh2WYIrW3pMMSdoDc');
+        fd.append('client_secret', 'EoIIqXvu7ckyEjInMeoOZECo3Gs00gIAtF8Nn2bG');
         fd.append('username', email);
         fd.append('password', password);
         fd.append('scope', '*');
