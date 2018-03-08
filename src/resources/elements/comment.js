@@ -48,4 +48,10 @@ export class CommentCustomElement
             console.log(error);
         });
     }
+
+    submitCommentCancel()
+    {
+        this.replyText = '';
+        this.hasCommentateBoxOpen = false;
+    }
 }
