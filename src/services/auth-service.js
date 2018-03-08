@@ -101,7 +101,7 @@ export class AuthService
 
     signup(sud: UserData)
     {
-        return this.baseService.postIntoJSON('users', sud);
+        return this.baseService.post('users', sud);
     }
 }
 
