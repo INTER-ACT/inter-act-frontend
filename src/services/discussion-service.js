@@ -34,17 +34,18 @@ export class DiscussionService
         return this.bsSrvc.getIntoJSON('tags');
     }
 
-    getTagById(id: number) {
+    getTagById(id: number)
+    {
         return this.bsSrvc.getIntoJSON('tags/' + id);
     }
 
-    getComments()
+    getCommentsByDiscussion(discussionID: number)
     {
-        return this.bsSrvc.getIntoJSON('comments');
+        return this.bsSrvc.getIntoJSON('discussions/' + discussionID + '/comments');
     }
 
-    getCommentsById(id: number){
-        return this.bsSrvc.getIntoJSON('comments' + id);
+    getCommentById(id: number)
+    {
+        return this.bsSrvc.getIntoJSON('comments/' + id);
     }
 }
-
