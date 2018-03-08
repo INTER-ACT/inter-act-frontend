@@ -1,16 +1,18 @@
 import { inject } from 'aurelia-framework';
+import { Router } from 'aurelia-router';
 import { AuthService } from '../../services/auth-service';
 
-@inject(AuthService)
+@inject(Router, AuthService)
 export class Header
 {
     isLoggedIn = false;
     isScientist = false;
     isAdmin = false;
 
-    constructor(authService: AuthService)
+    constructor(router: Router, authService: AuthService)
     {
         this.authService = authService;
+        this.router = router;
 
         this.isLoggedIn = this.authService.isLoggedIn();
 
@@ -21,6 +23,16 @@ export class Header
     attached()
     {
         $(this).foundation();
+    }
+
+    gotoLogin()
+    {
+        this.router.navigateToRoute('auth');
+    }
+
+    gotoSignup()
+    {
+        this.router.navigate('auth/signup');
     }
 
     submitLogout()
