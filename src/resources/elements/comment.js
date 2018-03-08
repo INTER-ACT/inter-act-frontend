@@ -6,9 +6,11 @@ export class CommentCustomElement
     @bindable author: Author;
     @bindable content: string;
 
+    hasCommentateBoxOpen: boolean = false;
+
     commentateBegin()
     {
-        alert('not implemented yet');
+        this.hasCommentateBoxOpen = true;
     }
 
     report()

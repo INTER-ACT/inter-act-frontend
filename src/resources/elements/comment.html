@@ -6,8 +6,15 @@
             <h5 class="titlecolor">${author.name}</h5>
             <p>${content}</p>
         </div>
-        <a click.trigger="commentateBegin()" class="button">Kommentieren</a>
-        <a click.trigger="report()" class="button">Melden</a>
+        <a click.trigger="commentateBegin()" class="button" if.bind="!hasCommentateBoxOpen">Kommentieren</a>
+        <a click.trigger="report()" class="button" if.bind="!hasCommentateBoxOpen">Melden</a>
+
+        <div if.bind="hasCommentateBoxOpen">
+            <form>
+                <textarea placeholder="Kommentar"></textarea>
+                <button class="button">Kommentieren (TODO: mach mich grau)</button>
+            </form>
+        </div>
     </div>
     <div class="large-2 cell"></div>
 
