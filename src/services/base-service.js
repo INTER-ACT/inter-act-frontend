@@ -54,7 +54,7 @@ export class BaseService
 
     post(target: string, requestBody: object)
     {
-        return this.sendBodyAsJSON(target, requestBody, 'post').then(response => response.json());
+        return this.sendBodyAsJSON(target, requestBody, 'post');
     }
 
     postFormData(target: string, requestFormData: FormData)
