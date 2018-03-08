@@ -65,7 +65,7 @@
                 </ul>
             </div>
             <div class="top-bar-right">
-                <ul class="menu">
+                <ul class="dropdown menu" data-dropdown-menu>
                     <!-- Suchoption -->
                     <li if.bind="isLoggedIn">
                         <input type="search" placeholder="Search">
@@ -84,9 +84,15 @@
 
                     <!-- Einstellungszahnrad -->
                     <li class="navbar">
-                        <a id="zahnrad" if.bind="isLoggedIn" click.trigger="submitLogout()">
+                        <a id="zahnrad" if.bind="isLoggedIn">
                             <i class="fa fa-cog" aria-hidden="false"></i>
                         </a>
+                        <ul class="menu">
+                            <li><a href="#">Einstellungen</a></li>
+                            <li><a click.trigger="submitLogout()">Abmelden</a></li>
+                            <!-- ... -->
+                        </ul>
+                    </li>
                        <!-- <a else route-href="auth">
                             <i class="fa fa-cog" aria-hidden="false"></i>
                         </a>

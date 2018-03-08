@@ -22,12 +22,12 @@
 }
 
 #zahnrad{
-    top: 30%;
-    -webkit-transform: translateY(30%);
-    -moz-transform: translateY(30%);
-    -ms-transform: translateY(30%);
-    -o-transform: translateY(30%);
-    transform: translateY(30%);
+    top: 15%;
+    -webkit-transform: translateY(15%);
+    -moz-transform: translateY(15%);
+    -ms-transform: translateY(15%);
+    -o-transform: translateY(15%);
+    transform: translateY(15%);
     font-size: 1.2em;
     margin-left: 20px;
 }
@@ -325,6 +325,18 @@ menu-icon {
         margin-left: 1px;
         padding: .2rem 0.7rem;
     }
+
+    #zahnrad{
+        top: -20%;
+        -webkit-transform: translateY(-20%);
+        -moz-transform: translateY(-20%);
+        -ms-transform: translateY(-20%);
+        -o-transform: translateY(-20%);
+        transform: translateY(-20%);
+        font-size: 1.2em;
+        margin-left: 20px;
+    }
+
     .center-buttons{
         margin-left: 85%;
         padding: .7rem 1rem;
