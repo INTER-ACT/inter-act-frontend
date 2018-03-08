@@ -27,12 +27,12 @@ export class Header
 
     gotoLogin()
     {
-        this.router.navigateToRoute('auth');
+        this.router.navigate('/auth/login');
     }
 
     gotoSignup()
     {
-        this.router.navigate('auth/signup');
+        this.router.navigate('/auth/signup');
     }
 
     submitLogout()
