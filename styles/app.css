@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto');
 
 
-.navbar a {
+.navbar-as {
     /* top: 50%;
     -webkit-transform: translateY(50%);
     -moz-transform: translateY(50%);
@@ -17,6 +17,17 @@
     -ms-transform: translateY(80%);
     -o-transform: translateY(80%);
     transform: translateY(80%);
+    font-size: 1.2em;
+    margin-left: 20px;
+}
+
+#zahnrad{
+    top: 30%;
+    -webkit-transform: translateY(30%);
+    -moz-transform: translateY(30%);
+    -ms-transform: translateY(30%);
+    -o-transform: translateY(30%);
+    transform: translateY(30%);
     font-size: 1.2em;
     margin-left: 20px;
 }
@@ -44,7 +55,7 @@
 }
 
 .navbar i {
-    transform: translateY(-100%);
+    transform: translateY(-75%);
     size: 2em;
 }
 

@@ -20,47 +20,47 @@
                     </li>
                     <!-- wenn angemeldet -->
                     <li if.bind="isLoggedIn || !isLoggedIn" class="navbar">
-                        <a href="#">Dashboard</a>
+                        <a class="navbar-as" href="#">Dashboard</a>
                     </li>
                     <!-- Wenn angemeldet -->
                     <li if.bind="isLoggedIn || !isLoggedIn" class="navbar">
-                        <a route-href="groups">Diskussion</a>
+                        <a class="navbar-as" route-href="groups">Diskussion</a>
                     </li>
 
                     <!-- Admin -->
                     <li if.bind="isAdmin" class="navbar-admin">
-                        <a href="#">Dashboard</a>
+                        <a class="navbar-as" href="#">Dashboard</a>
                     </li>
                     <!-- Admin -->
                     <li if.bind="isAdmin" class="navbar-admin">
-                        <a route-href="groups">Diskussion</a>
+                        <a class="navbar-as" route-href="groups">Diskussion</a>
                     </li>
                     <!-- Admin -->
                     <li if.bind="isAdmin" class="navbar-admin">
-                        <a href="#">Erstellen</a>
+                        <a class="navbar-as" href="#">Erstellen</a>
                     </li>
                     <!-- Admin -->
                     <li if.bind="isAdmin" class="navbar-admin">
-                        <a href="#">Meldungen</a>
+                        <a class="navbar-as" href="#">Meldungen</a>
                     </li>
                     <!-- Admin -->
                     <li if.bind="isAdmin" class="navbar-admin">
-                        <a href="#">Downloads</a>
+                        <a class="navbar-as" href="#">Downloads</a>
                     </li>
 
 
                     <!-- Sozialwissenschaftler -->
                     <!-- Admin -->
                     <li if.bind="isScientist" class="navbar-sozi">
-                        <a href="#">Dashboard</a>
+                        <a class="navbar-as" href="#">Dashboard</a>
                     </li>
 
                     <li if.bind="isScientist" class="navbar-sozi">
-                        <a route-href="groups">Diskussion</a>
+                        <a class="navbar-as" route-href="groups">Diskussion</a>
                     </li>
 
                     <li if.bind="isScientist" class="navbar-sozi">
-                        <a href="#">Downloads</a>
+                        <a class="navbar-as" href="#">Downloads</a>
                     </li>
                 </ul>
             </div>
@@ -84,7 +84,7 @@
 
                     <!-- Einstellungszahnrad -->
                     <li class="navbar">
-                        <a if.bind="isLoggedIn" click.trigger="submitLogout()">
+                        <a id="zahnrad" if.bind="isLoggedIn" click.trigger="submitLogout()">
                             <i class="fa fa-cog" aria-hidden="false"></i>
                         </a>
                        <!-- <a else route-href="auth">
