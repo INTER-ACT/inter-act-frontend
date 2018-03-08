@@ -1,7 +1,7 @@
 <template>
     <h2 class="titlecolor">Registrierung</h2>
 
-    <form submit.trigger="submitSignup()">
+    <form submit.trigger="submitSignup()" class="authForm">
         <input type="text" value.bind="signupData.username" placeholder="Benutzername" minlength="3" maxlength="64" required />
         <input type="email" value.bind="signupData.email" placeholder="E-Mail-Adresse" minlength="3" maxlength="254" required />
 
@@ -13,12 +13,29 @@
         <input type="text" value.bind="signupData.first_name" placeholder="Vorname" maxlength="254" required />
         <input type="text" value.bind="signupData.last_name" placeholder="Nachname" maxlength="254" required />
         <input type="number" value.bind="signupData.year_of_birth" placeholder="Geburtsjahr" min="1900" required />
+        <label>Geschlecht:</label>
+        <fieldset class="button-group round">
+            <input type="radio" id="rdSexFemale" value="f" name="rd-sex-group" checked="checked" checked.bind="signupData.sex" />
+            <label class="button" for="rdSexFemale">weiblich</label>
+            <input type="radio" id="rdSexMale" value="m" name="rd-sex-group" checked.bind="signupData.sex" />
+            <label class="button" for="rdSexMale">männlich</label>
+        </fieldset>
 
         <input type="number" value.bind="signupData.postal_code" placeholder="PLZ" min="1000" max="9999" required />
         <input type="text" value.bind="signupData.residence" placeholder="Wohnort" maxlength="254" required />
         <input type="text" value.bind="signupData.job" placeholder="Beruf" maxlength="254" required />
-        <input type="text" value.bind="highest_education" placeholder="Höchster Schulabschluss" maxlength="254" required />
+        <input type="text" value.bind="signupData.highest_education" placeholder="Höchster Schulabschluss" maxlength="254" required
+        />
 
-        <input type="submit" value="Registrieren" class="button" />
+        <label>
+            <input type="checkbox" ref="cbx_tos" /> Ich habe die
+            <a route-href="terms-of-service" target="_blank">Nutzungsbedingungen</a> gelesen und bin mit ihnen einverstanden.
+        </label>
+
+        <div style="height: 50px; width: 250px; background: #DDD; border: 1px solid #AAA; border-radius: 3px;margin-top: 40px; margin-bottom: 40px;">
+            [Y] NoCAPTCHA
+        </div>
+
+        <input type="submit" disabled.bind="!cbx_tos.checked" value="Registrieren" class="button" />
     </form>
 </template>

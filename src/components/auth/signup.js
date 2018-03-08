@@ -5,12 +5,14 @@ import { AuthService, UserData } from '../../services/auth-service';
 @inject(Router, AuthService)
 export class Signup
 {
-    signupData = new UserData();
+    signupData: UserData;
 
     constructor(router: Router, authService: AuthService)
     {
         this.router = router;
         this.authService = authService;
+        this.signupData = new UserData();
+        this.signupData.sex = 'f';
     }
 
     submitSignup()
@@ -18,8 +20,21 @@ export class Signup
         // verify pw
         if (this.pwInput.value !== this.pwInputConfirm.value)
         {
-            // ERROR
+            alert('Fehler:\nPasswörter ungleich.');
+            return;
         }
-        console.log(this.signupData);
+
+        this.authService.signup(this.signupData)
+            .then(r =>
+            {
+                alert('DONE');
+                this.router.navigate('/auth/login');
+            })
+            .catch(error =>
+            {
+                alert('Error');
+                console.log(error);
+                error.json().then(console.log);
+            });
     }
 }
