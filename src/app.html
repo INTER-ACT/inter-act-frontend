@@ -1,4 +1,13 @@
 <template>
+    <div class="reveal" id="plzLogin" data-reveal>
+        <h2>Fehler</h2>
+        <p>Sie sind nicht eingeloggt.</p>
+        <p>Um diese Aktion durchführen zu können, müssen Sie dies aber sein.</p>
+        <button class="close-button" data-close aria-label="Close modal" type="button">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+
     <compose view-model="./components/scaffold/header"></compose>
     <router-view></router-view>
     <compose view="./components/scaffold/footer.html"></compose>

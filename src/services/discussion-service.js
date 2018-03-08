@@ -1,12 +1,14 @@
 import { inject } from 'aurelia-framework';
 import { BaseService } from './base-service';
+import { AuthService } from './auth-service';
 
-@inject(BaseService)
+@inject(BaseService, AuthService)
 export class DiscussionService
 {
-    constructor(bsSrvc: BaseService)
+    constructor(bsSrvc: BaseService, authService: AuthService)
     {
         this.bsSrvc = bsSrvc;
+        this.authService = authService;
     }
 
     getDiscussionById(id: number)
@@ -16,7 +18,7 @@ export class DiscussionService
 
     getDiscussions()
     {
-        return this.bsSrvc.getIntoJSON('discussions', {start: 0, count: 100});
+        return this.bsSrvc.getIntoJSON('discussions', { start: 0, count: 100 });
     }
 
     getAmendentById(id: number)
@@ -26,7 +28,7 @@ export class DiscussionService
 
     getAmendents()
     {
-        return this.bsSrvc.getIntoJSON('amendents', {start: 0, count: 100});
+        return this.bsSrvc.getIntoJSON('amendents', { start: 0, count: 100 });
     }
 
     getTags()
@@ -47,5 +49,10 @@ export class DiscussionService
     getCommentById(id: number)
     {
         return this.bsSrvc.getIntoJSON('comments/' + id);
+    }
+
+    replyToComment(commentID: number, reply: string)
+    {
+        return this.bsSrvc.postIntoJSON('comments/' + commentID + '/comments', { content: reply, tags: [ 1 ] }, this.authService.createHeadersWithAccessToken());
     }
 }
