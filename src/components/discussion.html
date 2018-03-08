@@ -1,96 +1,17 @@
 <template>
-
     <div class="grid-x">
-        <template repeat.for="dsc of discussions">
-            <div class="large-3 cell"></div>
 
-            <div class="large-6 cell mainshow2">
+        <require from="../resources/elements/discussion" as="dsc"></require>
 
 
-                <div class="grid-x">
-                    <div class="large-10 cell">
-
-                        <h4 class="titlecolor">§ ${dsc.title}</h4>
-                    </div>
-                    <div class="large-2 cell"></div>
-                </div>
-                <!-- INNERER TEIL -->
-                <div class="grid-x">
-
-                    <div class="large-1 cell"></div>
-
-                    <div class="large-6 cell">
-                        <h5><b>Gesetz</b></h5>
-                        <p>${dsc.law_text}</p>
-                        <h5><b>Erklärung</b></h5>
-                        <p>${dsc.law_explanation}</p>
-
-                        <a route-href="demo" class="button">Kommentar</a> <a route-href="demo" class="button">Änderungsvorschlag</a>
-                    </div>
-
-                    <div class="large-5 small-12 cell">
-                        <h5><b>Reaktion</b></h5>
-                        <form>
-                            <div class="button-group round toggle">
-                                <input type="radio" id="r1" name="r-group">
-                                <label class="button btn-color" for="r1">fair</label>
-                                <input type="radio" id="r2" name="r-group">
-                                <label class="button btn-color" for="r2">neutral</label>
-                                <input type="radio" id="r3" name="r-group">
-                                <label class="button btn-color" for="r3">unfair</label>
-                            </div>
-                        </form>
-                        <form>
-                            <div class="button-group round toggle">
-                                <input type="radio" id="r4" name="r-group">
-                                <label class="button btn-color" for="r4">zustimmend</label>
-                                <input type="radio" id="r5" name="r-group">
-                                <label class="button btn-color" for="r5">neutral</label>
-                                <input type="radio" id="r6" name="r-group">
-                                <label class="button btn-color" for="r6">ablehnend</label>
-                            </div>
-                        </form>
-                    </div>
-
-
-                </div>
-                <!-- INNERER TEIL ENDE -->
-
-                <div class="large-3 cell"></div>
-                <!-- COMMENT -->
-
-                <div class="grid-x">
-
-                    <div class="large-10 cell">
-                        <h4>Kommentare</h4>
-                    </div>
-                    <div class="large-2 cell"></div>
-                    <!-- INNERER TEIL -->
-                    <template repeat.for="com of comments">
-
-                        <div class="large-1 cell"></div>
-                        <div class="large-9 cell">
-                            <div id="comment-line">
-                            <!--<h5><b>Gesetz</b></h5>-->
-                            <h5 class="titlecolor">${com.user}</h5>
-                                <!--<h5><b>Erklärung</b></h5>-->
-                            <p>${com.content}</p>
-                            </div>
-                            <a route-href="demo" class="button">Kommentieren</a> <a route-href="demo"
-                                                                                    class="button">Melden</a>
-                        </div>
-                        <div class="large-2 cell"></div>
-
-                    </template>
-                    <!-- INNERER TEIL ENDE -->
-                </div>
-
-
-            </div>
-            <div class="large-3 cell"></div>
-
+        <template if.bind="notFound">
+            <h2>Fehler: Diskussion ${id} nicht gefunden</h2>
+            <p>Diese Diskussion existiert leider nicht :(</p>
         </template>
+
+        <template else>
+            <dsc resourceid.bind="id" rdata.bind="discussionData" comments.bind="comments"></dsc>
+        </template>
+
     </div>
-
-
 </template>

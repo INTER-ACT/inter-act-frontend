@@ -1,0 +1,68 @@
+<template>
+    <div class="grid-x">
+        <div class="large-3 cell"></div>
+
+        <div class="large-6 cell mainshow2">
+
+
+            <div class="grid-x">
+                <div class="large-10 cell">
+
+                    <h4 class="titlecolor">§${rdata.article} ${rdata.title}</h4>
+                </div>
+                <div class="large-2 cell"></div>
+            </div>
+            <!-- INNERER TEIL -->
+            <div class="grid-x">
+
+                <div class="large-1 cell"></div>
+
+                <div class="large-6 cell">
+                    <h5>
+                        <b>Gesetz</b>
+                    </h5>
+                    <p>${rdata.law_text}</p>
+                    <h5>
+                        <b>Erklärung</b>
+                    </h5>
+                    <p>${rdata.law_explanation}</p>
+
+                    <a route-href="demo" class="button">Kommentar</a>
+                    <a route-href="demo" class="button">Änderungsvorschlag</a>
+                </div>
+
+                <require from="./multiaspect"></require>
+                <multiaspect discussion="${id}"></multiaspect>
+
+
+            </div>
+            <!-- INNERER TEIL ENDE -->
+
+            <div class="large-3 cell"></div>
+            <!-- COMMENT -->
+
+            <div class="grid-x">
+
+                <div class="large-10 cell">
+                    <h4>Kommentare</h4>
+                </div>
+                <div class="large-2 cell"></div>
+                <!-- INNERER TEIL -->
+
+                <require from="./comment"></require>
+
+                <template if.bind="comments.length < 1">
+                    <p>Noch keine Kommentare vorhanden</p>
+                </template>
+
+                <template repeat.for="com of comments">
+                    <comment author.bind="com.author" content.bind="com.content"></comment>
+                </template>
+                <!-- INNERER TEIL ENDE -->
+            </div>
+
+
+        </div>
+        <div class="large-3 cell"></div>
+    </div>
+</template>

@@ -56,10 +56,11 @@ export class App
                 title: 'Kategorien'
             },
             {
-                route: ['discussion', 'discuss'],
+                route: 'discussion/:id',
                 name: 'discussion',
                 moduleId: './components/discussion',
                 nav: true,
+                href: '#discussion',
                 title: 'Diskussion'
             },
             {
