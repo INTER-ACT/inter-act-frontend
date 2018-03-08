@@ -158,6 +158,17 @@ footer h4 {
     color: #fff;
 }
 
+
+.comment-btn{
+    background-color: #E8E8E8;
+    color: #e9300b;
+}
+
+.comment-btn:hover{
+    background-color: #e9300b;
+    color: #ffffff;
+}
+
 /*
 #################################################
 REAKTIONS BUTTONS
