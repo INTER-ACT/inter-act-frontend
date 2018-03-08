@@ -120,6 +120,13 @@ export class App
                 moduleId: './components/ams',
                 nav: true,
                 title: 'Änderungsvorschlag'
+            },
+            {
+                route: ['download'],
+                name: 'download',
+                moduleId: './components/download',
+                nav: true,
+                title: 'Download'
             }
         ]);
 

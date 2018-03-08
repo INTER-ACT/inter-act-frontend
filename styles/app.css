@@ -158,6 +158,23 @@ footer h4 {
     color: #fff;
 }
 
+
+.comment-btn{
+    background-color: #E8E8E8;
+    color: #e9300b;
+}
+
+.comment-btn:hover{
+    background-color: #e9300b;
+    color: #ffffff;
+}
+
+.center-download{
+    display: block;
+    text-align: center;
+
+}
+
 /*
 #################################################
 REAKTIONS BUTTONS
@@ -183,6 +200,10 @@ REAKTIONS BUTTONS
 .button-group label:hover{
     background-color: #e9300b;
     color: #ffffff;
+}
+
+.top-spacer{
+    margin-top: 20px;
 }
 
 /*
@@ -297,6 +318,7 @@ menu-icon {
         margin-left: 85%;
         padding: .7rem 1rem;
     }
+
 
     body{
         padding-bottom: 470px;
