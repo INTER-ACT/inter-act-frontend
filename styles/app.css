@@ -211,6 +211,19 @@ REAKTIONS BUTTONS
 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
  */
 
+form.authForm input {
+    max-width: 50%;
+}
+
+form.authForm fieldset label {
+    max-width: 24%;
+}
+
+form.authForm fieldset input:not(:checked) + label {
+    background: #DDD;
+    color: #000;
+}
+
 form.childPageSwitch {
     margin-bottom: 5vh;
 }
@@ -314,6 +327,10 @@ menu-icon {
     .navbar i {
         transform: translateY(25%);
         size: 2em;
+    }
+
+    form.authForm input, form.authForm fieldset label {
+        max-width: 100%;
     }
 }
 
