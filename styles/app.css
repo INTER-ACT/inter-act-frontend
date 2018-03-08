@@ -2,12 +2,43 @@
 
 
 .navbar a {
-    top: 50%;
+    /* top: 50%;
     -webkit-transform: translateY(50%);
     -moz-transform: translateY(50%);
     -ms-transform: translateY(50%);
     -o-transform: translateY(50%);
     transform: translateY(50%);
+    font-size: 1.2em;
+    margin-left: 20px;*/
+
+    top: 80%;
+    -webkit-transform: translateY(80%);
+    -moz-transform: translateY(80%);
+    -ms-transform: translateY(80%);
+    -o-transform: translateY(80%);
+    transform: translateY(80%);
+    font-size: 1.2em;
+    margin-left: 20px;
+}
+
+.navbar-admin a {
+    top: 80%;
+    -webkit-transform: translateY(80%);
+    -moz-transform: translateY(80%);
+    -ms-transform: translateY(80%);
+    -o-transform: translateY(80%);
+    transform: translateY(80%);
+    font-size: 1.2em;
+    margin-left: 20px;
+}
+
+.navbar-sozi a {
+    top: 80%;
+    -webkit-transform: translateY(80%);
+    -moz-transform: translateY(80%);
+    -ms-transform: translateY(80%);
+    -o-transform: translateY(80%);
+    transform: translateY(80%);
     font-size: 1.2em;
     margin-left: 20px;
 }
@@ -15,6 +46,11 @@
 .navbar i {
     transform: translateY(-100%);
     size: 2em;
+}
+
+#nav-button{
+    margin-left: 5px;
+    margin-right: 10px;
 }
 
 .main {
@@ -203,14 +239,50 @@ menu-icon {
     }
 
     .navbar a {
-        top: -15%;
+        /*top: -15%;
         -webkit-transform: translateY(-15%);
         -moz-transform: translateY(-15%);
         -ms-transform: translateY(-15%);
         -o-transform: translateY(-15%);
         transform: translateY(-15%);
         font-size: 1.2em;
-        margin-left: 20px;
+        margin-left: 5px;*/
+
+        top: -40%;
+        -webkit-transform: translateY(-40%);
+        -moz-transform: translateY(-40%);
+        -ms-transform: translateY(-40%);
+        -o-transform: translateY(-40%);
+        transform: translateY(-40%);
+        font-size: 1.2em;
+        margin-left: 5px;
+    }
+
+    .navbar-admin a {
+        top: -40%;
+        -webkit-transform: translateY(-40%);
+        -moz-transform: translateY(-40%);
+        -ms-transform: translateY(-40%);
+        -o-transform: translateY(-40%);
+        transform: translateY(-40%);
+        font-size: 1.2em;
+        margin-left: 5px;
+    }
+
+    .navbar-sozi a {
+        top: -40%;
+        -webkit-transform: translateY(-40%);
+        -moz-transform: translateY(-40%);
+        -ms-transform: translateY(-40%);
+        -o-transform: translateY(-40%);
+        transform: translateY(-40%);
+        font-size: 1.2em;
+        margin-left: 1px;
+        padding: .2rem 0.7rem;
+    }
+    .center-buttons{
+        margin-left: 85%;
+        padding: .7rem 1rem;
     }
 
     body{

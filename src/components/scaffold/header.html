@@ -18,29 +18,76 @@
                             <img src="images/INTER-ACT.png" height="15px" class="mobile_nav" />
                         </a>
                     </li>
+                    <!-- wenn angemeldet -->
+                    <li if.bind="isLoggedIn || !isLoggedIn" class="navbar">
+                        <a href="#">Dashboard</a>
+                    </li>
+                    <!-- Wenn angemeldet -->
+                    <li if.bind="isLoggedIn || !isLoggedIn" class="navbar">
+                        <a route-href="groups">Diskussion</a>
+                    </li>
 
-                    <li if.bind="isLoggedIn" class="navbar">
+                    <!-- Admin -->
+                    <li if.bind="isAdmin" class="navbar-admin">
+                        <a href="#">Dashboard</a>
+                    </li>
+                    <!-- Admin -->
+                    <li if.bind="isAdmin" class="navbar-admin">
+                        <a route-href="groups">Diskussion</a>
+                    </li>
+                    <!-- Admin -->
+                    <li if.bind="isAdmin" class="navbar-admin">
+                        <a href="#">Erstellen</a>
+                    </li>
+                    <!-- Admin -->
+                    <li if.bind="isAdmin" class="navbar-admin">
+                        <a href="#">Meldungen</a>
+                    </li>
+                    <!-- Admin -->
+                    <li if.bind="isAdmin" class="navbar-admin">
+                        <a href="#">Downloads</a>
+                    </li>
+
+
+                    <!-- Sozialwissenschaftler -->
+                    <!-- Admin -->
+                    <li if.bind="isScientist" class="navbar-sozi">
                         <a href="#">Dashboard</a>
                     </li>
 
-                    <li class="navbar">
+                    <li if.bind="isScientist" class="navbar-sozi">
                         <a route-href="groups">Diskussion</a>
+                    </li>
+
+                    <li if.bind="isScientist" class="navbar-sozi">
+                        <a href="#">Downloads</a>
                     </li>
                 </ul>
             </div>
             <div class="top-bar-right">
                 <ul class="menu">
-                    <li>
+                    <!-- Suchoption -->
+                    <li if.bind="isLoggedIn">
                         <input type="search" placeholder="Search">
                     </li>
-                    <li>
+                    <li if.bind="isLoggedIn">
                         <button type="button" class="button">Search</button>
                     </li>
+
+                    <!-- LogIn/Registrierung Button-->
+                    <li if.bind="!isLoggedIn">
+                        <button type="button" class="button center-buttons">Anmelden</button>
+                    </li>
+                    <li if.bind="!isLoggedIn" id="nav-button">
+                        <button type="button" class="button center-buttons">Registrieren</button>
+                    </li>
+
+                    <!-- Einstellungszahnrad -->
                     <li class="navbar">
                         <a if.bind="isLoggedIn" click.trigger="submitLogout()">
                             <i class="fa fa-cog" aria-hidden="false"></i>
                         </a>
-                        <a else route-href="auth">
+                       <!-- <a else route-href="auth">
                             <i class="fa fa-cog" aria-hidden="false"></i>
                         </a>
                     </li>
