@@ -25,31 +25,32 @@ export class BaseService
         return this.delete(target, headers).then(response => response.json());
     }
 
-    get(target: string, getParams: object)
+    get(target: string, getParams: object, headers: object = {})
     {
         let targetWithParams = (getParams) ? target + '?' + $.param(getParams) : target;
 
         return this.http.fetch(
             targetWithParams,
             {
+                headers: headers,
                 method: 'get'
             }
         );
     }
 
-    getIntoJSON(target: string, getParams: object)
+    getIntoJSON(target: string, getParams: object, headers: object = {})
     {
-        return this.get(target, getParams).then(response => response.json());
+        return this.get(target, getParams, headers).then(response => response.json());
     }
 
-    patch(target: string, requestBody: object)
+    patch(target: string, requestBody: object, headers: object = {})
     {
-        return this.sendBodyAsJSON(target, requestBody, 'patch');
+        return this.sendBodyAsJSON(target, requestBody, 'patch', headers);
     }
 
-    patchIntoJSON(target: string, requestBody: object)
+    patchIntoJSON(target: string, requestBody: object, headers: object = {})
     {
-        return this.patch(target, requestBody).then(response => response.json());
+        return this.patch(target, requestBody, headers).then(response => response.json());
     }
 
     post(target: string, requestBody: object, headers: object = {})

@@ -4,6 +4,7 @@ import { BaseService } from './base-service';
 
 const LOCALSTORAGE_ACCESSTOKEN = 'access_token';
 const LOCALSTORAGE_REFRESHTOKEN = 'refresh_token';
+const LOCALSTORAGE_SELFUSERID = 'self_user_id';
 
 @inject(BaseService)
 export class AuthService
@@ -15,6 +16,8 @@ export class AuthService
     {
         this.baseService = baseService;
         this.router = router;
+        this.onLogin.push(() => this.getSelfID());
+        this.onLogout.push(() => this.removeTokens());
     }
 
     catchBadLogin(promise: Promise)
@@ -43,6 +46,11 @@ export class AuthService
     getAccessToken(): string
     {
         return window.localStorage.getItem(LOCALSTORAGE_ACCESSTOKEN);
+    }
+
+    getSelfID(): number
+    {
+        return window.localStorage.getItem(LOCALSTORAGE_SELFUSERID);
     }
 
     isLoggedIn(): boolean
@@ -76,16 +84,24 @@ export class AuthService
     {
         return this.catchBadLogin(this.baseService.delete('oauth/token', this.createHeadersWithAccessToken()).then(response =>
         {
-            this.removeTokens();
             this.triggerOnLogout();
             return response;
         }));
+    }
+
+    getSelfID()
+    {
+        return this.baseService.getIntoJSON('self', null, this.authService.createHeadersWithAccessToken()).then(self =>
+        {
+            window.localStorage.setItem(LOCALSTORAGE_SELFUSERID, self.id);
+        });
     }
 
     removeTokens()
     {
         window.localStorage.removeItem(LOCALSTORAGE_ACCESSTOKEN);
         window.localStorage.removeItem(LOCALSTORAGE_REFRESHTOKEN);
+        window.localStorage.removeItem(LOCALSTORAGE_SELFUSERID);
     }
 
 

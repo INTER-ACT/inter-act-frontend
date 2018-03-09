@@ -64,6 +64,20 @@ export class App
                 title: 'Diskussion'
             },
             {
+                route: 'user/:id',
+                name: 'user',
+                moduleId: './components/user',
+                nav: true,
+                href: '#user'
+            },
+            {
+                route: 'settings',
+                name: 'settings',
+                moduleId: './components/settings',
+                nav: true,
+                title: 'Einstellungen'
+            },
+            {
                 route: ['startscreen', 'start'],
                 name: 'startscreen',
                 moduleId: './components/startscreen',
