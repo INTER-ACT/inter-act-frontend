@@ -11,11 +11,17 @@
 
         <div if.bind="hasCommentateBoxOpen">
             <form>
-                <textarea placeholder="Kommentar"></textarea>
-                <button class="button comment-btn">Kommentieren</button>
+                <textarea placeholder="Kommentar" value.bind="replyText"></textarea>
+                <button class="button comment-btn" click.trigger="submitComment()">Antworten</button>
+                <button class="button comment-btn" click.trigger="submitCommentCancel()">Abbrechen</button>
             </form>
         </div>
     </div>
+
+    <div repeat.for="sc of subcomments">
+        ${sc.content}
+    </div>
+
     <div class="large-2 cell"></div>
 
 </template>
