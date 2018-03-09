@@ -27,9 +27,18 @@
                     </h5>
                     <p>${rdata.law_explanation}</p>
 
-                    <a route-href="demo" class="button">Kommentar</a>
-                    <a route-href="demo" class="button">Änderungsvorschlag</a>
+                    <a click.trigger="commentateBegin()" class="button" if.bind="!hasCommentateBoxOpen">Kommentieren</a>
+                    <a click.trigger="report()" class="button" if.bind="!hasCommentateBoxOpen">Melden</a>
                     <a class="button" data-open="linkModal">Teilen</a>
+
+                    <div if.bind="hasCommentateBoxOpen">
+                        <form>
+                            <textarea placeholder="Kommentar" value.bind="replyText"></textarea>
+                            <button class="button comment-btn" click.trigger="submitComment()">Antworten</button>
+                            <button class="button comment-btn" click.trigger="submitCommentCancel()">Abbrechen</button>
+                        </form>
+                    </div>
+
                     <div class="reveal" id="linkModal" data-reveal>
                         <h1>Hier Könnte Ihr Link stehen!</h1>
                         <button class="close-button" data-close aria-label="Close modal" type="button">
