@@ -55,4 +55,9 @@ export class DiscussionService
     {
         return this.bsSrvc.postIntoJSON('comments/' + commentID + '/comments', { content: reply, tags: [ 1 ] }, this.authService.createHeadersWithAccessToken());
     }
+
+    commentDiscussion(discussionID: number, reply: string)
+    {
+        return this.bsSrvc.postIntoJSON('discussions/' + discussionID + '/comments', { content: reply, tags: [ 1 ] }, this.authService.createHeadersWithAccessToken());
+    }
 }

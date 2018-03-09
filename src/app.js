@@ -141,6 +141,13 @@ export class App
                 moduleId: './components/download',
                 nav: true,
                 title: 'Download'
+            },
+            {
+                route: ['privacy'],
+                name: 'privacy',
+                moduleId: './components/privacy',
+                nav: true,
+                title: 'Privacy Download'
             }
         ]);
 
