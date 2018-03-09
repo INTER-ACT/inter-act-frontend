@@ -29,7 +29,7 @@
 
                     <a click.trigger="commentateBegin()" class="button" if.bind="!hasCommentateBoxOpen">Kommentieren</a>
                     <a click.trigger="report()" class="button" if.bind="!hasCommentateBoxOpen">Melden</a>
-                    <a class="button" data-open="linkModal">Teilen</a>
+                    <a class="button" data-open="linkModal" if.bind="!hasCommentateBoxOpen">Teilen</a>
 
                     <div if.bind="hasCommentateBoxOpen">
                         <form>
