@@ -106,6 +106,7 @@ export class Discussion
             {
                 if (error.status === 404)
                 {
+                    this.id = id;
                     this.notFound = true;
                     this.isReady = true;
                 }
