@@ -21,9 +21,6 @@ export class DiscussionCustomElement
     hasCommentateBoxOpen: boolean = false;
     replyText: string = '';
 
-
-
-
     constructor(authService: AuthService, discussionService: DiscussionService)
     {
         this.authService = authService;
