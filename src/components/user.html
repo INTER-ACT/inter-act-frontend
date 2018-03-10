@@ -1,7 +1,9 @@
 <template>
+    <require from="../resources/elements/notfound.html"></require>
+
     <template if.bind="isReady">
 
-        <div if.bind="notFound">Benutzer ${id} konnte nicht gefunden werden.</div>
+        <notfound if.bind="notFound" missing-thing-title="Benutzer" missing-thing="${id}"></notfound>
 
         <div else class="grid-x">
             <div class="large-3 cell"></div>
