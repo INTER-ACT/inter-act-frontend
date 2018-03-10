@@ -1,0 +1,22 @@
+<template bindable="missingThing, missingThingTitle, moreText">
+    <div class="grid-x">
+        <div class="large-3 cell"></div>
+
+        <div class="large-6 cell mainshow2">
+            <h2 class="titlecolor">
+                <template if.bind="missingThingTitle.length > 0">
+                    ${missingThingTitle} nicht gefunden...
+                </template>
+                <template else>
+                    Nicht gefunden...
+                </template>
+            </h2>
+            <p>
+                <em>${missingThing}</em>
+                konnte leider nicht gefunden werden.</p>
+            <p>${moreText}</p>
+        </div>
+
+        <div class="large-3 cell"></div>
+    </div>
+</template>
