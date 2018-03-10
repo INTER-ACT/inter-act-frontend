@@ -21,21 +21,58 @@ export class UserService
         this.baseService.patch(this.getSelfURI(), { old_password: oldPassword, password: newPassword }, this.authService.createHeadersWithAccessToken());
     }
 
-    getSelfID()
+    getSelfID(): number
     {
         return this.authService.getSelfID();
     }
 
-    getSelfURI()
+    getUserURI(userID: number): string
+    {
+        return this.authService.getUserURI(userID);
+    }
+
+    getSelfURI(): string
     {
         return this.authService.getSelfURI();
     }
 
-    getSelfRole()
+    getSelfRole(): string
     {
         return this.authService.getSelfRole();
     }
 
+    getCountAmendmentsByUser(userID: number)
+    {
+        return this.baseService.getIntoJSON(this.getUserURI(userID) + '/amendments').then(json =>
+        {
+            let amC = json.meta.total;
+            return this.baseService.getIntoJSON(this.getUserURI(userID) + '/amendments').then(json2 =>
+            {
+                let samC = json2.meta.total;
+                return amC + samC;
+            });
+        });
+    }
+
+    getCountCommentsByUser(userID: number)
+    {
+        return this.baseService.getIntoJSON(this.getUserURI(userID) + '/comments').then(json =>
+        {
+            return json.meta.total;
+        });
+    }
+
+    /**
+     *  @see also: getUserDetailsByID(number)
+     */
+    getUserInfoByID(userID: number)
+    {
+        return this.baseService.getIntoJSON(this.getUserURI(userID));
+    }
+
+    /**
+     * @see also: getUserInfoByID(number)
+     */
     getUserDetailsByID(userID: number)
     {
         return this.baseService.getIntoJSON(this.getSelfURI() + '/details', null, this.authService.createHeadersWithAccessToken());

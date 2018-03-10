@@ -124,7 +124,12 @@ export class AuthService
 
     getSelfURI(): string
     {
-        return 'users/' + this.getSelfID();
+        return this.getUserURI(this.getSelfID());
+    }
+
+    getUserURI(userID: number): string
+    {
+        return 'users/' + userID;
     }
 
     removeTokens(): void
