@@ -222,12 +222,12 @@ REAKTIONS BUTTONS
 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
  */
 
-form.authForm input {
+form.authForm input, .settingsPage section input {
     max-width: 50%;
 }
 
 form.authForm fieldset label {
-    max-width: 24%;
+    max-width: 20%;
 }
 
 form.authForm fieldset input:not(:checked) + label {
@@ -375,7 +375,7 @@ menu-icon {
         size: 2em;
     }
 
-    form.authForm input, form.authForm fieldset label {
+    form.authForm input, form.authForm fieldset label, .settingsPage section input {
         max-width: 100%;
     }
 }
