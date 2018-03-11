@@ -15,8 +15,7 @@
                     />
                     <input type="password" value.bind="pwChangeData.new_" placeholder="Neues Passwort" minlength="10" maxlength="72" required
                         ref="pwInput" />
-                    <input type="password" placeholder="Neues Passwort wiederholen" minlength.bind="pwInput.value.length" maxlength="pwInput.value.length"
-                        required ref="pwInputConfirm" />
+                    <input type="password" value.bind="pwChangeData.confirm_" placeholder="Neues Passwort wiederholen" required />
                     <input class="button" type="submit" value="Ändern" />
                 </form>
             </section>

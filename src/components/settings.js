@@ -25,13 +25,23 @@ export class Settings
     {
         this.userService.getSelfDetails().then(details =>
         {
-            this.emailChangeData.email = details.email;
+            if (this.emailChangeData.email === '')
+            {
+                // don't replace user input
+                this.emailChangeData.email = details.email;
+            }
         });
     }
 
     submitChangePassword()
     {
-        this.userService.changePassword(this.pwChangeData.old, this.pwChangeData.new).then(() =>
+        if (this.pwChangeData.new_ !== this.pwChangeData.confirm_)
+        {
+            alert('Fehler: Passwörter ungleich!');
+            return;
+        }
+
+        this.userService.changePassword(this.pwChangeData.old, this.pwChangeData.new_).then(() =>
         {
             alert('Passwort erfolgreich geändert.');
             this.pwForm.reset();
