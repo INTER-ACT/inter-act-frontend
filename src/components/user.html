@@ -1,7 +1,10 @@
 <template>
     <require from="../resources/elements/notfound.html"></require>
+    <require from="../resources/elements/loading-page.html"></require>
 
-    <template if.bind="isReady">
+    <loading-page what="Benutzerprofil" if.bind="!isReady"></loading-page>
+
+    <template else>
 
         <notfound if.bind="notFound" missing-thing-title="Benutzer" missing-thing="Der gewünschte Benutzer (ID: ${id})"></notfound>
 
