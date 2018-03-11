@@ -18,6 +18,15 @@ export class Settings
     {
         this.userService = userService;
         this.router = router;
+        this.insertEmail();
+    }
+
+    insertEmail()
+    {
+        this.userService.getSelfDetails().then(details =>
+        {
+            this.emailChangeData.email = details.email;
+        });
     }
 
     submitChangePassword()

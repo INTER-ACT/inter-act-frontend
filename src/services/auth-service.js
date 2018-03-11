@@ -106,7 +106,7 @@ export class AuthService
 
     fetchSelfID()
     {
-        return this.baseService.getIntoJSON('self', null, this.authService.createHeadersWithAccessToken()).then(self =>
+        return this.baseService.getIntoJSON('self', null, this.createHeadersWithAccessToken()).then(self =>
         {
             window.localStorage.setItem(LOCALSTORAGE_SELFUSERID, self.id);
             return self.id;
@@ -115,7 +115,7 @@ export class AuthService
 
     fetchSelfRole()
     {
-        return this.baseService.getIntoJSON(this.getSelfURI() + '/details', null, this.authService.createHeadersWithAccessToken()).then(d =>
+        return this.baseService.getIntoJSON(this.getSelfURI() + '/details', null, this.createHeadersWithAccessToken()).then(d =>
         {
             window.localStorage.setItem(LOCALSTORAGE_SELFROLE, d.role);
             return d.role;

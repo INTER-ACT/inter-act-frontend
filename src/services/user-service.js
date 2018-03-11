@@ -13,12 +13,12 @@ export class UserService
 
     changeEmail(newEmail: string)
     {
-        this.baseService.patch(this.getSelfURI(), { email: newEmail }, this.authService.createHeadersWithAccessToken());
+        return this.baseService.patch(this.getSelfURI(), { email: newEmail }, this.authService.createHeadersWithAccessToken());
     }
 
     changePassword(oldPassword: string, newPassword: string)
     {
-        this.baseService.patch(this.getSelfURI(), { old_password: oldPassword, password: newPassword }, this.authService.createHeadersWithAccessToken());
+        return this.baseService.patch(this.getSelfURI(), { old_password: oldPassword, password: newPassword }, this.authService.createHeadersWithAccessToken());
     }
 
     getSelfID(): number
@@ -75,7 +75,12 @@ export class UserService
      */
     getUserDetailsByID(userID: number)
     {
-        return this.baseService.getIntoJSON(this.getSelfURI() + '/details', null, this.authService.createHeadersWithAccessToken());
+        return this.baseService.getIntoJSON(this.getUserURI(userID) + '/details', null, this.authService.createHeadersWithAccessToken());
+    }
+
+    getSelfDetails()
+    {
+        return this.getUserDetailsByID(this.getSelfID());
     }
 
     getUserRoleByID(userID: number)
