@@ -3,33 +3,38 @@
 
         <div class="large-3 cell"></div>
 
-        <div class="large-6 cell mainshow2">
+        <div class="large-6 cell mainshow2 settingsPage">
             <h2 class="titlecolor">Einstellungen</h2>
 
             <p>Hier können Sie diverse Einstellungen vornehmen.</p>
 
-            <h3>Passwort ändern</h3>
-            <form submit.trigger="submitChangePassword()" ref="pwForm">
-                <input type="password" value.bind="pwChangeData.old" placeholder="Altes Passwort" minlength="10" maxlength="72" required
-                />
-                <input type="password" value.bind="pwChangeData.new_" placeholder="Neues Passwort" minlength="10" maxlength="72" required
-                    ref="pwInput" />
-                <input type="password" placeholder="Neues Passwort wiederholen" minlength.bind="pwInput.value.length" maxlength="pwInput.value.length"
-                    required ref="pwInputConfirm" />
-                <input class="button" type="submit" value="Ändern" />
-            </form>
+            <section>
+                <h3>Passwort ändern</h3>
+                <form submit.trigger="submitChangePassword()" ref="pwForm">
+                    <input type="password" value.bind="pwChangeData.old" placeholder="Altes Passwort" minlength="10" maxlength="72" required
+                    />
+                    <input type="password" value.bind="pwChangeData.new_" placeholder="Neues Passwort" minlength="10" maxlength="72" required
+                        ref="pwInput" />
+                    <input type="password" placeholder="Neues Passwort wiederholen" minlength.bind="pwInput.value.length" maxlength="pwInput.value.length"
+                        required ref="pwInputConfirm" />
+                    <input class="button" type="submit" value="Ändern" />
+                </form>
+            </section>
 
-            <h3>E-Mail-Adresse ändern</h3>
-            <form submit.trigger="submitChangeEmail()">
-                <input type="text" value.bind="emailChangeData.email" placeholder="Neue E-Mail-Adresse" maxlength="254" required />
-                <input class="button" type="submit" value="Ändern" />
-            </form>
+            <section>
+                <h3>E-Mail-Adresse ändern</h3>
+                <form submit.trigger="submitChangeEmail()">
+                    <input type="text" value.bind="emailChangeData.email" placeholder="Neue E-Mail-Adresse" maxlength="254" required />
+                    <input class="button" type="submit" value="Ändern" />
+                </form>
+            </section>
 
-            <h3>Datenschutz</h3>
-            <p>Hier können alle über Sie gespeicherten Informationen heruntergeladen werden.</p>
-            <form submit.trigger="submitDownloadPrivacy()">
-                <input class="button" type="submit" value="Download" />
-            </form>
+            <section>
+                <h3>Datenschutz</h3>
+                <p>Hier können alle über Sie gespeicherten Informationen heruntergeladen werden.</p>
+                <button class="button" click.trigger="gotoDownloadPrivacy()">Download-Seite öffnen</button>
+            </section>
+
         </div>
         <div class="large-3 cell"></div>
     </div>

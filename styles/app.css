@@ -267,6 +267,10 @@ form.childPageSwitch div label {
     list-style: none;
 }
 
+.settingsPage section {
+    margin-top: 40px;
+}
+
 .center-logo{
     margin-left: auto;
 }

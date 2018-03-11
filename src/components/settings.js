@@ -1,7 +1,8 @@
 import { inject } from 'aurelia-framework';
+import { Router } from 'aurelia-router';
 import { UserService } from '../services/user-service';
 
-@inject(UserService)
+@inject(UserService, Router)
 export class Settings
 {
     pwChangeData: object = {
@@ -13,9 +14,10 @@ export class Settings
         email: ''
     };
 
-    constructor(userService: UserService)
+    constructor(userService: UserService, router: Router)
     {
         this.userService = userService;
+        this.router = router;
     }
 
     submitChangePassword()
@@ -35,8 +37,8 @@ export class Settings
         }).catch(() => alert('Fehlgeschlagen.'));
     }
 
-    submitDownloadPrivacy()
+    gotoDownloadPrivacy()
     {
-        alert('No appropriate API call found.');
+        this.router.navigateToRoute('privacy');
     }
 }
