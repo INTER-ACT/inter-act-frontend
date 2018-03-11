@@ -4,13 +4,20 @@ import { DiscussionService } from '../../services/discussion-service';
 @inject(DiscussionService)
 export class Tag
 {
-    constructor(discussionService)
+    isReady: boolean = false;
+    tags: Array = [];
+
+    constructor(discussionService: DiscussionService)
     {
         this.discussionService = discussionService;
 
-        this.discussions = [];
-        this.tags = [];
-
+        let a = this.discussionService.getAllTags();
+        a.then(tags =>
+        {
+            console.log(tags);
+            this.tags = tags;
+            this.isReady = true;
+        });
 
         /*this.discussionService.getTags().then(jsonResponse =>
         {
@@ -23,7 +30,7 @@ export class Tag
             });
         });*/
 
-        this.discussionService.getDiscussions().then(jsonResponse =>
+        /*this.discussionService.getDiscussions().then(jsonResponse =>
         {
             jsonResponse.data.discussions.forEach(d =>
             {
@@ -44,6 +51,6 @@ export class Tag
                     });
                 });
             });
-        });
+        });*/
     }
 }
