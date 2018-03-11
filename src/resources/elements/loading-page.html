@@ -1,11 +1,11 @@
-<template bindable="what">
+<template bindable="what, plural">
     <require from="./loading.html"></require>
 
     <div class="grid-x">
         <div class="large-3 cell"></div>
 
         <div class="large-6 cell mainshow2">
-            <loading what.bind="what"></loading>
+            <loading what.bind="what" plurar.bind="plural"></loading>
         </div>
 
         <div class="large-3 cell"></div>
