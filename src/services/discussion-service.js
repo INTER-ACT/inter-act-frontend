@@ -5,10 +5,17 @@ import { AuthService } from './auth-service';
 @inject(BaseService, AuthService)
 export class DiscussionService
 {
+    _tags: Array = [];
+
     constructor(bsSrvc: BaseService, authService: AuthService)
     {
         this.bsSrvc = bsSrvc;
         this.authService = authService;
+        this._fetchAndStoreAllTags().catch(error =>
+        {
+            alert('Schwerer Fehler :(\nTags konnten nicht geladen werden.\n\nDetails: siehe Console'); // eslint-disable-line no-alert
+            console.log(error); // eslint-disable-line no-console
+        });
     }
 
     getDiscussionById(id: number)
@@ -31,14 +38,28 @@ export class DiscussionService
         return this.bsSrvc.getIntoJSON('amendents', { start: 0, count: 100 });
     }
 
-    getTags()
+    getAllTags(): Promise
+    {
+        return (this._tags.length > 0) ?
+            Promise.resolve().then(() =>
+            {
+                return this._tags;
+            }) :
+            this._fetchAndStoreAllTags();
+    }
+
+    _fetchAllTags()
     {
         return this.bsSrvc.getIntoJSON('tags');
     }
 
-    getTagById(id: number)
+    _fetchAndStoreAllTags()
     {
-        return this.bsSrvc.getIntoJSON('tags/' + id);
+        return this._fetchAllTags().then(tags =>
+        {
+            this._tags = tags.tags;
+            return this._tags;
+        });
     }
 
     getCommentsByDiscussion(discussionID: number)
@@ -53,11 +74,11 @@ export class DiscussionService
 
     replyToComment(commentID: number, reply: string)
     {
-        return this.bsSrvc.postIntoJSON('comments/' + commentID + '/comments', { content: reply, tags: [ 1 ] }, this.authService.createHeadersWithAccessToken());
+        return this.bsSrvc.postIntoJSON('comments/' + commentID + '/comments', { content: reply, tags: [1] }, this.authService.createHeadersWithAccessToken());
     }
 
     commentDiscussion(discussionID: number, reply: string)
     {
-        return this.bsSrvc.postIntoJSON('discussions/' + discussionID + '/comments', { content: reply, tags: [ 1 ] }, this.authService.createHeadersWithAccessToken());
+        return this.bsSrvc.postIntoJSON('discussions/' + discussionID + '/comments', { content: reply, tags: [1] }, this.authService.createHeadersWithAccessToken());
     }
 }
