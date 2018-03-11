@@ -14,7 +14,6 @@ export class Tag
         let a = this.discussionService.getAllTags();
         a.then(tags =>
         {
-            console.log(tags);
             this.tags = tags;
             this.isReady = true;
         });
