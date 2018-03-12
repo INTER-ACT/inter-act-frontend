@@ -22,7 +22,7 @@
 
             <section>
                 <h3>E-Mail-Adresse ändern</h3>
-                <form submit.trigger="submitChangeEmail()">
+                <form submit.trigger="submitChangeEmail()" ref="emailForm">
                     <input type="text" value.bind="emailChangeData.email" placeholder="Neue E-Mail-Adresse" maxlength="254" required />
                     <input class="button" type="submit" value="Ändern" />
                 </form>
