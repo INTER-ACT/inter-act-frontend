@@ -62,6 +62,11 @@ export class DiscussionService
         });
     }
 
+    getCommentReplies(commentID: number)
+    {
+        return this.bsSrvc.getIntoJSON('comments/' + commentID + '/comments');
+    }
+
     getCommentsByDiscussion(discussionID: number)
     {
         return this.bsSrvc.getIntoJSON('discussions/' + discussionID + '/comments');

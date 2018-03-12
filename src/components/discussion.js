@@ -5,8 +5,9 @@ import { DiscussionService } from '../services/discussion-service';
 export class Discussion
 {
     notFound: boolean = false;
+    notPermitted: boolean = false;
     isReady: boolean = false;
-    id: number;
+    id;
     discussionData:
     {
         title: '...',
@@ -80,17 +81,15 @@ export class Discussion
             return;
         }
 
+        this.id = id;
+
         this.discussionService.getDiscussionById(id)
             .then(d =>
             {
-                this.id = id;
                 this.discussionData = d;
                 this.notFound = false;
                 this.isReady = true;
-                return d;
-            })
-            .then(d =>
-            {
+
                 this.discussionService.getCommentsByDiscussion(d.id).then(cs =>
                 {
                     cs.data.comments.forEach(c =>
@@ -101,15 +100,26 @@ export class Discussion
                         });
                     });
                 });
-            })
-            .catch(error =>
+            }, error =>
             {
-                if (error.status === 404)
+                error.json().then(ej =>
                 {
-                    this.id = id;
-                    this.notFound = true;
-                    this.isReady = true;
-                }
+                    if (ej.code == 0) // eslint-disable-line eqeqeq
+                    {
+                        this.notFound = true;
+                        this.isReady = true;
+                    }
+                    else if (ej.code == 7) // eslint-disable-line eqeqeq
+                    {
+                        this.notPermitted = true;
+                        this.isReady = true;
+                    }
+                    else
+                    {
+                        alert('Fehler: ' + ej.message);
+                        console.log(ej);
+                    }
+                });
             });
     }
 }

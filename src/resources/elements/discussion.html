@@ -73,7 +73,7 @@
 
                 <template repeat.for="c of comments">
                     <!--<comment author.bind="com.author" content.bind="com.content" rid.bind="com.id"></comment>-->
-                    <comment-host comment-id="c.id"></comment-host>
+                    <comment-host comment-id.bind="c.id"></comment-host>
                 </template>
                 <!-- INNERER TEIL ENDE -->
             </div>

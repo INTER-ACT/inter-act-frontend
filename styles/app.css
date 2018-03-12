@@ -287,6 +287,10 @@ form.childPageSwitch div label {
     background-color: #f6f6f6;
 }
 
+.replyCommentsHost {
+    margin-left: 5%;
+}
+
 menu-icon {
     -webkit-box-shadow: 0 10px 0 1px #1468a0, 0 16px 0 1px #1468a0, 0 22px 0 1px #1468a0;
     box-shadow: 0px 10px 0px 1px #1468a0, 0px 16px 0px 1px #1468a0, 0px 22px 0px 1px #1468a0;
