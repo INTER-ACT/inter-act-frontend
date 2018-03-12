@@ -14,7 +14,7 @@ export class BaseService
         return this.http.fetch(
             target,
             {
-                method: 'delete',
+                method: 'DELETE',
                 headers: headers
             }
         );
@@ -33,7 +33,7 @@ export class BaseService
             targetWithParams,
             {
                 headers: headers,
-                method: 'get'
+                method: 'GET'
             }
         );
     }
@@ -45,7 +45,7 @@ export class BaseService
 
     patch(target: string, requestBody: object, headers: object = {})
     {
-        return this.sendBodyAsJSON(target, requestBody, 'patch', headers);
+        return this.sendBodyAsJSON(target, requestBody, 'PATCH', headers);
     }
 
     patchIntoJSON(target: string, requestBody: object, headers: object = {})
@@ -55,7 +55,7 @@ export class BaseService
 
     post(target: string, requestBody: object, headers: object = {})
     {
-        return this.sendBodyAsJSON(target, requestBody, 'post', headers);
+        return this.sendBodyAsJSON(target, requestBody, 'POST', headers);
     }
 
     postFormData(target: string, requestFormData: FormData)
@@ -75,7 +75,7 @@ export class BaseService
 
     put(target: string, requestBody: object)
     {
-        return this.sendBodyAsJSON(target, requestBody, 'put');
+        return this.sendBodyAsJSON(target, requestBody, 'PUT');
     }
 
     putIntoJSON(target: string, requestBody: object)
