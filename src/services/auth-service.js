@@ -35,7 +35,6 @@ export class AuthService
         {
             if (error.status === 401 && this.isLoggedIn())
             {
-                this.removeTokens();
                 this.triggerOnLogout();
             }
             else
