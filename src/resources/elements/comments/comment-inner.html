@@ -1,0 +1,29 @@
+<template>
+    <require from="../loading.html"></require>
+
+
+    <div class="large-1 cell"></div>
+    <div class="large-9 cell">
+
+        <div class="comment-line">
+            <loading what="Kommentar" if.bind="!isReady"></loading>
+            <template else>
+                <h5 class="titlecolor">${author.name}</h5>
+                <p>${content}</p>
+            </template>
+        </div>
+
+        <a click.trigger="commentateBegin()" class="button" if.bind="!hasCommentateBoxOpen">Kommentieren</a>
+        <a click.trigger="report()" class="button" if.bind="!hasCommentateBoxOpen">Melden</a>
+
+        <div if.bind="hasCommentateBoxOpen">
+            <form>
+                <textarea placeholder="Kommentar" value.bind="replyText"></textarea>
+                <button class="button comment-btn" click.trigger="eventhandlers.reply()">Antworten</button>
+                <button class="button comment-btn" click.trigger="eventhandlers.replyCancel()">Abbrechen</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="large-2 cell"></div>
+</template>
