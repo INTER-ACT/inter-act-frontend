@@ -1,8 +1,9 @@
 import { inject } from 'aurelia-framework';
 import { Router } from 'aurelia-router';
 import { AuthService } from '../../services/auth-service';
+import { FormLocker } from '../../utils/form-locker';
 
-@inject(Router, AuthService)
+@inject(Router, AuthService, FormLocker)
 export class Login
 {
     email = '';
@@ -12,10 +13,11 @@ export class Login
 
     showBadCredentialsMessage = false;
 
-    constructor(router: Router, authService: AuthService)
+    constructor(router: Router, authService: AuthService, formLocker: FormLocker)
     {
         this.router = router;
         this.authService = authService;
+        this.formLocker = formLocker;
 
         if (this.authService.isLoggedIn())
         {
@@ -23,24 +25,14 @@ export class Login
         }
     }
 
-    lockForm()
-    {
-        Array.from(this.loginForm.children).forEach(c => c.disabled = 'disabled');
-    }
-
-    unlockForm()
-    {
-        Array.from(this.loginForm.children).forEach(c => c.removeAttribute('disabled'));
-    }
-
     submitLogin()
     {
-        this.lockForm();
+        this.formLocker.lockForm(this.loginForm);
 
         this.authService.login(this.email, this.password).then(x =>
         {
             this.router.navigate('dashboard');
-            this.unlockForm();
+            this.formLocker.unlockForm(this.loginForm);
         }).catch(error =>
         {
             if (error.status === 401)
@@ -54,7 +46,7 @@ export class Login
                 console.log(error); // eslint-disable-line no-console
             }
 
-            this.unlockForm();
+            this.formLocker.unlockForm(this.loginForm);
         });
     }
 }
