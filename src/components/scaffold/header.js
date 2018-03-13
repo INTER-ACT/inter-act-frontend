@@ -1,20 +1,23 @@
 import { inject } from 'aurelia-framework';
 import { Router } from 'aurelia-router';
 import { AuthService } from '../../services/auth-service';
+import { UserService } from '../../services/user-service';
 
-@inject(Router, AuthService)
+@inject(Router, AuthService, UserService)
 export class Header
 {
     isLoggedIn = false;
     isScientist = false;
+    isExpert = false;
     isAdmin = false;
 
-    constructor(router: Router, authService: AuthService)
+    constructor(router: Router, authService: AuthService, userService: UserService)
     {
         this.authService = authService;
         this.router = router;
+        this.userService = userService;
 
-        this.isLoggedIn = this.authService.isLoggedIn();
+        this.updateLoginStateData();
 
         this.authService.onLogin.push(() => this.updateLogin());
         this.authService.onLogout.push(() => this.updateLogout());
@@ -40,13 +43,21 @@ export class Header
         this.authService.logout();
     }
 
+    updateLoginStateData()
+    {
+        this.isLoggedIn = this.authService.isLoggedIn();
+        this.isAdmin = this.userService.isSelfAdmin();
+        this.isScientist = this.userService.isSelfScientist();
+        this.isExpert = this.userService.isSelfExpert();
+    }
+
     updateLogin()
     {
-        this.isLoggedIn = true;
+        this.updateLoginStateData();
     }
 
     updateLogout()
     {
-        this.isLoggedIn = false;
+        this.updateLoginStateData();
     }
 }
