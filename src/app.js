@@ -98,6 +98,13 @@ export class App
                 nav: true,
                 title: 'Impressum'
             },
+            {
+                route: 'elevate',
+                name: 'elevate',
+                moduleId: './components/elevate',
+                nav: true,
+                title: 'Benutzerverwaltung'
+            },
 
 
             {
