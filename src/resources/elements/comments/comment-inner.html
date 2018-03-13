@@ -1,0 +1,34 @@
+<template>
+    <require from="../loading.html"></require>
+    <require from="../author-link.html"></require>
+
+
+    <div class="large-1 cell"></div>
+    <div class="large-9 cell">
+
+        <div class="comment-line">
+            <loading what="Kommentar" if.bind="!isReady"></loading>
+            <template else>
+                <h5>
+                    <author-link username.bind="resourceData.author.username" userid.bind="resourceData.author.id"></author-link>
+                </h5>
+                <p>${resourceData.content}</p>
+            </template>
+        </div>
+
+        <template if.bind="!isReplying">
+            <a click.trigger="replyBegin()" class="button">Kommentieren</a>
+            <a click.trigger="report()" class="button">Melden</a>
+        </template>
+
+        <div else>
+            <form>
+                <textarea placeholder="Kommentar" value.bind="replyText"></textarea>
+                <button class="button comment-btn" click.trigger="replySubmit()">Antworten</button>
+                <button class="button comment-btn" click.trigger="replyCancel()">Abbrechen</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="large-2 cell"></div>
+</template>

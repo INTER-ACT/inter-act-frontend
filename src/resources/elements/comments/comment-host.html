@@ -1,2 +1,10 @@
-<template>
+<template bindable="commentId">
+    <require from="./comment-inner"></require>
+    <require from="./comment2-host.html"></require>
+
+    <comment-inner comment-id.bind="commentId" resource-data.two-way="commentData"></comment-inner>
+
+    <div class="replyCommentsHost">
+        <comment2-host repeat.for="c of commentData.comments" comment-id.bind="c.id"></comment2-host>
+    </div>
 </template>

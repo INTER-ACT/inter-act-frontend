@@ -7,8 +7,7 @@
 
         <input type="password" value.bind="signupData.password" placeholder="Passwort" minlength="10" maxlength="72" required ref="pwInput"
         />
-        <input type="password" placeholder="Passwort wiederholen" minlength.bind="pwInput.value.length" maxlength="pwInput.value.length"
-            required ref="pwInputConfirm" />
+        <input type="password" placeholder="Passwort wiederholen" required ref="pwInputConfirm" />
 
         <input type="text" value.bind="signupData.first_name" placeholder="Vorname" maxlength="254" required />
         <input type="text" value.bind="signupData.last_name" placeholder="Nachname" maxlength="254" required />

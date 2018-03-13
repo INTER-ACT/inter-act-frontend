@@ -98,6 +98,13 @@ export class App
                 nav: true,
                 title: 'Impressum'
             },
+            {
+                route: 'elevate',
+                name: 'elevate',
+                moduleId: './components/elevate',
+                nav: true,
+                title: 'Benutzerverwaltung'
+            },
 
 
             {
@@ -143,11 +150,11 @@ export class App
                 title: 'Download'
             },
             {
-                route: ['privacy'],
+                route: 'privacy',
                 name: 'privacy',
                 moduleId: './components/privacy',
                 nav: true,
-                title: 'Privacy Download'
+                title: 'Datenschutz-Download'
             }
         ]);
 

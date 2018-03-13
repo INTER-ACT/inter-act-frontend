@@ -1,0 +1,28 @@
+<template>
+    <require from="./loading.html"></require>
+
+    <div class="grid-x">
+
+        <div if.bind="!isReady">
+            <loading what="Benutzer"></loading>
+        </div>
+
+        <template else>
+            <div class="large-6">
+                <p>${user.username}</p>
+            </div>
+            <div class="large-6">
+                <form ref="roleForm">
+                    <select value.bind="user.role">
+                        <option repeat.for="r of roles" value.bind="r.val">${r.name}</option>
+                    </select>
+                    <template if.bind="user.role != user.init_role">
+                        <input type="submit" class="button" value="Ändern" click.trigger="elevateSubmit()" />
+                        <input type="button" class="button" value="Abbrechen" click.trigger="elevateCancel()" />
+                    </template>
+                </form>
+                <p if.bind="success">✔️ geändert</p>
+            </div>
+        </template>
+    </div>
+</template>

@@ -1,2 +1,7 @@
-<template>
+<template bindable="commentId">
+    <require from="./comment-inner"></require>
+
+    <comment-inner comment-id.bind="commentId" resource-data.two-way="commentData"></comment-inner>
+    <!-- End of subcomment hosting chain -->
+
 </template>

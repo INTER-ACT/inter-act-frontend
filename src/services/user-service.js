@@ -1,24 +1,26 @@
 import { inject } from 'aurelia-framework';
+import { Router } from 'aurelia-router';
 import { BaseService } from './base-service';
 import { AuthService, ROLE_ADMIN, ROLE_EXPERT, ROLE_GUEST, ROLE_SCIENTIST, ROLE_USER } from './auth-service';
 
-@inject(BaseService, AuthService)
+@inject(BaseService, AuthService, Router)
 export class UserService
 {
-    constructor(baseService: BaseService, authService: AuthService)
+    constructor(baseService: BaseService, authService: AuthService, router: Router)
     {
         this.baseService = baseService;
         this.authService = authService;
+        this.router = router;
     }
 
     changeEmail(newEmail: string)
     {
-        this.baseService.patch(this.getSelfURI(), { email: newEmail }, this.authService.createHeadersWithAccessToken());
+        return this.baseService.patch(this.getSelfURI(), { email: newEmail }, this.authService.createHeadersWithAccessToken());
     }
 
     changePassword(oldPassword: string, newPassword: string)
     {
-        this.baseService.patch(this.getSelfURI(), { old_password: oldPassword, password: newPassword }, this.authService.createHeadersWithAccessToken());
+        return this.baseService.patch(this.getSelfURI(), { old_password: oldPassword, password: newPassword }, this.authService.createHeadersWithAccessToken());
     }
 
     getSelfID(): number
@@ -29,6 +31,11 @@ export class UserService
     getUserURI(userID: number): string
     {
         return this.authService.getUserURI(userID);
+    }
+
+    getUsers()
+    {
+        return this.baseService.getIntoJSON('users', null, this.authService.createHeadersWithAccessToken());
     }
 
     getSelfURI(): string
@@ -75,7 +82,12 @@ export class UserService
      */
     getUserDetailsByID(userID: number)
     {
-        return this.baseService.getIntoJSON(this.getSelfURI() + '/details', null, this.authService.createHeadersWithAccessToken());
+        return this.baseService.getIntoJSON(this.getUserURI(userID) + '/details', null, this.authService.createHeadersWithAccessToken());
+    }
+
+    getSelfDetails()
+    {
+        return this.getUserDetailsByID(this.getSelfID());
     }
 
     getUserRoleByID(userID: number)
@@ -84,6 +96,11 @@ export class UserService
         {
             return json.role;
         });
+    }
+
+    changeRole(userID: number, role: string)
+    {
+        return this.baseService.put(this.getUserURI(userID) + '/role', { role: role }, this.authService.createHeadersWithAccessToken());
     }
 
     isSelfAdmin(): boolean
@@ -124,5 +141,31 @@ export class UserService
     isSelfGuest(): boolean
     {
         return (this.getSelfRole() === ROLE_GUEST);
+    }
+
+    redirectIfNotAdmin(target: string = 'home'): boolean
+    {
+        return this._redirectIfNot(this.isSelfAdmin(), target);
+    }
+
+    redirectIfNotExpert(target: string = 'home'): boolean
+    {
+        return this._redirectIfNot(this.isSelfExpertOrHigher(), target);
+    }
+
+    redirectIfNotScientist(target: string = 'home'): boolean
+    {
+        return this._redirectIfNot(this.isSelfScientistOrHigher(), target);
+    }
+
+    _redirectIfNot(check: boolean, target: string): boolean
+    {
+        if (!check)
+        {
+            this.router.navigate(target);
+            return true;
+        }
+
+        return false;
     }
 }

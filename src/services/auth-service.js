@@ -23,8 +23,7 @@ export class AuthService
     {
         this.baseService = baseService;
         this.router = router;
-        this.onLogin.push(() => this.fetchSelfID());
-        this.onLogin.push(() => this.fetchSelfRole());
+        this.onLogin.push(() => this.fetchSelfID().then(() => this.fetchSelfRole()));
         this.onLogout.push(() => this.removeTokens());
         this.onLogout.push(() => this.removeUserInfo());
     }
@@ -35,7 +34,6 @@ export class AuthService
         {
             if (error.status === 401 && this.isLoggedIn())
             {
-                this.removeTokens();
                 this.triggerOnLogout();
             }
             else
@@ -106,7 +104,7 @@ export class AuthService
 
     fetchSelfID()
     {
-        return this.baseService.getIntoJSON('self', null, this.authService.createHeadersWithAccessToken()).then(self =>
+        return this.baseService.getIntoJSON('self', null, this.createHeadersWithAccessToken()).then(self =>
         {
             window.localStorage.setItem(LOCALSTORAGE_SELFUSERID, self.id);
             return self.id;
@@ -115,7 +113,7 @@ export class AuthService
 
     fetchSelfRole()
     {
-        return this.baseService.getIntoJSON(this.getSelfURI() + '/details', null, this.authService.createHeadersWithAccessToken()).then(d =>
+        return this.baseService.getIntoJSON(this.getSelfURI() + '/details', null, this.createHeadersWithAccessToken()).then(d =>
         {
             window.localStorage.setItem(LOCALSTORAGE_SELFROLE, d.role);
             return d.role;

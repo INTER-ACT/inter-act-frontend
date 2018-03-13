@@ -92,7 +92,7 @@
 
 }
 
-#comment-line{
+.comment-line{
     border-left: solid 1px black;
     padding-left: 10px;
 }
@@ -221,12 +221,12 @@ REAKTIONS BUTTONS
 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
  */
 
-form.authForm input {
+form.authForm input, .settingsPage section input {
     max-width: 50%;
 }
 
 form.authForm fieldset label {
-    max-width: 24%;
+    max-width: 20%;
 }
 
 form.authForm fieldset input:not(:checked) + label {
@@ -262,8 +262,12 @@ form.childPageSwitch div label {
     font-size: x-large;
 }
 
-.userProfile ul {
+.userProfile ul, .elevatePage ul {
     list-style: none;
+}
+
+.settingsPage section {
+    margin-top: 40px;
 }
 
 .center-logo{
@@ -280,6 +284,10 @@ form.childPageSwitch div label {
 
 .top-bar ul{
     background-color: #f6f6f6;
+}
+
+.replyCommentsHost {
+    margin-left: 5%;
 }
 
 menu-icon {
@@ -370,7 +378,12 @@ menu-icon {
         size: 2em;
     }
 
-    form.authForm input, form.authForm fieldset label {
+    form.authForm input, form.authForm fieldset label, .settingsPage section input {
         max-width: 100%;
+    }
+
+    .elevatePage ul li {
+        border-bottom: 1px solid #1468a0;
+        margin-bottom: 5px;
     }
 }
