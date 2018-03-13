@@ -1,0 +1,13 @@
+<template bindable="what, plural">
+    <div>
+        <template if.bind="what.length > 0">
+            ${what}
+            <template if.bind="plural">werden</template>
+            <template else>wird</template>
+            geladen...
+        </template>
+        <template>
+            Lade...
+        </template>
+    </div>
+</template>

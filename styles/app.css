@@ -247,6 +247,25 @@ form.childPageSwitch div label {
     width: 50%;
 }
 
+/*.userProfile p:first-of-type {
+    text-align: right;
+    margin-bottom: 2px;
+    font-style: italic;
+}*/
+
+.userProfile button.reportButton {
+    background: #e9300b;
+    float: right;
+}
+
+.userProfile h3 {
+    font-size: x-large;
+}
+
+.userProfile ul {
+    list-style: none;
+}
+
 .center-logo{
     margin-left: auto;
 }
@@ -355,8 +374,3 @@ menu-icon {
         max-width: 100%;
     }
 }
-
-
-
-
-

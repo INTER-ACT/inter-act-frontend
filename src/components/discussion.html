@@ -1,17 +1,15 @@
 <template>
-    <div class="grid-x">
+    <require from="../resources/elements/discussion" as="dsc"></require>
+    <require from="../resources/elements/notfound.html"></require>
 
-        <require from="../resources/elements/discussion" as="dsc"></require>
-
-
-        <template if.bind="notFound">
-            <h2>Fehler: Diskussion ${id} nicht gefunden</h2>
-            <p>Diese Diskussion existiert leider nicht :(</p>
-        </template>
+    <template if.bind="isReady">
+        <notfound if.bind="notFound" missing-thing="Diskussion Nr. ${id}" missing-thing-title="Diskussion"></notfound>
 
         <template else>
-            <dsc resourceid.bind="id" rdata.bind="discussionData" comments.bind="comments"></dsc>
+            <div class="grid-x">
+                <dsc resourceid.bind="id" rdata.bind="discussionData" comments.bind="comments"></dsc>
+            </div>
         </template>
+    </template>
 
-    </div>
 </template>

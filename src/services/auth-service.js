@@ -4,6 +4,14 @@ import { BaseService } from './base-service';
 
 const LOCALSTORAGE_ACCESSTOKEN = 'access_token';
 const LOCALSTORAGE_REFRESHTOKEN = 'refresh_token';
+const LOCALSTORAGE_SELFUSERID = 'self_user_id';
+const LOCALSTORAGE_SELFROLE = 'self_role';
+
+export const ROLE_ADMIN = 'admin';
+export const ROLE_EXPERT = 'expert';
+export const ROLE_GUEST = 'guest';
+export const ROLE_SCIENTIST = 'scientist';
+export const ROLE_USER = 'standard_user';
 
 @inject(BaseService)
 export class AuthService
@@ -15,6 +23,10 @@ export class AuthService
     {
         this.baseService = baseService;
         this.router = router;
+        this.onLogin.push(() => this.fetchSelfID());
+        this.onLogin.push(() => this.fetchSelfRole());
+        this.onLogout.push(() => this.removeTokens());
+        this.onLogout.push(() => this.removeUserInfo());
     }
 
     catchBadLogin(promise: Promise)
@@ -43,6 +55,17 @@ export class AuthService
     getAccessToken(): string
     {
         return window.localStorage.getItem(LOCALSTORAGE_ACCESSTOKEN);
+    }
+
+    getSelfID(): number
+    {
+        return window.localStorage.getItem(LOCALSTORAGE_SELFUSERID);
+    }
+
+    getSelfRole(): string
+    {
+        let rslt = window.localStorage.getItem(LOCALSTORAGE_SELFROLE);
+        return (rslt !== null) ? rslt : ROLE_GUEST;
     }
 
     isLoggedIn(): boolean
@@ -76,32 +99,64 @@ export class AuthService
     {
         return this.catchBadLogin(this.baseService.delete('oauth/token', this.createHeadersWithAccessToken()).then(response =>
         {
-            this.removeTokens();
             this.triggerOnLogout();
             return response;
         }));
     }
 
-    removeTokens()
+    fetchSelfID()
+    {
+        return this.baseService.getIntoJSON('self', null, this.authService.createHeadersWithAccessToken()).then(self =>
+        {
+            window.localStorage.setItem(LOCALSTORAGE_SELFUSERID, self.id);
+            return self.id;
+        });
+    }
+
+    fetchSelfRole()
+    {
+        return this.baseService.getIntoJSON(this.getSelfURI() + '/details', null, this.authService.createHeadersWithAccessToken()).then(d =>
+        {
+            window.localStorage.setItem(LOCALSTORAGE_SELFROLE, d.role);
+            return d.role;
+        });
+    }
+
+    getSelfURI(): string
+    {
+        return this.getUserURI(this.getSelfID());
+    }
+
+    getUserURI(userID: number): string
+    {
+        return 'users/' + userID;
+    }
+
+    removeTokens(): void
     {
         window.localStorage.removeItem(LOCALSTORAGE_ACCESSTOKEN);
         window.localStorage.removeItem(LOCALSTORAGE_REFRESHTOKEN);
     }
 
-
-    triggerOnLogin()
+    removeUserInfo(): void
     {
-        this.onLogin.forEach(callback => callback(this));
-    }
-
-    triggerOnLogout()
-    {
-        this.onLogout.forEach(callback => callback(this));
+        window.localStorage.removeItem(LOCALSTORAGE_SELFUSERID);
+        window.localStorage.removeItem(LOCALSTORAGE_SELFROLE);
     }
 
     signup(sud: UserData)
     {
         return this.baseService.post('users', sud);
+    }
+
+    triggerOnLogin(): void
+    {
+        this.onLogin.forEach(callback => callback(this));
+    }
+
+    triggerOnLogout(): void
+    {
+        this.onLogout.forEach(callback => callback(this));
     }
 }
 

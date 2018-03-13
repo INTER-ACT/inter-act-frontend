@@ -1,0 +1,43 @@
+<template>
+    <require from="../resources/elements/notfound.html"></require>
+    <require from="../resources/elements/loading-page.html"></require>
+
+    <loading-page what="Benutzerprofil" if.bind="!isReady"></loading-page>
+
+    <template else>
+
+        <notfound if.bind="notFound" missing-thing-title="Benutzer" missing-thing="Der gewünschte Benutzer (ID: ${id})"></notfound>
+
+        <div else class="grid-x">
+            <div class="large-3 cell"></div>
+
+            <div class="large-6 cell mainshow2 userProfile">
+
+                <button class="button reportButton" click.trigger="startReport()">Benutzer melden</button>
+                <h2 class="titlecolor">
+                    ${userData.username}
+                </h2>
+
+                <h3>Statistiken</h3>
+                <ul>
+                    <!--<li>
+                        <strong>Rolle:</strong>
+                        ${userData.role}
+                    </li>-->
+                    <li>
+                        <strong>Kommentare:</strong>
+                        ${statistics.comments}
+                    </li>
+                    <li>
+                        <strong>Änderungsvorschläge:</strong>
+                        ${statistics.amendments}
+                    </li>
+                </ul>
+            </div>
+
+            <div class="large-3 cell"></div>
+
+        </div>
+
+    </template>
+</template>
