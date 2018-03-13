@@ -24,10 +24,24 @@ export class DiscussionCustomElement
 
 
 
+
     constructor(authService: AuthService, discussionService: DiscussionService)
     {
         this.authService = authService;
         this.discussionService = discussionService;
+
+        /*
+
+        this.discussionService.getDiscussions().then(jsonResponse =>
+        {
+            jsonResponse.data.discussions.forEach(d =>
+            {
+                this.discussionService.getDiscussionById(d.id).then(dsc =>
+                {
+                    this.discussions.push(dsc);
+                });
+            });
+        }); */
     }
 
     commentateBegin()

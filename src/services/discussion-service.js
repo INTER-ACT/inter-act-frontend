@@ -60,4 +60,13 @@ export class DiscussionService
     {
         return this.bsSrvc.postIntoJSON('discussions/' + discussionID + '/comments', { content: reply, tags: [ 1 ] }, this.authService.createHeadersWithAccessToken());
     }
+
+    createDiscussion(replyTitle: string, replyNumber: string, replyLaw: string, replyStatement: string){
+        return this.bsSrvc.postIntoJSON('discussions/', { title: replyTitle, law_number: replyNumber, law_text: replyLaw, law_explanation: replyStatement, tags: [ 1 ] }, this.authService.createHeadersWithAccessToken());
+    }
+
+    replyToAmendent(amendentID: number, replyStatement: string, replyLaw: string){
+
+        return this.bsSrvc.postIntoJSON('discussions/' + amendentID + '/amendments/', { explanation: replyStatement, updated_text: replyLaw, tags: [ 1 ] }, this.authService.createHeadersWithAccessToken());
+    }
 }

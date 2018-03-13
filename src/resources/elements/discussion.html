@@ -6,11 +6,15 @@
 
 
             <div class="grid-x">
-                <div class="large-10 cell">
+                <div class="large-9 cell">
 
                     <h4 class="titlecolor">§${rdata.article} ${rdata.title}</h4>
                 </div>
-                <div class="large-2 cell"></div>
+                <div class="large-3 cell">
+                    <template repeat for="s of images">
+                        <img src="/images/corkscrew.svg" height="10px">
+                    </template>
+                </div>
             </div>
             <!-- INNERER TEIL -->
             <div class="grid-x">
@@ -73,6 +77,28 @@
 
                 <template repeat.for="com of comments">
                     <comment author.bind="com.author" content.bind="com.content" rid.bind="com.id"></comment>
+                </template>
+                <!-- INNERER TEIL ENDE -->
+            </div>
+
+            <!-- Änderungsvorschlag -->
+            <div class="grid-x">
+
+                <div class="large-10 cell">
+                    <h4>Änderungsvorschläge</h4>
+                </div>
+                <div class="large-2 cell"></div>
+                <!-- INNERER TEIL -->
+
+                <require from="./amendent"></require>
+
+                <template if.bind="amendents.length < 1">
+                    <p>Noch keine Änderungsvorschläge vorhanden</p>
+                </template>
+
+                <template repeat.for="a of amendents">
+                    <comment author.bind="a.author" law.bind="a.law" rid.bind="a.id"
+                             statement.bind="a.statement"></comment>
                 </template>
                 <!-- INNERER TEIL ENDE -->
             </div>
