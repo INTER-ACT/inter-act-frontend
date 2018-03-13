@@ -21,13 +21,9 @@ export class DiscussionCustomElement
     hasCommentateBoxOpen: boolean = false;
     replyText: string = '';
 
-<<<<<<< HEAD
+    amendments = [];
+    images = [];
 
-
-
-
-=======
->>>>>>> dev-design
     constructor(authService: AuthService, discussionService: DiscussionService)
     {
         this.authService = authService;
