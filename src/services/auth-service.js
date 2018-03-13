@@ -23,8 +23,7 @@ export class AuthService
     {
         this.baseService = baseService;
         this.router = router;
-        this.onLogin.push(() => this.fetchSelfID());
-        this.onLogin.push(() => this.fetchSelfRole());
+        this.onLogin.push(() => this.fetchSelfID().then(() => this.fetchSelfRole()));
         this.onLogout.push(() => this.removeTokens());
         this.onLogout.push(() => this.removeUserInfo());
     }
