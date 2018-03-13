@@ -263,7 +263,7 @@ form.childPageSwitch div label {
     font-size: x-large;
 }
 
-.userProfile ul {
+.userProfile ul, .elevatePage ul {
     list-style: none;
 }
 
@@ -381,5 +381,10 @@ menu-icon {
 
     form.authForm input, form.authForm fieldset label, .settingsPage section input {
         max-width: 100%;
+    }
+
+    .elevatePage ul li {
+        border-bottom: 1px solid #1468a0;
+        margin-bottom: 5px;
     }
 }
