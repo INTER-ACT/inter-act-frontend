@@ -21,7 +21,7 @@
                         <input type="button" class="button" value="Abbrechen" click.trigger="elevateCancel()" />
                     </template>
                 </form>
-                <p if.bind="success">✔️ geändert</p>
+                <p if.bind="success && (user.role == user.init_role)">✔️ geändert</p>
             </div>
         </template>
     </div>

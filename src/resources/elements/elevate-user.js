@@ -63,10 +63,12 @@ export class ElevateUser
     elevateCancel()
     {
         this.user.role = this.user.init_role;
+        this.success = false;
     }
 
     elevateSubmit()
     {
+        this.success = false;        
         this.formLocker.lockForm(this.roleForm);
         this.userService.changeRole(this.user.id, this.user.role).then(() =>
         {

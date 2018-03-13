@@ -29,14 +29,6 @@
 
                     <!-- Admin -->
                     <li if.bind="isAdmin" class="navbar-admin">
-                        <a class="navbar-as" href="#">Dashboard</a>
-                    </li>
-                    <!-- Admin -->
-                    <li if.bind="isAdmin" class="navbar-admin">
-                        <a class="navbar-as" route-href="groups">Diskussion</a>
-                    </li>
-                    <!-- Admin -->
-                    <li if.bind="isAdmin" class="navbar-admin">
                         <a class="navbar-as" href="#">Erstellen</a>
                     </li>
                     <!-- Admin -->
@@ -46,6 +38,10 @@
                     <!-- Admin -->
                     <li if.bind="isAdmin" class="navbar-admin">
                         <a class="navbar-as" href="#">Downloads</a>
+                    </li>
+                    <!-- Admin -->
+                    <li if.bind="isAdmin" class="navbar-admin">
+                        <a class="navbar-as" route-href="elevate">Rechteverwaltung</a>
                     </li>
 
 
@@ -88,14 +84,18 @@
                             <i class="fa fa-cog" aria-hidden="false"></i>
                         </a>
                         <ul class="menu">
-                            <li><a route-href="settings">Einstellungen</a></li>
+                            <li>
+                                <a route-href="settings">Einstellungen</a>
+                            </li>
                             <!--<li><a route-href="privacy">Datenschutz-Download</a></li>-->
                             <!-- Is accessible via settings -->
-                            <li><a click.trigger="submitLogout()">Abmelden</a></li>
+                            <li>
+                                <a click.trigger="submitLogout()">Abmelden</a>
+                            </li>
                             <!-- ... -->
                         </ul>
                     </li>
-                       <!-- <a else route-href="auth">
+                    <!-- <a else route-href="auth">
                             <i class="fa fa-cog" aria-hidden="false"></i>
                         </a>
                     </li>-->

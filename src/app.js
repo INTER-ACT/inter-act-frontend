@@ -103,7 +103,7 @@ export class App
                 name: 'elevate',
                 moduleId: './components/elevate',
                 nav: true,
-                title: 'Benutzerverwaltung'
+                title: 'Rechteverwaltung'
             },
 
 
