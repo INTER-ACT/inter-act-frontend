@@ -73,14 +73,14 @@ export class BaseService
         return this.post(target, requestBody, headers).then(response => response.json());
     }
 
-    put(target: string, requestBody: object)
+    put(target: string, requestBody: object, headers: object = {})
     {
-        return this.sendBodyAsJSON(target, requestBody, 'PUT');
+        return this.sendBodyAsJSON(target, requestBody, 'PUT', headers);
     }
 
-    putIntoJSON(target: string, requestBody: object)
+    putIntoJSON(target: string, requestBody: object, headers: object = {})
     {
-        return this.put(target, requestBody).then(response => response.json());
+        return this.put(target, requestBody, headers).then(response => response.json());
     }
 
     sendBodyAsJSON(target: string, requestBody: object, httpMethod: string, headers: object = {})
