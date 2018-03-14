@@ -34,43 +34,36 @@ export class CreateDiscussion
                     tag.isSeleted = false;
                     this.tags.push(tag);
                 });
-                console.log(this.tags);
             });
 
             this.fetchLawTexts();
         }
     }
 
-    newDiscussion()
+    submitNew()
     {
         let ts = [];
 
         this.tags.forEach(t =>
         {
-            if (t.isSeleted)
+            if (t.isSelected)
             {
                 ts.push(t.id);
             }
         });
 
-
         this.discussionService.createDiscussion(this.dTitle, this.dNumber, this.dLaw, this.dExplanation, ts).then(r =>
         {
-            this.replyTitle = '';
-            this.replyLaw = '';
-            this.replyStatement = '';
+            alert('Angelegt.');
+            window.location.reload();
         }).catch(error =>
         {
-            alert('ERROR');
-            console.log(error);
+            error.json().then(js =>
+            {
+                alert('ERROR\n' + js.details);
+                console.log(error);
+            });
         });
-    }
-
-    newDiscussionCancel()
-    {
-        this.replyTitle = '';
-        this.replyLaw = '';
-        this.replyStatement = '';
     }
 
     fetchLawTexts()

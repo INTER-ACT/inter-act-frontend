@@ -94,7 +94,7 @@ export class DiscussionService
             {
                 title: lawTitle,
                 law_number: lawNumber,
-                law_text: replyLaw,
+                law_text: lawText,
                 law_explanation: explanation,
                 tags: tags
             }, this.authService.createHeadersWithAccessToken());
