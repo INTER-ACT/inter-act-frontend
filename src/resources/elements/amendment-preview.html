@@ -1,23 +1,19 @@
 <template bindable="amendmentId, author, text">
     <div class="grid-x">
-        <div class="large-3 cell"></div>
-        <div class="large-6 cell mainshow2">
-            <div class="grid-x">
-                <div class="large-10 cell">
-                    <h4 class="titlecolor">${author.name}</h4>
-                </div>
-                <div class="large-2 cell"></div>
-            </div>
-            <div class="grid-x">
-                <div class="large-1 cell"></div>
-                <div class="large-10 cell">
-                    <h5><b>Erklärung</b></h5>
-                    <p>${amendmentData}</p>
-                </div>
-                <div class="large-1 cell"></div>
-            </div>
+        <div class="large-10 cell">
+            <h4 class="titlecolor">${author.name}</h4>
         </div>
-        <div class="large-3 cell"></div>
+        <div class="large-2 cell"></div>
+    </div>
+    <div class="grid-x">
+        <div class="large-1 cell"></div>
+        <div class="large-10 cell">
+            <h5>
+                <b>Erklärung</b>
+            </h5>
+            <p>${text}</p>
+        </div>
+        <div class="large-1 cell"></div>
     </div>
 
 </template>

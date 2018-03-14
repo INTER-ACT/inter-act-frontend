@@ -55,11 +55,13 @@ export class Discussion
                 });
                 this.discussionService.getAmendmentsByDiscussion(this.id).then(ams =>
                 {
+                    console.log(ams);
                     ams.data.amendments.forEach(a =>
                     {
                         this.discussionService.getAmendmentById(this.id, a.id).then(aa =>
                         {
                             this.amendments.push(aa);
+                            console.log(aa);
                         });
                     });
                 });
