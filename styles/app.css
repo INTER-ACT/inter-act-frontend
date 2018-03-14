@@ -315,7 +315,7 @@ menu-icon {
         font-weight: bolder;
     }
     .mobile_vertical {
-        webkit-flex-wrap: nowrap;
+        -webkit-flex-wrap: nowrap;
         -ms-flex-wrap: nowrap;
         flex-wrap: nowrap;
         -webkit-box-orient: vertical;

@@ -1,4 +1,5 @@
 <template>
+    <require from="../resources/elements/loading.html"></require>
 
     <div class="grid-x">
         <div class="large-3 cell"></div>
@@ -6,6 +7,21 @@
         <div class="large-6 cell mainshow2">
             <!-- INNERER TEIL -->
             <div class="grid-x">
+
+                <div class="large-12 cell" style="background: #CEF; padding: 5%;">
+                    <loading what="Paragraphen von der API" plural="true" if.bind="!lawTextsAPIfinished"></loading>
+                    <template else>
+                        <h4>API-Texte</h4>
+
+                        <select value.bind="lawTextSelection">
+                            <option repeat.for="lw of lawTexts" value.bind="lw.id">${lw.articleOrParagraph} - ${lw.title}</option>
+                        </select>
+
+                        <button class="button" click.trigger="submitInsert()">Einsetzen</button>
+
+                    </template>
+                </div>
+
                 <div class="large-12 cell">
                     <h4>Titel</h4>
                     <input type="text" value.bind="replyTitle">
@@ -32,10 +48,22 @@
                                 <div class="large-5 cell"></div>
                                 <div class="large-6 cell">
                                     <ul class="unorder-list">
-                                        <li><input id="kat1" type="checkbox"><label for="kat1">Kategorie 1</label></li>
-                                        <li><input id="kat2" type="checkbox"><label for="kat2">Kategorie 2</label></li>
-                                        <li><input id="kat3" type="checkbox"><label for="kat3">Kategorie 3</label></li>
-                                        <li><input id="kat4" type="checkbox"><label for="kat4">Kategorie 4</label></li>
+                                        <li>
+                                            <input id="kat1" type="checkbox">
+                                            <label for="kat1">Kategorie 1</label>
+                                        </li>
+                                        <li>
+                                            <input id="kat2" type="checkbox">
+                                            <label for="kat2">Kategorie 2</label>
+                                        </li>
+                                        <li>
+                                            <input id="kat3" type="checkbox">
+                                            <label for="kat3">Kategorie 3</label>
+                                        </li>
+                                        <li>
+                                            <input id="kat4" type="checkbox">
+                                            <label for="kat4">Kategorie 4</label>
+                                        </li>
                                     </ul>
                                 </div>
                                 <div class="large-1 cell"></div>
@@ -46,10 +74,22 @@
                                 <div class="large-1 cell"></div>
                                 <div class="large-6 cell">
                                     <ul class="unorder-list">
-                                        <li><input id="kat5" type="checkbox"><label for="kat5">Kategorie 5</label></li>
-                                        <li><input id="kat6" type="checkbox"><label for="kat6">Kategorie 6</label></li>
-                                        <li><input id="kat7" type="checkbox"><label for="kat7">Kategorie 7</label></li>
-                                        <li><input id="kat8" type="checkbox"><label for="kat8">Kategorie 8</label></li>
+                                        <li>
+                                            <input id="kat5" type="checkbox">
+                                            <label for="kat5">Kategorie 5</label>
+                                        </li>
+                                        <li>
+                                            <input id="kat6" type="checkbox">
+                                            <label for="kat6">Kategorie 6</label>
+                                        </li>
+                                        <li>
+                                            <input id="kat7" type="checkbox">
+                                            <label for="kat7">Kategorie 7</label>
+                                        </li>
+                                        <li>
+                                            <input id="kat8" type="checkbox">
+                                            <label for="kat8">Kategorie 8</label>
+                                        </li>
                                     </ul>
                                 </div>
                                 <div class="large-5 cell"></div>

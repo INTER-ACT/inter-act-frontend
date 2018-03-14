@@ -96,4 +96,14 @@ export class DiscussionService
     {
         return this.bsSrvc.postIntoJSON('discussions/' + amendmentID + '/amendments/', { explanation: replyStatement, updated_text: replyLaw, tags: [1] }, this.authService.createHeadersWithAccessToken());
     }
+
+    getLawTexts()
+    {
+        return this.bsSrvc.getIntoJSON('law_texts', null, this.authService.createHeadersWithAccessToken());
+    }
+
+    getLawTextByID(id: string)
+    {
+        return this.bsSrvc.getIntoJSON('law_texts/' + id, null, this.authService.createHeadersWithAccessToken());
+    }
 }
