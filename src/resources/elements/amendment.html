@@ -1,0 +1,80 @@
+<template>
+
+
+            <div class="large-3 cell"></div>
+
+            <div class="large-6 cell mainshow2">
+
+
+                <div class="grid-x">
+                    <div class="large-10 cell">
+
+                        <h4 class="titlecolor">${author.name}</h4>
+                        <h6 id="amendment">§ ${ams.titel}</h6>
+                    </div>
+                    <div class="large-2 cell"></div>
+                </div>
+                <!-- INNERER TEIL -->
+                <div class="grid-x">
+
+                    <div class="large-1 cell"></div>
+
+                    <div class="large-6 cell">
+                        <h5><b>Änderung</b></h5>
+                        <p>${law}</p>
+                        <h5><b>Erklärung</b></h5>
+                        <p>${statement}</p>
+
+                        <a click.trigger="amendmentBegin()" class="button" if.bind="!hasAmendmentBoxOpen">Änderungsvorschlag</a>
+                        <a click.trigger="report()" class="button" if.bind="!hasCommentateBoxOpen">Melden</a>
+
+                        <div if.bind="hasAmendmentBoxOpen">
+                            <form>
+                                <textarea placeholder="Gesetzestext" value.bind="replyLaw"></textarea>
+                                <textarea placeholder="Erklärung" value.bind="replyStatement"></textarea>
+                                <button class="button comment-btn" click.trigger="submitAmendment()">Änderung vorschlagen</button>
+                                <button class="button comment-btn" click.trigger="submitAmendmentCancel()">Abbrechen</button>
+                            </form>
+                        </div>
+
+                        <div repeat.for="a of subamendments">
+                            ${a.law}
+                            ${a.statement}
+                        </div>
+                    </div>
+
+                    <div class="large-5 small-12 cell">
+                        <h5><b>Reaktion</b></h5>
+                        <form>
+                            <div class="button-group round toggle">
+                                <input type="radio" id="r1" name="r-group">
+                                <label class="button btn-color" for="r1">fair</label>
+                                <input type="radio" id="r2" name="r-group">
+                                <label class="button btn-color" for="r2">neutral</label>
+                                <input type="radio" id="r3" name="r-group">
+                                <label class="button btn-color" for="r3">unfair</label>
+                            </div>
+                        </form>
+                        <form>
+                            <div class="button-group round toggle">
+                                <input type="radio" id="r4" name="r-group">
+                                <label class="button btn-color" for="r4">zustimmend</label>
+                                <input type="radio" id="r5" name="r-group">
+                                <label class="button btn-color" for="r5">neutral</label>
+                                <input type="radio" id="r6" name="r-group">
+                                <label class="button btn-color" for="r6">ablehnend</label>
+                            </div>
+                        </form>
+                    </div>
+
+
+                </div>
+                <!-- INNERER TEIL ENDE -->
+
+            </div>
+            <div class="large-3 cell"></div>
+
+    </div>
+
+
+</template>
