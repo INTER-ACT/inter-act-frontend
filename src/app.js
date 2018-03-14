@@ -113,10 +113,18 @@ export class App
                 title: 'Rechteverwaltung'
             },
 
+            {
+                route: 'reports',
+                name: 'reports',
+                moduleId: './components/reports',
+                nav: true,
+                title: 'Gemeldete Beiträge'
+            },
+
 
             {
-                route: ['createDiscussion', 'create'],
-                name: 'createDiscussion',
+                route: 'create',
+                name: 'create',
                 moduleId: './components/createDiscussion',
                 nav: true,
                 title: 'Erstellen'

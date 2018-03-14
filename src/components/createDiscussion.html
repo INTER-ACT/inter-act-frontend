@@ -6,103 +6,62 @@
 
         <div class="large-6 cell mainshow2">
             <!-- INNERER TEIL -->
-            <div class="grid-x">
+            <form class="createNew">
+                <div class="grid-x">
 
-                <div class="large-12 cell" style="background: #CEF; padding: 5%;">
-                    <loading what="Paragraphen von der API" plural="true" if.bind="!lawTextsAPIfinished"></loading>
-                    <template else>
-                        <h4>API-Texte</h4>
+                    <div class="large-12 cell" style="background: #CEF; padding: 5%;">
+                        <loading what="Paragraphen von der API" plural="true" if.bind="!lawTextsAPIfinished"></loading>
+                        <template else>
+                            <h4>API-Texte</h4>
 
-                        <select value.bind="lawTextSelection">
-                            <option repeat.for="lw of lawTexts" value.bind="lw.id">${lw.articleOrParagraph} - ${lw.title}</option>
-                        </select>
+                            <select value.bind="lawTextsSelection">
+                                <option repeat.for="lw of lawTexts" value.bind="lw.id">${lw.articleOrParagraph} - ${lw.title}</option>
+                            </select>
 
-                        <button class="button" click.trigger="submitInsert()">Einsetzen</button>
+                            <button class="button" click.trigger="submitInsert()">Einsetzen</button>
 
-                    </template>
-                </div>
+                        </template>
+                    </div>
 
-                <div class="large-12 cell">
-                    <h4>Titel</h4>
-                    <input type="text" value.bind="replyTitle">
-                </div>
-                <div class="large-12 cell">
-                    <h4>Gesetzesnummer</h4>
-                    <input type="text" value.bind="replyNumber">
-                </div>
-                <div class="large-12 cell">
-                    <h4>Gesetzestext</h4>
-                    <textarea rows="5" value.bind="replyLaw"></textarea>
-                </div>
-                <div class="large-12 cell">
-                    <h4>Erklärung</h4>
-                    <textarea rows="8" value.bind="replyStatement"></textarea>
-                </div>
+                    <div class="large-12 cell">
+                        <h4>Titel</h4>
+                        <input type="text" value.bind="dTitle" maxlength="254" required />
+                    </div>
+                    <div class="large-12 cell">
+                        <h4>Gesetzesnummer</h4>
+                        <input type="text" value.bind="dNumber" maxlength="254" required />
+                    </div>
+                    <div class="large-12 cell">
+                        <h4>Gesetzestext</h4>
+                        <textarea rows="5" value.bind="dLaw"></textarea>
+                    </div>
+                    <div class="large-12 cell">
+                        <h4>Erklärung</h4>
+                        <textarea rows="8" value.bind="dExplanation"></textarea>
+                    </div>
 
-
-                <div class="large-12 cell">
-                    <h4>Tags</h4>
-                    <div class="grid-x">
-                        <div class="large-6 cell">
-                            <div class="grid-x">
-                                <div class="large-5 cell"></div>
-                                <div class="large-6 cell">
-                                    <ul class="unorder-list">
-                                        <li>
-                                            <input id="kat1" type="checkbox">
-                                            <label for="kat1">Kategorie 1</label>
-                                        </li>
-                                        <li>
-                                            <input id="kat2" type="checkbox">
-                                            <label for="kat2">Kategorie 2</label>
-                                        </li>
-                                        <li>
-                                            <input id="kat3" type="checkbox">
-                                            <label for="kat3">Kategorie 3</label>
-                                        </li>
-                                        <li>
-                                            <input id="kat4" type="checkbox">
-                                            <label for="kat4">Kategorie 4</label>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="large-1 cell"></div>
+                    <div class="large-12 cell">
+                        <h4>Tags</h4>
+                        <loading if.bind="tags.length < 1" what="Tags" plural="true"></loading>
+                        <div else class="grid-x">
+                            <div class="large-3 cell"></div>
+                            <div class="large-6 cell">
+                                <ul class="unorder-list">
+                                    <li repeat.for="t of tags">
+                                        <label>
+                                            <input type="checkbox" checked.bind="t.isSelected" /> ${t.name}
+                                        </label>
+                                    </li>
+                                </ul>
                             </div>
-                        </div>
-                        <div class="large-6 cell">
-                            <div class="grid-x">
-                                <div class="large-1 cell"></div>
-                                <div class="large-6 cell">
-                                    <ul class="unorder-list">
-                                        <li>
-                                            <input id="kat5" type="checkbox">
-                                            <label for="kat5">Kategorie 5</label>
-                                        </li>
-                                        <li>
-                                            <input id="kat6" type="checkbox">
-                                            <label for="kat6">Kategorie 6</label>
-                                        </li>
-                                        <li>
-                                            <input id="kat7" type="checkbox">
-                                            <label for="kat7">Kategorie 7</label>
-                                        </li>
-                                        <li>
-                                            <input id="kat8" type="checkbox">
-                                            <label for="kat8">Kategorie 8</label>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="large-5 cell"></div>
-                            </div>
+                            <div class="large-3 cell"></div>
                         </div>
                     </div>
-                    <div class="large-12 cell center-download top-spacer">
-                        <button class="button comment-btn" click.trigger="newDiscussion()">Erstellen</button>
-                        <button class="button comment-btn" click.trigger="newDiscussionCancel()">Abbrechen</button>
-                    </div>
-                </div>
 
-            </div>
+                    <input class="button" type="submit" click.trigger="submitNew()" value="Anlegen" />
+
+                </div>
+            </form>
             <!-- INNERER TEIL ENDE -->
         </div>
         <div class="large-3 cell"></div>

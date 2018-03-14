@@ -85,8 +85,10 @@ export class AuthService
         {
             window.localStorage.setItem(LOCALSTORAGE_ACCESSTOKEN, response.access_token);
             window.localStorage.setItem(LOCALSTORAGE_REFRESHTOKEN, response.refresh_token);
-            this.triggerOnLogin();
-            return response;
+            return this.triggerOnLogin().then(() =>
+            {
+                return response;
+            });
         });
     }
 
@@ -146,9 +148,9 @@ export class AuthService
 
     triggerOnLogin(): void
     {
-        this.fetchSelfID().then(() =>
+        return this.fetchSelfID().then(() =>
         {
-            this.fetchSelfRole().then(() =>
+            return this.fetchSelfRole().then(() =>
             {
                 this.onLogin.forEach(callback => callback(this));
             });
