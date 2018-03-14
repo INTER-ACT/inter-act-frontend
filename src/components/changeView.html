@@ -4,6 +4,16 @@
     <loading-page if.bind="!isReady" what="Dashboard" plural="false"></loading-page>
 
     <div else class="grid-x">
+
+        <template if.bind="discussions.length < 1">
+            <div class="large-3 cell"></div>
+            <div class="large-6 cell mainshow">
+                Nocht keine INTER!ACT-ionen vorhanden.
+                <br />Daher konnte keine relevaten Diskussion gefunden werden.
+            </div>
+            <div class="large-3 cell"></div>
+        </template>
+
         <template repeat.for="dsc of discussions">
             <div class="large-3 cell"></div>
 

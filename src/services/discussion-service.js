@@ -106,4 +106,9 @@ export class DiscussionService
     {
         return this.bsSrvc.getIntoJSON('law_texts/' + id, null, this.authService.createHeadersWithAccessToken());
     }
+
+    getRelevantDiscussions(userID: number)
+    {
+        return this.bsSrvc.getIntoJSON('users/' + userID + '/relevant', null, this.authService.createHeadersWithAccessToken());
+    }
 }

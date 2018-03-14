@@ -1,16 +1,18 @@
 import { inject } from 'aurelia-framework';
 import { Router } from 'aurelia-router';
-import { BaseService } from './base-service';
 import { AuthService, ROLE_ADMIN, ROLE_EXPERT, ROLE_GUEST, ROLE_SCIENTIST, ROLE_USER } from './auth-service';
+import { BaseService } from './base-service';
+import { DiscussionService } from './discussion-service';
 
-@inject(BaseService, AuthService, Router)
+@inject(BaseService, AuthService, Router, DiscussionService)
 export class UserService
 {
-    constructor(baseService: BaseService, authService: AuthService, router: Router)
+    constructor(baseService: BaseService, authService: AuthService, router: Router, discussionService: DiscussionService)
     {
         this.baseService = baseService;
         this.authService = authService;
         this.router = router;
+        this.discussionService = discussionService;
     }
 
     changeEmail(newEmail: string)
@@ -167,5 +169,10 @@ export class UserService
         }
 
         return false;
+    }
+
+    getSelfRelevantDiscussions()
+    {
+        return this.discussionService.getRelevantDiscussions(this.getSelfID());
     }
 }

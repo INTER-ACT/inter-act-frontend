@@ -1,22 +1,21 @@
 import { inject } from 'aurelia-framework';
-import { DiscussionService } from '../services/discussion-service';
+import { UserService } from '../services/user-service';
 
-@inject(DiscussionService)
+@inject(UserService)
 export class ChangeView
 {
     isReady: boolean = false;
 
-    constructor(discussionService)
+    discussions = [];
+
+    constructor(userService: UserService)
     {
-        this.discussionService = discussionService;
+        this.userService = userService;
+        this.discussionService = this.userService.discussionService;
 
-
-        this.discussions = [];
-
-
-        this.discussionService.getDiscussions().then(jsonResponse =>
+        this.userService.getSelfRelevantDiscussions().then(jsonResponse =>
         {
-            jsonResponse.data.discussions.forEach(d =>
+            jsonResponse.discussions.forEach(d =>
             {
                 this.discussionService.getDiscussionById(d.id).then(dsc =>
                 {

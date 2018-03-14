@@ -64,8 +64,8 @@ export class App
                 title: 'Diskussion'
             },
             {
-                route: 'changeView',
-                name: 'changeView',
+                route: 'dashboard',
+                name: 'dashboard',
                 moduleId: './components/changeView',
                 nav: true,
                 href: 'Dashboard'
