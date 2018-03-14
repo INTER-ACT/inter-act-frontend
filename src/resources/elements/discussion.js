@@ -20,6 +20,7 @@ export class DiscussionCustomElement
     @bindable rid: number;
 
     hasCommentateBoxOpen: boolean = false;
+    hasAmendmentBoxOpen: boolean = false;
     replyText: string = '';
 
     images = [];
@@ -78,5 +79,25 @@ export class DiscussionCustomElement
     {
         this.replyText = '';
         this.hasCommentateBoxOpen = false;
+    }
+
+    submitAmendent()
+    {
+        this.discussionService.replyToAmendment(this.rid, this.replyStatement, this.replyLaw).then(r =>
+        {
+            alert(r);
+            this.discussionService.getAmendmentById(r.id).then(c => this.subamendents.push(c));
+        }).catch(error =>
+        {
+            alert('ERROR');
+            console.log(error);
+        });
+    }
+
+    submitAmendmentCancel()
+    {
+        replyLaw: string = '';
+        replyStatement: string = '';
+        this.hasAmendentBoxOpen = false;
     }
 }
