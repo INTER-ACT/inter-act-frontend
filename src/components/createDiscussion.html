@@ -39,66 +39,21 @@
                     <textarea rows="8" value.bind="dExplanation"></textarea>
                 </div>
 
-
                 <div class="large-12 cell">
                     <h4>Tags</h4>
-                    <div class="grid-x">
+                    <loading if.bind="tags.length < 1" what="Tags" plural="true"></loading>
+                    <div else class="grid-x">
+                        <div class="large-3 cell"></div>
                         <div class="large-6 cell">
-                            <div class="grid-x">
-                                <div class="large-5 cell"></div>
-                                <div class="large-6 cell">
-                                    <ul class="unorder-list">
-                                        <li>
-                                            <input id="kat1" type="checkbox">
-                                            <label for="kat1">Kategorie 1</label>
-                                        </li>
-                                        <li>
-                                            <input id="kat2" type="checkbox">
-                                            <label for="kat2">Kategorie 2</label>
-                                        </li>
-                                        <li>
-                                            <input id="kat3" type="checkbox">
-                                            <label for="kat3">Kategorie 3</label>
-                                        </li>
-                                        <li>
-                                            <input id="kat4" type="checkbox">
-                                            <label for="kat4">Kategorie 4</label>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="large-1 cell"></div>
-                            </div>
+                            <ul class="unorder-list">
+                                <li repeat.for="t of tags">
+                                    <label>
+                                        <input type="checkbox" checked.bind="t.isSelected" /> ${t.name}
+                                    </label>
+                                </li>
+                            </ul>
                         </div>
-                        <div class="large-6 cell">
-                            <div class="grid-x">
-                                <div class="large-1 cell"></div>
-                                <div class="large-6 cell">
-                                    <ul class="unorder-list">
-                                        <li>
-                                            <input id="kat5" type="checkbox">
-                                            <label for="kat5">Kategorie 5</label>
-                                        </li>
-                                        <li>
-                                            <input id="kat6" type="checkbox">
-                                            <label for="kat6">Kategorie 6</label>
-                                        </li>
-                                        <li>
-                                            <input id="kat7" type="checkbox">
-                                            <label for="kat7">Kategorie 7</label>
-                                        </li>
-                                        <li>
-                                            <input id="kat8" type="checkbox">
-                                            <label for="kat8">Kategorie 8</label>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="large-5 cell"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="large-12 cell center-download top-spacer">
-                        <button class="button comment-btn" click.trigger="newDiscussion()">Erstellen</button>
-                        <button class="button comment-btn" click.trigger="newDiscussionCancel()">Abbrechen</button>
+                        <div class="large-3 cell"></div>
                     </div>
                 </div>
 

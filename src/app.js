@@ -115,8 +115,8 @@ export class App
 
 
             {
-                route: ['createDiscussion', 'create'],
-                name: 'createDiscussion',
+                route: 'create',
+                name: 'create',
                 moduleId: './components/createDiscussion',
                 nav: true,
                 title: 'Erstellen'

@@ -16,6 +16,8 @@ export class CreateDiscussion
     lawTextsAPIfinished = false;
     lawTextsSelection = null;
 
+    tags: Array = [];
+
     constructor(router: Router, authService: AuthService, discussionService: DiscussionService, userService: UserService)
     {
         this.authService = authService;
@@ -25,13 +27,34 @@ export class CreateDiscussion
 
         if (!this.userService.redirectIfNotAdmin())
         {
+            this.discussionService.getAllTags().then(ts =>
+            {
+                ts.forEach(tag =>
+                {
+                    tag.isSeleted = false;
+                    this.tags.push(tag);
+                });
+                console.log(this.tags);
+            });
+
             this.fetchLawTexts();
         }
     }
 
     newDiscussion()
     {
-        this.discussionService.createDiscussion(this.replyTitle, this.replyNumber, this.replyLaw, this.replyStatement).then(r =>
+        let ts = [];
+
+        this.tags.forEach(t =>
+        {
+            if (t.isSeleted)
+            {
+                ts.push(t.id);
+            }
+        });
+
+
+        this.discussionService.createDiscussion(this.dTitle, this.dNumber, this.dLaw, this.dExplanation, ts).then(r =>
         {
             this.replyTitle = '';
             this.replyLaw = '';
