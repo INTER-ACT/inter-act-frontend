@@ -13,7 +13,7 @@
                     <template else>
                         <h4>API-Texte</h4>
 
-                        <select value.bind="lawTextSelection">
+                        <select value.bind="lawTextsSelection">
                             <option repeat.for="lw of lawTexts" value.bind="lw.id">${lw.articleOrParagraph} - ${lw.title}</option>
                         </select>
 
@@ -24,19 +24,19 @@
 
                 <div class="large-12 cell">
                     <h4>Titel</h4>
-                    <input type="text" value.bind="replyTitle">
+                    <input type="text" value.bind="dTitle">
                 </div>
                 <div class="large-12 cell">
                     <h4>Gesetzesnummer</h4>
-                    <input type="text" value.bind="replyNumber">
+                    <input type="text" value.bind="dArticle">
                 </div>
                 <div class="large-12 cell">
                     <h4>Gesetzestext</h4>
-                    <textarea rows="5" value.bind="replyLaw"></textarea>
+                    <textarea rows="5" value.bind="dLaw"></textarea>
                 </div>
                 <div class="large-12 cell">
                     <h4>Erklärung</h4>
-                    <textarea rows="8" value.bind="replyStatement"></textarea>
+                    <textarea rows="8" value.bind="dExplanation"></textarea>
                 </div>
 
 

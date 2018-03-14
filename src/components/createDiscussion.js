@@ -7,10 +7,10 @@ import { UserService } from '../services/user-service';
 @inject(Router, AuthService, DiscussionService, UserService)
 export class CreateDiscussion
 {
-    replyTitle: string = '';
-    replyNumber: string = '';
-    replyLaw: string = '';
-    replyStatement: string = '';
+    dTitle: string = '';
+    dExplanation: string = '';
+    dLaw: string = '';
+    dNumber: string = '';
 
     lawTexts: Array = [];
     lawTextsAPIfinished = false;
@@ -29,16 +29,10 @@ export class CreateDiscussion
         }
     }
 
-    report()
-    {
-        alert('not implemented yet');
-    }
-
     newDiscussion()
     {
         this.discussionService.createDiscussion(this.replyTitle, this.replyNumber, this.replyLaw, this.replyStatement).then(r =>
         {
-
             this.replyTitle = '';
             this.replyLaw = '';
             this.replyStatement = '';
@@ -72,7 +66,11 @@ export class CreateDiscussion
     {
         this.discussionService.getLawTextByID(this.lawTextsSelection).then(law =>
         {
-            console.log(law);
+            this.dTitle = law.title;
+            let p = document.createElement('p');
+
+            p.innerHTML = law.content;
+            this.dLaw = p.innerText;
         });
     }
 }

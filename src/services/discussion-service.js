@@ -87,9 +87,9 @@ export class DiscussionService
         return this.bsSrvc.postIntoJSON('discussions/' + discussionID + '/comments', { content: reply, tags: [1] }, this.authService.createHeadersWithAccessToken());
     }
 
-    createDiscussion(replyTitle: string, replyNumber: string, replyLaw: string, replyStatement: string)
+    createDiscussion(title: string, replyNumber: string, replyLaw: string, replyStatement: string)
     {
-        return this.bsSrvc.postIntoJSON('discussions/', { title: replyTitle, law_number: replyNumber, law_text: replyLaw, law_explanation: replyStatement, tags: [1] }, this.authService.createHeadersWithAccessToken());
+        return this.bsSrvc.postIntoJSON('discussions/', { title: title, law_number: replyNumber, law_text: replyLaw, law_explanation: replyStatement, tags: [1] }, this.authService.createHeadersWithAccessToken());
     }
 
     replyToAmendment(amendmentID: number, replyStatement: string, replyLaw: string)
