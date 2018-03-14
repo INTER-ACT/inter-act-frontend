@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="title-bar change-header-color" data-responsive-toggle="responsive-menu" data-hide-for="medium">
+        <div class="title-bar change-header-color" data-responsive-toggle="responsive-menu" data-hide-for="large">
             <button class="menu-icon" id="buttonstyler" type="button" data-toggle="responsive-menu">☰</button>
             <div class="title-bar-title center-logo">
                 <a route-href="home">
@@ -11,62 +11,60 @@
 
         <div class="top-bar" id="responsive-menu">
             <div class="top-bar-left">
-                <ul class="dropdown menu" data-dropdown-menu>
+                <ul class="dropdown menu mobile_vertical" data-dropdown-menu>
 
-                    <li>
+                    <li class="mobile_nav">
                         <a route-href="home">
-                            <img src="images/INTER-ACT.png" height="15px" class="mobile_nav" />
+                            <img src="images/INTER-ACT.png" />
                         </a>
                     </li>
                     <!-- wenn angemeldet -->
-                    <li if.bind="isLoggedIn || !isLoggedIn" class="navbar">
-                        <a class="navbar-as" href="#">Dashboard</a>
-                    </li>
-                    <!-- Wenn angemeldet -->
-                    <li if.bind="isLoggedIn || !isLoggedIn" class="navbar">
-                        <a class="navbar-as" route-href="groups">Diskussion</a>
-                    </li>
-
-                    <!-- Admin -->
-                    <li if.bind="isAdmin" class="navbar-admin">
-                        <a class="navbar-as" href="#">Erstellen</a>
-                    </li>
-                    <!-- Admin -->
-                    <li if.bind="isAdmin" class="navbar-admin">
-                        <a class="navbar-as" href="#">Meldungen</a>
-                    </li>
-                    <!-- Admin -->
-                    <li if.bind="isAdmin" class="navbar-admin">
-                        <a class="navbar-as" href="#">Downloads</a>
-                    </li>
-                    <!-- Admin -->
-                    <li if.bind="isAdmin" class="navbar-admin">
-                        <a class="navbar-as" route-href="elevate">Rechteverwaltung</a>
-                    </li>
-
-
-                    <!-- Sozialwissenschaftler -->
-                    <!-- Admin -->
-                    <li if.bind="isScientist" class="navbar-sozi">
+                    <li if.bind="isLoggedIn" class="navbar">
                         <a class="navbar-as" href="#">Dashboard</a>
                     </li>
 
-                    <li if.bind="isScientist" class="navbar-sozi">
-                        <a class="navbar-as" route-href="groups">Diskussion</a>
+                    <li class="navbar">
+                        <a class="navbar-as" route-href="groups">Diskussionen</a>
                     </li>
 
-                    <li if.bind="isScientist" class="navbar-sozi">
-                        <a class="navbar-as" href="#">Downloads</a>
-                    </li>
+                    <template if.bind="isAdmin">
+                        <li class="navbar-admin">
+                            <a class="navbar-as" href="#">Erstellen</a>
+                        </li>
+                        <li class="navbar-admin">
+                            <a class="navbar-as" href="#">Meldungen</a>
+                        </li>
+                        <li class="navbar-admin">
+                            <a class="navbar-as" route-href="download">Downloads</a>
+                        </li>
+                        <li class="navbar-admin">
+                            <a class="navbar-as" route-href="elevate">Rechteverwaltung</a>
+                        </li>
+                    </template>
+
+
+                    <template if.bind="isScientist">
+                        <li class="navbar-sozi">
+                            <a class="navbar-as" href="#">Dashboard</a>
+                        </li>
+
+                        <li class="navbar-sozi">
+                            <a class="navbar-as" route-href="groups">Diskussion</a>
+                        </li>
+
+                        <li class="navbar-sozi">
+                            <a class="navbar-as" route-href="download">Downloads</a>
+                        </li>
+                    </template>
                 </ul>
             </div>
             <div class="top-bar-right">
                 <ul class="dropdown menu" data-dropdown-menu>
                     <!-- Suchoption -->
-                    <li if.bind="isLoggedIn">
+                    <li if.bind="isLoggedIn" class="mobile_nav">
                         <input type="search" placeholder="Search">
                     </li>
-                    <li if.bind="isLoggedIn">
+                    <li if.bind="isLoggedIn" class="mobile_nav">
                         <button type="button" class="button">Search</button>
                     </li>
 
@@ -81,11 +79,11 @@
                     <!-- Einstellungszahnrad -->
                     <li class="navbar">
                         <a id="zahnrad" if.bind="isLoggedIn">
-                            <i class="fa fa-cog" aria-hidden="false"></i>
+                            <p><i class="fa fa-cog" aria-hidden="false"></i></p>
                         </a>
                         <ul class="menu">
                             <li>
-                                <a route-href="settings">Einstellungen</a>
+                                <a route-href="settings" id="nav-spacer">Einstellungen</a>
                             </li>
                             <!--<li><a route-href="privacy">Datenschutz-Download</a></li>-->
                             <!-- Is accessible via settings -->

@@ -95,13 +95,20 @@
                     <p>Noch keine Änderungsvorschläge vorhanden</p>
                 </template>
 
-                <template repeat.for="a of amendments">
-                    <amendment author.bind="a.author" law.bind="a.law" rid.bind="a.id" statement.bind="a.statement"></amendment>
-                </template>
+
                 <!-- INNERER TEIL ENDE -->
             </div>
             <div class="large-3 cell"></div>
         </div>
         <div class="large-3 cell"></div>
+
+        <div class="large-3 cell"></div>
+        <div class="large-6 cell">
+            <template repeat.for="a of amendments">
+                <amendment author.bind="a.author" law.bind="a.law" rid.bind="a.id" statement.bind="a.statement"></amendment>
+            </template>
+        </div>
+        <div class="large-3 cell"></div>
+
     </div>
 </template>

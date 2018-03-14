@@ -8,10 +8,10 @@
         </div>
 
         <template else>
-            <div class="large-6">
+            <div class="large-6 small-12">
                 <p>${user.username}</p>
             </div>
-            <div class="large-6">
+            <div class="large-6 small-12">
                 <form ref="roleForm">
                     <select value.bind="user.role">
                         <option repeat.for="r of roles" value.bind="r.val">${r.name}</option>
