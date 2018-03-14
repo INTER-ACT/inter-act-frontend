@@ -1,10 +1,11 @@
-
 import { inject } from 'aurelia-framework';
-import { DiscussionService } from '../../services/discussion-service';
+import { DiscussionService } from '../services/discussion-service';
 
 @inject(DiscussionService)
 export class ChangeView
 {
+    isReady: boolean = false;
+
     constructor(discussionService)
     {
         this.discussionService = discussionService;
@@ -22,6 +23,7 @@ export class ChangeView
                     this.discussions.push(dsc);
                 });
             });
+            this.isReady = true;
         });
     }
 }

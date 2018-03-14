@@ -1,26 +1,31 @@
 <template>
+    <require from="../resources/elements/loading-page.html"></require>
 
-    <template repeat.for="dsc of discussions">
-        <div class="large-3 cell"></div>
+    <loading-page if.bind="!isReady" what="Dashboard" plural="false"></loading-page>
 
-        <div class="large-6 cell mainshow">
-            <h4 class="titlecolor">§ ${dsc.title}</h4>
+    <div else class="grid-x">
+        <template repeat.for="dsc of discussions">
+            <div class="large-3 cell"></div>
 
-            <div class="grid-x">
+            <div class="large-6 cell mainshow">
+                <h4 class="titlecolor">§ ${dsc.title}</h4>
 
-                <div class="large-1 cell"></div>
+                <div class="grid-x">
 
-                <div class="large-10 cell showparagraph">
-                    <h5>Gesetz</h5>
-                    <p>${dsc.law_text}</p>
-                    <a route-href="discussion; params.bind: { id: dsc.id }" class="button">zur Diskussion</a>
+                    <div class="large-1 cell"></div>
+
+                    <div class="large-10 cell showparagraph">
+                        <h5>Gesetz</h5>
+                        <p>${dsc.law_text}</p>
+                        <a route-href="discussion; params.bind: { id: dsc.id }" class="button">zur Diskussion</a>
+                    </div>
+
+                    <div class="large-1 cell"></div>
+
                 </div>
-
-                <div class="large-1 cell"></div>
-
             </div>
-        </div>
-        <div class="large-3 cell"></div>
-    </template>
+            <div class="large-3 cell"></div>
+        </template>
+    </div>
 
 </template>
