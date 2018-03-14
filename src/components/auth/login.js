@@ -31,7 +31,7 @@ export class Login
 
         this.authService.login(this.email, this.password).then(x =>
         {
-            this.router.navigate('dashboard');
+            this.router.navigateToRoute('dashboard');
             this.formLocker.unlockForm(this.loginForm);
         }).catch(error =>
         {
