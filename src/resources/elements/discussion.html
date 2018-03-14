@@ -1,5 +1,5 @@
 <template>
-    <require from="./amendent"></require>
+    <require from="./amendment"></require>
     <require from="./comments/comment-host.html"></require>
     <require from="./multiaspect"></require>
 
@@ -95,7 +95,7 @@
                     <p>Noch keine Änderungsvorschläge vorhanden</p>
                 </template>
 
-                <template repeat.for="a of amendents">
+                <template repeat.for="a of amendments">
                     <amendment author.bind="a.author" law.bind="a.law" rid.bind="a.id" statement.bind="a.statement"></amendment>
                 </template>
                 <!-- INNERER TEIL ENDE -->

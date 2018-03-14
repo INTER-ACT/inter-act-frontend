@@ -28,14 +28,14 @@ export class DiscussionService
         return this.bsSrvc.getIntoJSON('discussions', { start: 0, count: 100 });
     }
 
-    getAmendentById(id: number)
+    getAmendmentById(discussionID: number, amendmentID: number)
     {
-        return this.bsSrvc.getIntoJSON('amendents/' + id);
+        return this.bsSrvc.getIntoJSON('discussions/' + discussionID + '/amendments/' + amendmentID);
     }
 
-    getAmendents()
+    getAmendmentsByDiscussion(discussionID: number)
     {
-        return this.bsSrvc.getIntoJSON('amendents', { start: 0, count: 100 });
+        return this.bsSrvc.getIntoJSON('discussions/' + discussionID + '/amendments');
     }
 
     getAllTags(): Promise
@@ -87,12 +87,13 @@ export class DiscussionService
         return this.bsSrvc.postIntoJSON('discussions/' + discussionID + '/comments', { content: reply, tags: [1] }, this.authService.createHeadersWithAccessToken());
     }
 
-    createDiscussion(replyTitle: string, replyNumber: string, replyLaw: string, replyStatement: string){
-        return this.bsSrvc.postIntoJSON('discussions/', { title: replyTitle, law_number: replyNumber, law_text: replyLaw, law_explanation: replyStatement, tags: [ 1 ] }, this.authService.createHeadersWithAccessToken());
+    createDiscussion(replyTitle: string, replyNumber: string, replyLaw: string, replyStatement: string)
+    {
+        return this.bsSrvc.postIntoJSON('discussions/', { title: replyTitle, law_number: replyNumber, law_text: replyLaw, law_explanation: replyStatement, tags: [1] }, this.authService.createHeadersWithAccessToken());
     }
 
-    replyToAmendent(amendentID: number, replyStatement: string, replyLaw: string){
-
-        return this.bsSrvc.postIntoJSON('discussions/' + amendentID + '/amendments/', { explanation: replyStatement, updated_text: replyLaw, tags: [ 1 ] }, this.authService.createHeadersWithAccessToken());
+    replyToAmendment(amendmentID: number, replyStatement: string, replyLaw: string)
+    {
+        return this.bsSrvc.postIntoJSON('discussions/' + amendmentID + '/amendments/', { explanation: replyStatement, updated_text: replyLaw, tags: [1] }, this.authService.createHeadersWithAccessToken());
     }
 }

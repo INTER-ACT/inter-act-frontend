@@ -122,9 +122,9 @@ export class App
                 title: 'Kommentar'
             },
             {
-                route: ['amendent'],
-                name: 'amendent',
-                moduleId: './components/amendent',
+                route: ['amendment'],
+                name: 'amendment',
+                moduleId: './components/amendment',
                 nav: true,
                 title: 'Änderungsvorschlag'
             },

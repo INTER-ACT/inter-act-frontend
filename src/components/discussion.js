@@ -15,6 +15,7 @@ export class Discussion
         law_explanation: '...'
     };
     comments: Array = [];
+    amendments: Array = [];
 
     constructor(discussionService: DiscussionService)
     {
@@ -49,6 +50,16 @@ export class Discussion
                         this.discussionService.getCommentById(c.id).then(cc =>
                         {
                             this.comments.push(cc);
+                        });
+                    });
+                });
+                this.discussionService.getAmendmentsByDiscussion(this.id).then(ams =>
+                {
+                    ams.data.amendments.forEach(a =>
+                    {
+                        this.discussionService.getAmendmentById(this.id, a.id).then(aa =>
+                        {
+                            this.amendments.push(aa);
                         });
                     });
                 });

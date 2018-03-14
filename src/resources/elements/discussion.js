@@ -8,6 +8,7 @@ export class DiscussionCustomElement
 {
     @bindable rdata: object;
     @bindable comments: Array;
+    @bindable amendments: Array;
 
     /**
      * DiscussionID
@@ -21,7 +22,6 @@ export class DiscussionCustomElement
     hasCommentateBoxOpen: boolean = false;
     replyText: string = '';
 
-    amendments = [];
     images = [];
 
     constructor(authService: AuthService, discussionService: DiscussionService)
