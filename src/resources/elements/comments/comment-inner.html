@@ -20,7 +20,6 @@
             <a click.trigger="replyBegin()" class="button">Kommentieren</a>
             <a click.trigger="report()" class="button">Melden</a>
         </template>
-
         <div else>
             <form>
                 <textarea placeholder="Kommentar" value.bind="replyText"></textarea>
@@ -28,6 +27,9 @@
                 <button class="button comment-btn" click.trigger="replyCancel()">Abbrechen</button>
             </form>
         </div>
+        <template repeat.for="c of resourceData.tags">
+            <img id="comment-tag" src="/images/comment/${c.id}.svg"/>
+        </template>
     </div>
 
     <div class="large-2 cell"></div>
