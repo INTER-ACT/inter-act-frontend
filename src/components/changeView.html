@@ -1,0 +1,26 @@
+<template>
+
+    <template repeat.for="dsc of discussions">
+        <div class="large-3 cell"></div>
+
+        <div class="large-6 cell mainshow">
+            <h4 class="titlecolor">§ ${dsc.title}</h4>
+
+            <div class="grid-x">
+
+                <div class="large-1 cell"></div>
+
+                <div class="large-10 cell showparagraph">
+                    <h5>Gesetz</h5>
+                    <p>${dsc.law_text}</p>
+                    <a route-href="discussion; params.bind: { id: dsc.id }" class="button">zur Diskussion</a>
+                </div>
+
+                <div class="large-1 cell"></div>
+
+            </div>
+        </div>
+        <div class="large-3 cell"></div>
+    </template>
+
+</template>
