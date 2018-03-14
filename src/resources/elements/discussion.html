@@ -16,7 +16,7 @@
                 </div>
                 <div class="large-3 cell">
                     <template repeat.for="s of images">
-                        <img src="/images/corkscrew.svg" height="10px">
+                        <img src="/images/discussion/${s.id}" alt="${s.name}" style="height: 20px"/>
                     </template>
                 </div>
             </div>
@@ -36,14 +36,24 @@
                     <p>${rdata.law_explanation}</p>
 
                     <a click.trigger="commentateBegin()" class="button" if.bind="!hasCommentateBoxOpen">Kommentieren</a>
-                    <a click.trigger="report()" class="button" if.bind="!hasCommentateBoxOpen">Melden</a>
-                    <a class="button" data-open="linkModal" if.bind="!hasCommentateBoxOpen">Teilen</a>
+                    <a click.trigger="amendmentBegin()" class="button" if.bind="!hasAmendmentBoxOpen">Änderung</a>
+                    <a click.trigger="report()" class="button" if.bind="!hasCommentateBoxOpen || !hasAmendmentBoxOpen">Melden</a>
+                    <a class="button" data-open="linkModal" if.bind="!hasCommentateBoxOpen || !hasAmendmentBoxOpen">Teilen</a>
 
                     <div if.bind="hasCommentateBoxOpen">
                         <form>
                             <textarea placeholder="Kommentar" value.bind="replyText"></textarea>
                             <button class="button comment-btn" click.trigger="submitComment()">Antworten</button>
                             <button class="button comment-btn" click.trigger="submitCommentCancel()">Abbrechen</button>
+                        </form>
+                    </div>
+
+                    <div if.bind="hasAmendmentBoxOpen">
+                        <form>
+                            <textarea placeholder="Gesetzestext" value.bind="replyLaw"></textarea>
+                            <textarea placeholder="Erklärung" value.bind="replyStatement"></textarea>
+                            <button class="button comment-btn" click.trigger="submitAmendment()">Änderung vorschlagen</button>
+                            <button class="button comment-btn" click.trigger="submitAmendmentCancel()">Abbrechen</button>
                         </form>
                     </div>
 
