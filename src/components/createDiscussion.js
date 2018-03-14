@@ -7,14 +7,16 @@ import { UserService } from '../services/user-service';
 @inject(Router, AuthService, DiscussionService, UserService)
 export class CreateDiscussion
 {
-    replyTitle: string = '';
-    replyNumber: string = '';
-    replyLaw: string = '';
-    replyStatement: string = '';
+    dTitle: string = '';
+    dExplanation: string = '';
+    dLaw: string = '';
+    dNumber: string = '';
 
     lawTexts: Array = [];
     lawTextsAPIfinished = false;
     lawTextsSelection = null;
+
+    tags: Array = [];
 
     constructor(router: Router, authService: AuthService, discussionService: DiscussionService, userService: UserService)
     {
@@ -25,35 +27,43 @@ export class CreateDiscussion
 
         if (!this.userService.redirectIfNotAdmin())
         {
+            this.discussionService.getAllTags().then(ts =>
+            {
+                ts.forEach(tag =>
+                {
+                    tag.isSeleted = false;
+                    this.tags.push(tag);
+                });
+            });
+
             this.fetchLawTexts();
         }
     }
 
-    report()
+    submitNew()
     {
-        alert('not implemented yet');
-    }
+        let ts = [];
 
-    newDiscussion()
-    {
-        this.discussionService.createDiscussion(this.replyTitle, this.replyNumber, this.replyLaw, this.replyStatement).then(r =>
+        this.tags.forEach(t =>
         {
+            if (t.isSelected)
+            {
+                ts.push(t.id);
+            }
+        });
 
-            this.replyTitle = '';
-            this.replyLaw = '';
-            this.replyStatement = '';
+        this.discussionService.createDiscussion(this.dTitle, this.dNumber, this.dLaw, this.dExplanation, ts).then(r =>
+        {
+            alert('Angelegt.');
+            window.location.reload();
         }).catch(error =>
         {
-            alert('ERROR');
-            console.log(error);
+            error.json().then(js =>
+            {
+                alert('ERROR\n' + js.details);
+                console.log(error);
+            });
         });
-    }
-
-    newDiscussionCancel()
-    {
-        this.replyTitle = '';
-        this.replyLaw = '';
-        this.replyStatement = '';
     }
 
     fetchLawTexts()
@@ -72,7 +82,11 @@ export class CreateDiscussion
     {
         this.discussionService.getLawTextByID(this.lawTextsSelection).then(law =>
         {
-            console.log(law);
+            this.dTitle = law.title;
+            let p = document.createElement('p');
+
+            p.innerHTML = law.content;
+            this.dLaw = p.innerText;
         });
     }
 }

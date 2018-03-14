@@ -59,5 +59,8 @@ export class Header
     updateLogout()
     {
         this.updateLoginStateData();
+
+        // probably not really a good idea, but...
+        window.location.href = '/';
     }
 }
