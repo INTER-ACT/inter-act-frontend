@@ -23,9 +23,6 @@ export class AuthService
     {
         this.baseService = baseService;
         this.router = router;
-        this.onLogin.push(() => this.fetchSelfID().then(() => this.fetchSelfRole()));
-        this.onLogout.push(() => this.removeTokens());
-        this.onLogout.push(() => this.removeUserInfo());
     }
 
     catchBadLogin(promise: Promise)
@@ -149,11 +146,19 @@ export class AuthService
 
     triggerOnLogin(): void
     {
-        this.onLogin.forEach(callback => callback(this));
+        this.fetchSelfID().then(() =>
+        {
+            this.fetchSelfRole().then(() =>
+            {
+                this.onLogin.forEach(callback => callback(this));
+            });
+        });
     }
 
     triggerOnLogout(): void
     {
+        this.removeTokens();
+        this.removeUserInfo();
         this.onLogout.forEach(callback => callback(this));
     }
 }
