@@ -98,6 +98,13 @@
     padding-left: 10px;
 }
 
+#comment-tag{
+    margin-left: 20px;
+    height: 25px;
+    padding-bottom: 10px;
+}
+
+
 #amendent{
     padding-left: 20px;
     color: dimgrey;

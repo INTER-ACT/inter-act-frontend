@@ -15,8 +15,8 @@
                     <h4 class="titlecolor">§${rdata.article} ${rdata.title}</h4>
                 </div>
                 <div class="large-3 cell">
-                    <template repeat.for="s of images">
-                        <img src="/images/discussion/${s.id}" alt="${s.name}" style="height: 20px"/>
+                    <template repeat.for="s of rdata.tags">
+                        <img src="/images/discussion/${s}.svg" style="height: 20px"/>
                     </template>
                 </div>
             </div>
