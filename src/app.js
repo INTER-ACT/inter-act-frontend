@@ -113,6 +113,14 @@ export class App
                 title: 'Rechteverwaltung'
             },
 
+            {
+                route: 'reports',
+                name: 'reports',
+                moduleId: './components/reports',
+                nav: true,
+                title: 'Gemeldete Beiträge'
+            },
+
 
             {
                 route: 'create',
