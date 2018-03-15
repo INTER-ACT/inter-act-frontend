@@ -5,6 +5,8 @@ import { DiscussionService } from '../../services/discussion-service';
 export class AmendmentPreview
 {
     @bindable amendmentId = -1;
+    @bindable discussionId = -1;
+
     @bindable author = {
         id: -1,
         username: 'nobody'

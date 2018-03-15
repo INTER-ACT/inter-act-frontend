@@ -1,5 +1,6 @@
 <template>
-
+    <require from="./amendment-preview"></require>
+    <require from="./comments/comment-host.html"></require>
 
             <div class="large-3 cell"></div>
 
@@ -39,6 +40,24 @@
                             ${a.statement}
                         </div>
                     </div>
+                    <!-- COMMENT -->
+                    <div class="grid-x">
+
+                        <div class="large-10 cell">
+                            <h4>Kommentare</h4>
+                        </div>
+                        <div class="large-2 cell"></div>
+                        <!-- INNERER TEIL -->
+
+                        <template if.bind="comments.length < 1">
+                            <p>Noch keine Kommentare vorhanden</p>
+                        </template>
+
+                        <template repeat.for="c of comments">
+                            <comment-host comment-id.bind="c.id"></comment-host>
+                        </template>
+                        <!-- INNERER TEIL ENDE -->
+                    </div>
 
                 <!-- INNERER TEIL ENDE -->
 
@@ -46,6 +65,8 @@
             <div class="large-3 cell"></div>
 
     </div>
+
+
 
 
 </template>

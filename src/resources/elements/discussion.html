@@ -133,7 +133,7 @@
         <div class="large-3 cell"></div>
         <div class="large-6 cell">
             <template repeat.for="a of amendments">
-                <amendment-preview author.bind="a.author" amendment-id.bind="a.id" changes.bind="a.changes"></amendment-preview>
+                <amendment-preview author.bind="a.author" amendment-id.bind="a.id" discussion-id.bind="rdata.id" changes.bind="a.changes"></amendment-preview>
             </template>
         </div>
         <div class="large-3 cell"></div>

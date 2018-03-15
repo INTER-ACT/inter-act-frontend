@@ -160,10 +160,11 @@ export class App
                 title: 'Kommentar'
             },
             {
-                route: ['amendment'],
+                route: 'amendment/:did/:aid',
                 name: 'amendment',
                 moduleId: './components/amendment',
                 nav: true,
+                href: "#amendment",
                 title: 'Änderungsvorschlag'
             },
             {

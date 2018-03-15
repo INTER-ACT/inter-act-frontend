@@ -5,22 +5,22 @@
         </h5>
         <form>
             <div class="button-group round toggle">
-                <input type="radio" id="r1" name="r-group">
-                <label class="button btn-color" for="r1">fair</label>
-                <input type="radio" id="r2" name="r-group">
-                <label class="button btn-color" for="r2">neutral</label>
-                <input type="radio" id="r3" name="r-group">
-                <label class="button btn-color" for="r3">unfair</label>
+                <input type="radio" id="r1" name="r-group" checked.bind="selectedG1a">
+                <label class="button btn-color" for="r1" click.trigger="sync()">fair</label>
+                <input type="radio" id="r2" name="r-group" checked.bind="selectedG1b">
+                <label class="button btn-color" for="r2" click.trigger="sync()">neutral</label>
+                <input type="radio" id="r3" name="r-group" checked.bind="selectedG1c">
+                <label class="button btn-color" for="r3" click.trigger="sync()">unfair</label>
             </div>
         </form>
         <form>
             <div class="button-group round toggle">
-                <input type="radio" id="r4" name="r-group">
-                <label class="button btn-color" for="r4">zustimmend</label>
-                <input type="radio" id="r5" name="r-group">
-                <label class="button btn-color" for="r5">neutral</label>
-                <input type="radio" id="r6" name="r-group">
-                <label class="button btn-color" for="r6">ablehnend</label>
+                <input type="radio" id="r4" name="r-group2" checked.bind="selectedG2a">
+                <label class="button btn-color" for="r4" click.trigger="sync()">zustimmend</label>
+                <input type="radio" id="r5" name="r-group2" checked.bind="selectedG2b">
+                <label class="button btn-color" for="r5" click.trigger="sync()">neutral</label>
+                <input type="radio" id="r6" name="r-group2" checked.bind="selectedG2c">
+                <label class="button btn-color" for="r6" click.trigger="sync()">ablehnend</label>
             </div>
         </form>
     </div>

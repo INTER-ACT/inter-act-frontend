@@ -33,9 +33,19 @@ export class DiscussionService
         return this.bsSrvc.getIntoJSON('discussions/' + discussionID + '/amendments/' + amendmentID);
     }
 
+    getSubAmendmentById(discussionID: number, amendmentID: number, subamendmentID: number)
+    {
+        return this.bsSrvc.getIntoJSON('discussions/' + discussionID + '/amendments/' + amendmentID + '/subamendments/' + subamendmentID);
+    }
+
     getAmendmentsByDiscussion(discussionID: number)
     {
         return this.bsSrvc.getIntoJSON('discussions/' + discussionID + '/amendments');
+    }
+
+    getSubamendmentsByAmendment(discussionID: number, amendmentID: numbe)
+    {
+        return this.bsSrvc.getIntoJSON('discussions/' + discussionID + '/amendments/' + amendmentID + '/subamendments');
     }
 
     getAllTags(): Promise
@@ -72,6 +82,11 @@ export class DiscussionService
         return this.bsSrvc.getIntoJSON('discussions/' + discussionID + '/comments');
     }
 
+    getCommentsByAmendment(discussionID: number, amendmentID: number)
+    {
+        return this.bsSrvc.getIntoJSON('discussions/' + discussionID + '/amendments/' + amendmentID + '/comments');
+    }
+
     getCommentById(id: number)
     {
         let headers = (this.authService.isLoggedIn()) ? this.authService.createHeadersWithAccessToken() : null;
@@ -87,6 +102,12 @@ export class DiscussionService
     {
         return this.bsSrvc.postIntoJSON('discussions/' + discussionID + '/comments', { content: reply, tags: [1] }, this.authService.createHeadersWithAccessToken());
     }
+
+    commentAmendment(amendmentID: number, reply: string)
+    {
+        return this.bsSrvc.postIntoJSON('discussions/' + amendmentID + '/comments', { content: reply, tags: [2] }, this.authService.createHeadersWithAccessToken());
+    }
+
 
     updateExplanation(discussionID: number, newExplanation: string)
     {
