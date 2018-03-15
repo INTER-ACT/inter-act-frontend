@@ -35,6 +35,50 @@ export class Download
         });
     }
 
+    saveStatsUserActivity()
+    {
+        ++this.isLoading;
+
+        this.discussionService.getScientistStatsUserActivity(this.startDate, this.endDate).then(stats =>
+        {
+            this.saver.saveFile(stats, this.concatFilename('user_activity'));
+            --this.isLoading;
+        });
+    }
+
+    saveStatsRatings()
+    {
+        ++this.isLoading;
+
+        this.discussionService.getScientistStatsRatings(this.startDate, this.endDate).then(stats =>
+        {
+            this.saver.saveFile(stats, this.concatFilename('ratings'));
+            --this.isLoading;
+        });
+    }
+
+    saveStatsCommentRatings()
+    {
+        ++this.isLoading;
+
+        this.discussionService.getScientistStatsCommentRatings(this.startDate, this.endDate).then(stats =>
+        {
+            this.saver.saveFile(stats, this.concatFilename('comment_ratings'));
+            --this.isLoading;
+        });
+    }
+
+    saveStatsObjectActivity()
+    {
+        ++this.isLoading;
+
+        this.discussionService.getScientistStatsObjectActivity(this.startDate, this.endDate).then(stats =>
+        {
+            this.saver.saveFile(stats, this.concatFilename('object_activity'));
+            --this.isLoading;
+        });
+    }
+
     concatFilename(suf: string): string
     {
         return this.startDate + '_' + this.endDate + '_' + suf + '.csv';
