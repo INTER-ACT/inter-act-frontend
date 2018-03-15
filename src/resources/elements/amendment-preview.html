@@ -1,4 +1,5 @@
-<template bindable="amendmentId, author, text">
+<template>
+    <require from="./changes-viewer.html"></require>
 
     <!-- <div class="grid-x">
          <div class="large-3 cell"></div>
@@ -6,7 +7,7 @@
     <div class="mainshow2">
         <div class="grid-x">
             <div class="large-10 cell">
-                <h4 class="titlecolor">${author.name}+++NAME+++</h4>
+                <h4 class="titlecolor">${author.username}</h4>
             </div>
             <div class="large-2 cell"></div>
         </div>
@@ -16,9 +17,10 @@
                 <h5>
                     <b>Erklärung</b>
                 </h5>
-                <p>${text}ve evoweo lweeokew e owenewnwpqmpev br jrogjd few prew r jgrjfejofjer fjjfojfj ew</p>
-                <button class="button" route-href="discussion; amendment.bind: { id: amendmentId }">zum Änderungsvorschlag</button>
-                <button class="button">Melden</button>
+                <p>${reason}</p>
+                <p><changes-viewer changes.bind="changes"></changes-viewer></p>
+                <a class="button" route-href="discussion; params.bind: { id: amendmentId }">zum Änderungsvorschlag</a>
+                <button class="button" click.trigger="report()">Melden</button>
             </div>
             <div class="large-1 cell"></div>
         </div>

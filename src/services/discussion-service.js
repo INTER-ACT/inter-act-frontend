@@ -74,7 +74,8 @@ export class DiscussionService
 
     getCommentById(id: number)
     {
-        return this.bsSrvc.getIntoJSON('comments/' + id);
+        let headers = (this.authService.isLoggedIn()) ? this.authService.createHeadersWithAccessToken() : null;
+        return this.bsSrvc.getIntoJSON('comments/' + id, null, headers);
     }
 
     replyToComment(commentID: number, reply: string)
@@ -214,5 +215,35 @@ export class DiscussionService
     getDiscussionsByTagID(tagID: number)
     {
         return this.bsSrvc.getIntoJSON('discussions', { tag_id: tagID });
+    }
+
+    reportAmendment(amendmentID: number, reason: string)
+    {
+        return this.bsSrvc.post(
+            'reports',
+            {
+                reported_type: 'amendment',
+                item_id: amendmentID,
+                description: reason
+            }
+        );
+    }
+
+    reportComment(commentID: number, reason: string)
+    {
+        return this.bsSrvc.post(
+            'reports',
+            {
+                reported_type: 'comment',
+                item_id: commentID,
+                description: reason
+            }
+        );
+    }
+
+    postVoteForComment(commentID: number, voteUp: boolean)
+    {
+        let val = (voteUp) ? 1 : -1;
+        return this.bsSrvc.put('comments/' + commentID + '/user_rating', { user_rating: val }, this.authService.createHeadersWithAccessToken());
     }
 }

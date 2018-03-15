@@ -49,7 +49,7 @@ export class DiscussionCustomElement
     {
         if (!this.authService.isLoggedIn())
         {
-            $('#plzLogin').foundation('reveal', 'open');
+            alert('Bitte loggen Sie sich ein, um mitdiskutieren zu können...');
             return;
         }
 

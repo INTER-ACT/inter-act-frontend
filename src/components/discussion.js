@@ -1,7 +1,8 @@
 import { inject } from 'aurelia-framework';
 import { DiscussionService } from '../services/discussion-service';
+import { UsernameService } from '../services/username-service';
 
-@inject(DiscussionService)
+@inject(DiscussionService, UsernameService)
 export class Discussion
 {
     notFound: boolean = false;
@@ -17,9 +18,10 @@ export class Discussion
     comments: Array = [];
     amendments: Array = [];
 
-    constructor(discussionService: DiscussionService)
+    constructor(discussionService: DiscussionService, usernameService: UsernameService)
     {
         this.discussionService = discussionService;
+        this.usernameService = usernameService;
     }
 
     activate(args)
@@ -53,37 +55,42 @@ export class Discussion
                         });
                     });
                 });
-                this.discussionService.getAmendmentsByDiscussion(this.id).then(ams =>
+                this.discussionService.getAmendmentsByDiscussion(d.id).then(ams =>
                 {
-                    console.log(ams);
                     ams.data.amendments.forEach(a =>
                     {
-                        this.discussionService.getAmendmentById(this.id, a.id).then(aa =>
+                        //console.log(d.id + ' - ' + a.id);
+                        // seems like API delivers the wrong results
+                        this.discussionService.getAmendmentById(d.id, a.id).then(aa =>
                         {
-                            this.amendments.push(aa);
-                            console.log(aa);
+                            this.usernameService.getUsername(aa.author.id).then(username =>
+                            {
+                                aa.author.username = username;
+                                aa.author.name = username;
+                                this.amendments.push(aa);
+                            });
                         });
                     });
-                });
-            }, error =>
-            {
-                error.json().then(ej =>
+                }, error =>
                 {
-                    if (ej.code == 0) // eslint-disable-line eqeqeq
+                    error.json().then(ej =>
                     {
-                        this.notFound = true;
-                        this.isReady = true;
-                    }
-                    else if (ej.code == 7) // eslint-disable-line eqeqeq
-                    {
-                        this.notPermitted = true;
-                        this.isReady = true;
-                    }
-                    else
-                    {
-                        alert('Fehler: ' + ej.message);
-                        console.log(ej);
-                    }
+                        if (ej.code == 0) // eslint-disable-line eqeqeq
+                        {
+                            this.notFound = true;
+                            this.isReady = true;
+                        }
+                        else if (ej.code == 7) // eslint-disable-line eqeqeq
+                        {
+                            this.notPermitted = true;
+                            this.isReady = true;
+                        }
+                        else
+                        {
+                            alert('Fehler: ' + ej.message);
+                            console.log(ej);
+                        }
+                    });
                 });
             });
     }
