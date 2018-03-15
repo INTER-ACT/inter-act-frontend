@@ -127,7 +127,7 @@ export class UserService
 
     isSelfScientistOrHigher(): boolean
     {
-        return (this.isSelfScientist() || this.isSelfScientistOrHigher());
+        return (this.isSelfScientist() || this.isSelfAdmin());
     }
 
     isSelfUser(): boolean
