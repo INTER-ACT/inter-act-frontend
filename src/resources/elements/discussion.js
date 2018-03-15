@@ -113,7 +113,6 @@ export class DiscussionCustomElement
     {
         this.discussionService.commentDiscussion(this.rdata.id, this.replyText).then(r =>
         {
-            alert(r);
             this.discussionService.getCommentById(r.id).then(c => this.comments.push(c));
             this.replyText = '';
             this.hasCommentateBoxOpen = false;
