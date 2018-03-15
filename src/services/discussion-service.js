@@ -172,4 +172,9 @@ export class DiscussionService
     {
         return this._getScientistStats('statistics/object_activity', begin, end);
     }
+
+    deleteComment(commentID: number)
+    {
+        return this.bsSrvc.delete('comments/' + commentID, this.authService.createHeadersWithAccessToken());
+    }
 }

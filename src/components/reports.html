@@ -1,15 +1,86 @@
 <template>
+    <require from="../resources/elements/author-link.html"></require>
+    <require from="../resources/elements/loading.html"></require>
+    <require from="../resources/elements/changes-viewer.html"></require>
+
     <div class="grid-x">
         <div class="large-3 cell"></div>
         <div class="large-6 cell mainshow2">
             <h2 class="titlecolor">Gemeldete Beiträge</h2>
             <p>Hier können gemeldete Beiträge administriert werden.</p>
-
-            <div class="grid-x">
-                <div repeat.for="r of reportedComments" class="large-12 cell"></div>
-            </div>
-
         </div>
         <div class="large-3 cell"></div>
+
+        <template if.bind="!loadingFinished">
+            <div class="large-3 cell"></div>
+            <div class="large-6 cell mainshow2">
+                <loading what="Meldungen" plural="true"></loading>
+            </div>
+            <div class="large-3 cell"></div>
+        </template>
+
+        <!-- COMMENTS -->
+        <template repeat.for="r of reportedComments">
+            <div class="large-3 cell"></div>
+            <div class="large-6 cell mainshow2">
+                <!--<h3 class="titlecolor" style="text-align: right;">#${r.reportID}</h3>-->
+                <h3 class="titlecolor" style="text-align: right;">Kommentar</h3>
+                <p>
+                    <strong>Gemeldet von:</strong>
+                    <author-link userid.bind="r.reportedBy.id" username.bind="r.reportedBy.username"></author-link>
+                </p>
+                <p>
+                    <strong>Grund:</strong>
+                    <span class="reportReason">${r.reason}</span>
+                </p>
+                <hr/>
+                <p>
+                    <strong>Beitrag von:</strong>
+                    <author-link userid.bind="r.author.id" username.bind="r.author.username"></author-link>
+                </p>
+                <p>
+                    <strong>Inhalt:</strong>
+                    <br/> ${r.content}
+                </p>
+
+                <button class="button" click.trigger="removeSpam(r.reportID, 'comment', r.itemID)">Spam löschen</button>
+                <button class="button" click.trigger="discardReport(r.reportID)">Meldung verwerfen</button>
+            </div>
+            <div class="large-3 cell"></div>
+        </template>
+
+
+        <!-- AMENDMENTS -->
+        <template repeat.for="r of reportedAmendments">
+            <div class="large-3 cell"></div>
+            <div class="large-6 cell mainshow2">
+                <!--<h3 class="titlecolor" style="text-align: right;">#${r.reportID}</h3>-->
+                <h3 class="titlecolor" style="text-align: right;">Änderungsvorschlag</h3>
+
+                <p>
+                    <strong>Gemeldet von:</strong>
+                    <author-link userid.bind="r.reportedBy.id" username.bind="r.reportedBy.username"></author-link>
+                </p>
+                <p>
+                    <strong>Grund:</strong>
+                    <span class="reportReason">${r.reason}</span>
+                </p>
+                <hr/>
+                <p>
+                    <strong>Beitrag von:</strong>
+                    <author-link userid.bind="r.author.id" username.bind="r.author.username"></author-link>
+                </p>
+                <p>
+                    <strong>Inhalt:</strong>
+                    <br/>
+                    <changes-viewer changes.bind="r.changes"></changes-viewer>
+                </p>
+
+                <button class="button" click.trigger="removeSpam(r.reportID, 'amendment', r.href)">Spam löschen</button>
+                <button class="button" click.trigger="discardReport(r.reportID)">Meldung verwerfen</button>
+            </div>
+            <div class="large-3 cell"></div>
+        </template>
+
     </div>
 </template>
