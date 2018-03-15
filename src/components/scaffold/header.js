@@ -10,6 +10,7 @@ export class Header
     isScientist = false;
     isExpert = false;
     isAdmin = false;
+    searchTerm = '';
 
     constructor(router: Router, authService: AuthService, userService: UserService)
     {
@@ -62,5 +63,10 @@ export class Header
 
         // probably not really a good idea, but...
         window.location.href = '/';
+    }
+
+    submitSearch()
+    {
+        this.router.navigateToRoute('search', { term: this.searchTerm });
     }
 }

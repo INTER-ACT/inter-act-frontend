@@ -78,6 +78,13 @@ export class App
                 href: '#user'
             },
             {
+                route: 'description',
+                name: 'description',
+                moduleId: './components/description',
+                nav: true,
+                title: 'Kurzanleitung'
+            },
+            {
                 route: 'settings',
                 name: 'settings',
                 moduleId: './components/settings',
@@ -121,6 +128,22 @@ export class App
                 title: 'Gemeldete Beiträge'
             },
 
+            {
+                route: 'search/:term',
+                name: 'search',
+                moduleId: './components/search',
+                nav: true,
+                href: '#search',
+                title: 'Suche'
+            },
+            {
+                route: 'searchtag/:tagid',
+                name: 'searchtag',
+                moduleId: './components/search-tag',
+                nav: true,
+                href: '#searchtag',
+                title: 'Kategorie'
+            },
 
             {
                 route: 'create',

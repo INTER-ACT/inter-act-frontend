@@ -5,7 +5,7 @@
     <template else>
 
         <div repeat.for="t of tags">
-            <h5 class="titlecolor">${t.name}</h5>
+            <h5 class="titlecolor"><a route-href="route: searchtag; params.bind: { tagid: t.id }">${t.name}</a></h5>
             <p>${t.description}</p>
         </div>
 

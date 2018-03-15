@@ -177,4 +177,24 @@ export class DiscussionService
     {
         return this.bsSrvc.delete('comments/' + commentID, this.authService.createHeadersWithAccessToken());
     }
+
+    _searchFor(term: string, type: string)
+    {
+        return this.bsSrvc.getIntoJSON(
+            'search',
+            {
+                search_term: term,
+                content_type: type
+            });
+    }
+
+    searchForDiscussions(term: string)
+    {
+        return this._searchFor(term, 'discussions', );
+    }
+
+    getDiscussionsByTagID(tagID: number)
+    {
+        return this.bsSrvc.getIntoJSON('discussions', { tag_id: tagID });
+    }
 }

@@ -21,7 +21,7 @@
     margin-left: 20px;
 }
 
-#zahnrad{
+.zahnrad{
     top: 15%;
     -webkit-transform: translateY(15%);
     -moz-transform: translateY(15%);
@@ -186,6 +186,25 @@ footer h4 {
 .comment-btn:hover{
     background-color: #e9300b;
     color: #ffffff;
+    border-color: #e9300b;
+}
+
+.comment-btn:active{
+    background-color: #e9300b;
+    color: #ffffff;
+    border-color: #e9300b;
+}
+
+.comment-btn:target{
+    background-color: #e9300b;
+    color: #ffffff;
+    border-color: #e9300b;
+}
+
+.comment-btn:focus{
+    background-color: #e9300b;
+    color: #ffffff;
+    border-color: #e9300b;
 }
 
 .center-download{
