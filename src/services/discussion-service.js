@@ -119,4 +119,57 @@ export class DiscussionService
     {
         return this.bsSrvc.getIntoJSON('users/' + userID + '/relevant', null, this.authService.createHeadersWithAccessToken());
     }
+
+    getReportedComments()
+    {
+        return this.bsSrvc.getIntoJSON('reports', { type: 'comments' }, this.authService.createHeadersWithAccessToken());
+    }
+
+    getReportedAmendments()
+    {
+        return this.bsSrvc.getIntoJSON('reports', { type: 'amendments' }, this.authService.createHeadersWithAccessToken());
+    }
+
+    getReportedSubamendments()
+    {
+        return this.bsSrvc.getIntoJSON('reports', { type: 'subamendments' }, this.authService.createHeadersWithAccessToken());
+    }
+
+    getReportByID(reportID: number)
+    {
+        return this.bsSrvc.getIntoJSON('reports/' + reportID, null, this.authService.createHeadersWithAccessToken());
+    }
+
+    _getScientistStats(uri: string, begin: string, end: string)
+    {
+        return this.bsSrvc.get(uri, { begin: begin, end: end }, this.authService.createHeadersWithAccessToken()).then(response =>
+        {
+            return response.text();
+        });
+    }
+
+    getScientistStatsOverall(begin: string, end: string)
+    {
+        return this._getScientistStats('statistics', begin, end);
+    }
+
+    getScientistStatsUserActivity(begin: string, end: string)
+    {
+        return this._getScientistStats('statistics/user_activity', begin, end);
+    }
+
+    getScientistStatsRatings(begin: string, end: string)
+    {
+        return this._getScientistStats('statistics/ratings', begin, end);
+    }
+
+    getScientistStatsCommentRatings(begin: string, end: string)
+    {
+        return this._getScientistStats('statistics/comment_ratings', begin, end);
+    }
+
+    getScientistStatsObjectActivity(begin: string, end: string)
+    {
+        return this._getScientistStats('statistics/object_activity', begin, end);
+    }
 }
