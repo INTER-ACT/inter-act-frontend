@@ -87,6 +87,11 @@ export class DiscussionService
         return this.bsSrvc.postIntoJSON('discussions/' + discussionID + '/comments', { content: reply, tags: [1] }, this.authService.createHeadersWithAccessToken());
     }
 
+    updateExplanation(discussionID: number, newExplanation: string)
+    {
+        return this.bsSrvc.patch('discussions/' + discussionID, { law_explanation: newExplanation }, this.authService.createHeadersWithAccessToken());
+    }
+
     createDiscussion(lawTitle: string, lawNumber: string, lawText: string, explanation: string, tags: Array)
     {
         return this.bsSrvc.post(
@@ -103,6 +108,19 @@ export class DiscussionService
     replyToAmendment(amendmentID: number, replyStatement: string, replyLaw: string)
     {
         return this.bsSrvc.postIntoJSON('discussions/' + amendmentID + '/amendments/', { explanation: replyStatement, updated_text: replyLaw, tags: [1] }, this.authService.createHeadersWithAccessToken());
+    }
+
+    submitAmendment(discussionID: number, amendText: string, reason: string, tags: Array)
+    {
+        return this.bsSrvc.postIntoJSON(
+            'discussions/' + discussionID + '/amendments',
+            {
+                updated_text: amendText,
+                explanation: reason,
+                tags: tags
+            },
+            this.authService.createHeadersWithAccessToken()
+        );
     }
 
     getLawTexts()

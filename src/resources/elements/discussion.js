@@ -2,8 +2,9 @@ import { bindable, inject } from 'aurelia-framework';
 import { Author } from '../../models/author';
 import { AuthService } from '../../services/auth-service';
 import { DiscussionService } from '../../services/discussion-service';
+import { UserService } from '../../services/user-service';
 
-@inject(AuthService, DiscussionService)
+@inject(AuthService, DiscussionService, UserService)
 export class DiscussionCustomElement
 {
     @bindable rdata: object;
@@ -21,27 +22,27 @@ export class DiscussionCustomElement
 
     hasCommentateBoxOpen: boolean = false;
     hasAmendmentBoxOpen: boolean = false;
+    amendmentText: string = '';
+    amendmentReason: string = '';
+
+    hasShareBoxOpen: boolean = false;
+    shareLink: string = '';
+    shareCopied: boolean = false;
     replyText: string = '';
+
+    isExpert: boolean = false;
+    isEditingExplanation: boolean = false;
+    explanationEdit: string = '';
 
     images = [];
 
-    constructor(authService: AuthService, discussionService: DiscussionService)
+    constructor(authService: AuthService, discussionService: DiscussionService, userService: UserService)
     {
         this.authService = authService;
         this.discussionService = discussionService;
+        this.userService = userService;
 
-        /*
-
-        this.discussionService.getDiscussions().then(jsonResponse =>
-        {
-            jsonResponse.data.discussions.forEach(d =>
-            {
-                this.discussionService.getDiscussionById(d.id).then(dsc =>
-                {
-                    this.discussions.push(dsc);
-                });
-            });
-        }); */
+        this.isExpert = this.userService.isSelfExpertOrHigher();
     }
 
     commentateBegin()
@@ -55,9 +56,57 @@ export class DiscussionCustomElement
         this.hasCommentateBoxOpen = true;
     }
 
-    report()
+    editExplanation()
     {
-        alert('not implemented yet');
+        this.explanationEdit = this.rdata.law_explanation;
+        this.isEditingExplanation = true;
+    }
+
+    submitExplanation()
+    {
+        this.discussionService.updateExplanation(this.rdata.id, this.explanationEdit).then(() =>
+        {
+            this.rdata.law_explanation = this.explanationEdit;
+            this.isEditingExplanation = false;
+        }).catch(error =>
+        {
+            console.log(error);
+            if (error.status === 500)
+            {
+                alert('Es ist möglicherweise ein bekannter Fehler im Backend aufgetreten.\nDas tut uns leid.\n\n' + error.statusText + '\n\nVersuche Workaround nach dem Bestätigen :)');
+                window.location.reload();
+            }
+            else
+            {
+                alert('Fehler: ' + error.statusText);
+            }
+        });
+    }
+
+    editExplanationCancel()
+    {
+        this.isEditingExplanation = false;
+    }
+
+    shareBegin()
+    {
+        if (this.hasShareBoxOpen)
+        {
+            this.hasShareBoxOpen = false;
+            return;
+        }
+        this.shareCopied = false;
+        this.shareLink = window.location.href;
+        this.hasShareBoxOpen = true;
+    }
+
+    shareCopy()
+    {
+        this.shareLinkBox.select();
+        if (document.execCommand('Copy'))
+        {
+            this.shareCopied = true;
+        }
     }
 
     submitComment()
@@ -81,12 +130,17 @@ export class DiscussionCustomElement
         this.hasCommentateBoxOpen = false;
     }
 
-    submitAmendent()
+    submitAmendment()
     {
-        this.discussionService.replyToAmendment(this.rid, this.replyStatement, this.replyLaw).then(r =>
+        let ts = [];
+        this.rdata.tags.forEach(t =>
         {
-            alert(r);
-            this.discussionService.getAmendmentById(r.id).then(c => this.subamendents.push(c));
+            ts.push(t.id);
+        });
+
+        this.discussionService.submitAmendment(this.rdata.id, this.amendmentText, this.amendmentReason, ts).then(r =>
+        {
+            this.discussionService.getAmendmentById(r.id).then(c => this.amendments.push(c));
         }).catch(error =>
         {
             alert('ERROR');
@@ -96,8 +150,12 @@ export class DiscussionCustomElement
 
     submitAmendmentCancel()
     {
-        replyLaw: string = '';
-        replyStatement: string = '';
         this.hasAmendentBoxOpen = false;
+    }
+
+    amendmentBegin()
+    {
+        this.amendmentText = this.rdata.law_text;
+        this.hasAmendentBoxOpen = true;
     }
 }
