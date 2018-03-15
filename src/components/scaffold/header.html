@@ -62,10 +62,10 @@
                 <ul class="dropdown menu" data-dropdown-menu>
                     <!-- Suchoption -->
                     <li if.bind="isLoggedIn" class="mobile_nav">
-                        <input type="search" placeholder="Search">
+                        <input class="zahnrad" type="search" placeholder="Search" value.bind="searchTerm" />
                     </li>
                     <li if.bind="isLoggedIn" class="mobile_nav">
-                        <button type="button" class="button">Search</button>
+                        <button type="button" class="button" click.trigger="submitSearch()">Search</button>
                     </li>
 
                     <!-- LogIn/Registrierung Button-->
@@ -78,7 +78,7 @@
 
                     <!-- Einstellungszahnrad -->
                     <li class="navbar">
-                        <a id="zahnrad" if.bind="isLoggedIn">
+                        <a class="zahnrad" if.bind="isLoggedIn">
                             <p><i class="fa fa-cog" aria-hidden="false"></i></p>
                         </a>
                         <ul class="menu">

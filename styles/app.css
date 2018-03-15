@@ -21,7 +21,7 @@
     margin-left: 20px;
 }
 
-#zahnrad{
+.zahnrad{
     top: 15%;
     -webkit-transform: translateY(15%);
     -moz-transform: translateY(15%);
