@@ -2,6 +2,7 @@ import { bindable, inject } from 'aurelia-framework';
 import { Author } from '../../models/author';
 import { AuthService } from '../../services/auth-service';
 import { DiscussionService } from '../../services/discussion-service';
+import {UserService} from "../../services/user-service";
 
 @inject(AuthService, DiscussionService, UserService)
 export class AmendmentCustomElement
@@ -99,11 +100,13 @@ export class AmendmentCustomElement
 
     submitAmendment()
     {
-        let ts = [];
+        let ts = [1]; // TODO: fix
         this.rdata.tags.forEach(t =>
         {
             ts.push(t.id);
         });
+
+        console.log(ts);
 
         this.discussionService.submitAmendment(this.rdata.id, this.amendmentText, this.amendmentReason, ts).then(r =>
         {
@@ -117,13 +120,14 @@ export class AmendmentCustomElement
 
     submitAmendmentCancel()
     {
-        this.hasAmendentBoxOpen = false;
+        this.hasAmendmentBoxOpen = false;
     }
 
     amendmentBegin()
     {
-        this.amendmentText = this.rdata.law_text;
-        this.hasAmendentBoxOpen = true;
+        //this.amendmentText = this.rdata.law_text;
+        this.amendmentText = '';
+        this.hasAmendmentBoxOpen = true;
     }
 }
 

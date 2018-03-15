@@ -131,7 +131,7 @@ export class DiscussionCustomElement
 
     submitAmendment()
     {
-        let ts = [];
+        let ts = [1];
         this.rdata.tags.forEach(t =>
         {
             ts.push(t.id);
@@ -139,6 +139,7 @@ export class DiscussionCustomElement
 
         this.discussionService.submitAmendment(this.rdata.id, this.amendmentText, this.amendmentReason, ts).then(r =>
         {
+            window.location.reload();
             this.discussionService.getAmendmentById(r.id).then(c => this.amendments.push(c));
         }).catch(error =>
         {
@@ -149,12 +150,12 @@ export class DiscussionCustomElement
 
     submitAmendmentCancel()
     {
-        this.hasAmendentBoxOpen = false;
+        this.hasAmendmentBoxOpen = false;
     }
 
     amendmentBegin()
     {
         this.amendmentText = this.rdata.law_text;
-        this.hasAmendentBoxOpen = true;
+        this.hasAmendmentBoxOpen = true;
     }
 }

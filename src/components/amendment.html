@@ -1,67 +1,20 @@
 <template>
+    <require from="../resources/elements/amendment" as="amd"></require>
+    <require from="../resources/elements/notfound.html"></require>
+    <require from="../resources/elements/notpermitted.html"></require>
+    <require from="../resources/elements/loading-page.html"></require>
 
-    <div class="grid-x">
-        <template repeat.for="ams of amendments">
-            <div class="large-3 cell"></div>
+    <loading-page what="Änderungsvorschlag" if.bind="!isReady"></loading-page>
 
-            <div class="large-6 cell mainshow2">
+    <template else>
+        <notfound if.bind="notFound" missing-thing="Änderungsvorschlag Nr. ${aid}" missing-thing-title="Änderungsvorschlag"></notfound>
+        <template else>
+            <notpermitted if.bind="notPermitted" noun-marker="die" what="Änderungsvorschlag Nr. ${aid}" more-text="Sie ist archiviert."></notpermitted>
 
-
-                <div class="grid-x">
-                    <div class="large-10 cell">
-
-                        <h4 class="titlecolor">${ams.user}</h4>
-                        <h6 id="amendent">§ ${ams.titel}</h6>
-                    </div>
-                    <div class="large-2 cell"></div>
-                </div>
-                <!-- INNERER TEIL -->
-                <div class="grid-x">
-
-                    <div class="large-1 cell"></div>
-
-                    <div class="large-6 cell">
-                        <h5><b>Änderung</b></h5>
-                        <p>${ams.changes}</p>
-                        <h5><b>Erklärung</b></h5>
-                        <p>${ams.explanation}</p>
-
-                        <a route-href="demo" class="button">Kommentar</a> <a route-href="demo" class="button">Änderungsvorschlag</a>
-                    </div>
-
-                    <div class="large-5 small-12 cell">
-                        <h5><b>Reaktion</b></h5>
-                        <form>
-                            <div class="button-group round toggle">
-                                <input type="radio" id="r1" name="r-group">
-                                <label class="button btn-color" for="r1">fair</label>
-                                <input type="radio" id="r2" name="r-group">
-                                <label class="button btn-color" for="r2">neutral</label>
-                                <input type="radio" id="r3" name="r-group">
-                                <label class="button btn-color" for="r3">unfair</label>
-                            </div>
-                        </form>
-                        <form>
-                            <div class="button-group round toggle">
-                                <input type="radio" id="r4" name="r-group">
-                                <label class="button btn-color" for="r4">zustimmend</label>
-                                <input type="radio" id="r5" name="r-group">
-                                <label class="button btn-color" for="r5">neutral</label>
-                                <input type="radio" id="r6" name="r-group">
-                                <label class="button btn-color" for="r6">ablehnend</label>
-                            </div>
-                        </form>
-                    </div>
-
-
-                </div>
-                <!-- INNERER TEIL ENDE -->
-
-            </div>
-            <div class="large-3 cell"></div>
-
+            <template else>
+                    <amd resourceid.bind="id" rdata.bind="amendmentData" comments.bind="comments" amendments.bind="amendments"></amd>
+            </template>
         </template>
-    </div>
-
+    </template>
 
 </template>

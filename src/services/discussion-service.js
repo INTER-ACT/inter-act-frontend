@@ -132,14 +132,14 @@ export class DiscussionService
         return this.bsSrvc.postIntoJSON('discussions/' + amendmentID + '/amendments/', { explanation: replyStatement, updated_text: replyLaw, tags: [1] }, this.authService.createHeadersWithAccessToken());
     }
 
-    submitAmendment(discussionID: number, amendText: string, reason: string, tags: Array)
+    submitAmendment(discussionID: number, amendText: string, reason: string, tagz: Array)
     {
         return this.bsSrvc.postIntoJSON(
             'discussions/' + discussionID + '/amendments',
             {
                 updated_text: amendText,
                 explanation: reason,
-                tags: tags
+                tags: tagz
             },
             this.authService.createHeadersWithAccessToken()
         );

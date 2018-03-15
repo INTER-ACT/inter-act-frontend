@@ -1,16 +1,22 @@
 import {inject} from 'aurelia-framework';
 import {DiscussionService} from '../services/discussion-service';
+import {UserService} from "../services/user-service";
 
-@inject(DiscussionService)
+@inject(DiscussionService, UserService)
 export class Amendent
 {
     amendments: Array = [];
     comments: Array = [];
+    amendmentData = {
+        changes: [],
+        explanation: ''
+    };
 
 
-    constructor(discussionService: DiscussionService)
+    constructor(discussionService: DiscussionService, userService: UserService)
     {
         this.discussionService = discussionService;
+        this.userService = userService;
     }
 
     activate(args: object)
@@ -43,7 +49,7 @@ export class Amendent
 
         this.discussionService.getAmendmentById(did, aid).then(am =>
         {
-
+            this.amendmentData = am;
 
             this.discussionService.getCommentsByAmendment(did, aid).then(cs =>
             {
