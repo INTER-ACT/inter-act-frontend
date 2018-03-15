@@ -17,8 +17,10 @@
         </div>
 
         <template if.bind="!isReplying">
-            <a click.trigger="replyBegin()" class="button">Kommentieren</a>
+            <a if.bind="!disableComments" click.trigger="replyBegin()" class="button">Kommentieren</a>
             <a click.trigger="report()" class="button">Melden</a>
+            <a click.trigger="voteUp()" class="button">+ (${resourceData.positive_ratings})</a>
+            <a click.trigger="voteDown()" class="button">- (${resourceData.negative_ratings})</a>
         </template>
         <div else>
             <form>

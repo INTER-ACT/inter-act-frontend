@@ -74,7 +74,8 @@ export class DiscussionService
 
     getCommentById(id: number)
     {
-        return this.bsSrvc.getIntoJSON('comments/' + id);
+        let headers = (this.authService.isLoggedIn()) ? this.authService.createHeadersWithAccessToken() : null;
+        return this.bsSrvc.getIntoJSON('comments/' + id, null, headers);
     }
 
     replyToComment(commentID: number, reply: string)
@@ -85,6 +86,11 @@ export class DiscussionService
     commentDiscussion(discussionID: number, reply: string)
     {
         return this.bsSrvc.postIntoJSON('discussions/' + discussionID + '/comments', { content: reply, tags: [1] }, this.authService.createHeadersWithAccessToken());
+    }
+
+    updateExplanation(discussionID: number, newExplanation: string)
+    {
+        return this.bsSrvc.patch('discussions/' + discussionID, { law_explanation: newExplanation }, this.authService.createHeadersWithAccessToken());
     }
 
     createDiscussion(lawTitle: string, lawNumber: string, lawText: string, explanation: string, tags: Array)
@@ -103,6 +109,19 @@ export class DiscussionService
     replyToAmendment(amendmentID: number, replyStatement: string, replyLaw: string)
     {
         return this.bsSrvc.postIntoJSON('discussions/' + amendmentID + '/amendments/', { explanation: replyStatement, updated_text: replyLaw, tags: [1] }, this.authService.createHeadersWithAccessToken());
+    }
+
+    submitAmendment(discussionID: number, amendText: string, reason: string, tags: Array)
+    {
+        return this.bsSrvc.postIntoJSON(
+            'discussions/' + discussionID + '/amendments',
+            {
+                updated_text: amendText,
+                explanation: reason,
+                tags: tags
+            },
+            this.authService.createHeadersWithAccessToken()
+        );
     }
 
     getLawTexts()
@@ -173,6 +192,11 @@ export class DiscussionService
         return this._getScientistStats('statistics/object_activity', begin, end);
     }
 
+    deleteComment(commentID: number)
+    {
+        return this.bsSrvc.delete('comments/' + commentID, this.authService.createHeadersWithAccessToken());
+    }
+
     _searchFor(term: string, type: string)
     {
         return this.bsSrvc.getIntoJSON(
@@ -191,5 +215,35 @@ export class DiscussionService
     getDiscussionsByTagID(tagID: number)
     {
         return this.bsSrvc.getIntoJSON('discussions', { tag_id: tagID });
+    }
+
+    reportAmendment(amendmentID: number, reason: string)
+    {
+        return this.bsSrvc.post(
+            'reports',
+            {
+                reported_type: 'amendment',
+                item_id: amendmentID,
+                description: reason
+            }
+        );
+    }
+
+    reportComment(commentID: number, reason: string)
+    {
+        return this.bsSrvc.post(
+            'reports',
+            {
+                reported_type: 'comment',
+                item_id: commentID,
+                description: reason
+            }
+        );
+    }
+
+    postVoteForComment(commentID: number, voteUp: boolean)
+    {
+        let val = (voteUp) ? 1 : -1;
+        return this.bsSrvc.put('comments/' + commentID + '/user_rating', { user_rating: val }, this.authService.createHeadersWithAccessToken());
     }
 }

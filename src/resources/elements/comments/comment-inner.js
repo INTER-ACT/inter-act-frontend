@@ -9,6 +9,7 @@ export class CommentInner
     isReplying: boolean = false;
     replyText: string = '';
 
+    @bindable disableComments: boolean = false;
     @bindable authorId: number = -1;
     @bindable commentId: number = -1;
     @bindable selfLoading: boolean = true;
@@ -90,6 +91,76 @@ export class CommentInner
         {
             alert('ERROR');
             console.log(error);
+        });
+    }
+
+    report()
+    {
+        let reason = prompt('Warum möchten Sie diesen Beitrag melden?\nBitte geben Sie eine kurze Begründung ein:');
+        if (reason.length > 0)
+        {
+            this.discussionService.reportComment(this.commentId, reason).then(() =>
+            {
+                alert('Meldung gesendeet.\nDanke für deine Mithilfe.');
+            }).catch(error =>
+            {
+                alert('Es ist ein Fehler aufgetreten: ' + error.statusText);
+                console.log(error);
+            });
+        }
+    }
+
+    voteUp()
+    {
+        if (!this.discussionService.authService.isLoggedIn())
+        {
+            alert('Nicht eingeloggt.');
+            return;
+        }
+
+        let r = this.resourceData.user_rating;
+
+        this.discussionService.postVoteForComment(this.commentId, true).then(() =>
+        {
+            if (r === -1)
+            {
+                this.resourceData.negative_ratings--;
+                this.resourceData.positive_ratings++;
+                this.resourceData.user_rating = 1;
+            }
+
+            else if (r === 0 || r === null)
+            {
+                this.resourceData.positive_ratings++;
+                this.resourceData.user_rating = 1;
+            }
+        });
+    }
+
+    voteDown()
+    {
+        if (!this.discussionService.authService.isLoggedIn())
+        {
+            alert('Nicht eingeloggt.');
+            return;
+        }
+
+        let r = this.resourceData.user_rating;
+
+        this.discussionService.postVoteForComment(this.commentId, false).then(() =>
+        {
+            if (r === 1)
+            {
+                this.resourceData.negative_ratings++;
+                this.resourceData.positive_ratings--;
+                this.resourceData.user_rating = -1;
+            }
+
+            else if (r === 0 || r === null)
+            {
+                this.resourceData.negative_ratings++;
+                this.resourceData.user_rating = -1;
+            }
         });
     }
 }

@@ -64,4 +64,9 @@ export class User
             this.userService.getCountAmendmentsByUser(this.id).then(count => this.statistics.amendments = count)
         ]);
     }
+
+    startReport()
+    {
+        alert('Benutzer können nicht gemeldet werden.\nBei Bedarf kontaktieren Sie bitte den Betreiber.');
+    }
 }
