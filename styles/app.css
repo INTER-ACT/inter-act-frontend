@@ -298,6 +298,19 @@ form.childPageSwitch div label {
     margin-left: 5%;
 }
 
+span.reportReason {
+    font-style: italic;
+}
+
+span.insertion {
+    color: #091;
+}
+
+span.removal {
+    color: #e9300b;
+    text-decoration-line: line-through;
+}
+
 comment-host {
     width: 100%;
 }
