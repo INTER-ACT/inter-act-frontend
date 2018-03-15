@@ -1,0 +1,17 @@
+<template bindable="changes">
+    <template repeat.for="c of changes">
+        <template if.bind="c[0] == '~'">
+            <span>${c[1]}</span>
+        </template>
+        <template else>
+            <template if.bind="c[0] == '+'">
+                <span class="insertion">${c[1]}</span>
+            </template>
+            <template else>
+                <template if.bind="c[0] == '-'">
+                    <span class="removal">${c[1]}</span>
+                </template>
+            </template>
+        </template>
+    </template>
+</template>
