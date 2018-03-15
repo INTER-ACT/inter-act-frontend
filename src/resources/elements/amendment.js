@@ -28,6 +28,8 @@ export class AmendmentCustomElement
     @bindable content: string;
     @bindable rid: number;
 
+    @bindable discussionId: number = -1;
+
     hasCommentateBoxOpen: boolean = false;
     hasAmendmentBoxOpen: boolean = false;
     amendmentText: string = '';
@@ -108,8 +110,9 @@ export class AmendmentCustomElement
 
         console.log(ts);
 
-        this.discussionService.submitAmendment(this.rdata.id, this.amendmentText, this.amendmentReason, ts).then(r =>
+        this.discussionService.submitSubamendment(this.discussionId, this.rdata.id, this.amendmentText, this.amendmentReason, ts).then(r =>
         {
+            window.location.reload();
             this.discussionService.getAmendmentById(r.id).then(c => this.amendments.push(c));
         }).catch(error =>
         {

@@ -29,7 +29,7 @@
 
                 <!-- INNERER TEIL -->
                 <div class="grid-x">
-                    <div class="large-7 cell">
+                    <div class="large-6 cell">
                         <h5><b>Änderung</b></h5>
                         <p>
                             <changes-viewer changes.bind="rdata.changes"></changes-viewer>
@@ -38,7 +38,7 @@
                         <p>${rdata.explanation}</p>
                     </div>
                     <div class="large-1 cell"></div>
-                    <div class="large-4 cell">
+                    <div class="large-5 cell">
                         <multiaspect discussion="${id}"></multiaspect>
                     </div>
                     <div class="large-12 cell">
@@ -48,8 +48,8 @@
 
                         <div if.bind="hasAmendmentBoxOpen">
                             <form>
-                                <textarea placeholder="Gesetzestext" value.bind="replyLaw"></textarea>
-                                <textarea placeholder="Erklärung" value.bind="replyStatement"></textarea>
+                                <textarea placeholder="Gesetzestext" value.bind="amendmentText"></textarea>
+                                <textarea placeholder="Erklärung" value.bind="amendmentReason"></textarea>
                                 <button class="button comment-btn" click.trigger="submitAmendment()">Änderung
                                     vorschlagen
                                 </button>
@@ -76,12 +76,22 @@
                 <template repeat.for="c of comments">
                     <comment-host comment-id.bind="c.id"></comment-host>
                 </template>
+
                 <!-- INNERER TEIL ENDE -->
             </div>
 
             <!-- INNERER TEIL ENDE -->
 
 
+        </div>
+        <div class="large-3 cell"></div>
+
+
+        <div class="large-3 cell"></div>
+        <div class="large-6 cell">
+            <template repeat.for="a of amendments">
+                <amendment-preview author.bind="a.author" amendment-id.bind="a.id" discussion-id.bind="rdata.id" changes.bind="a.changes"></amendment-preview>
+            </template>
         </div>
         <div class="large-3 cell"></div>
 

@@ -145,6 +145,19 @@ export class DiscussionService
         );
     }
 
+    submitSubamendment(discussionID: number, amendmentID: number, amendText: string, reason: string, tagz: Array)
+    {
+        return this.bsSrvc.postIntoJSON(
+            'discussions/' + discussionID + '/amendments/' + amendmentID + '/subamendments',
+            {
+                updated_text: amendText,
+                explanation: reason,
+                tags: tagz
+            },
+            this.authService.createHeadersWithAccessToken()
+        );
+    }
+
     getLawTexts()
     {
         return this.bsSrvc.getIntoJSON('law_texts', null, this.authService.createHeadersWithAccessToken());
