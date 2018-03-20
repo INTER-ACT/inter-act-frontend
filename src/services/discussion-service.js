@@ -251,28 +251,27 @@ export class DiscussionService
         return this.bsSrvc.getIntoJSON('discussions', { tag_id: tagID });
     }
 
-    reportAmendment(amendmentID: number, reason: string)
+    _reportReportable(reportableType: string, reportableID: number, reason: string)
     {
         return this.bsSrvc.post(
             'reports',
             {
-                reported_type: 'amendment',
-                item_id: amendmentID,
+                reported_type: reportableType,
+                reportable_id: reportableID,
                 description: reason
-            }
+            },
+            this.authService.createHeadersWithAccessToken()
         );
+    }
+
+    reportAmendment(amendmentID: number, reason: string)
+    {
+        return this._reportReportable('amendment', amendmentID, reason);
     }
 
     reportComment(commentID: number, reason: string)
     {
-        return this.bsSrvc.post(
-            'reports',
-            {
-                reported_type: 'comment',
-                item_id: commentID,
-                description: reason
-            }
-        );
+        return this._reportReportable('comment', commentID, reason);
     }
 
     postVoteForComment(commentID: number, voteUp: boolean)
