@@ -31,6 +31,10 @@
     font-size: 1.2em;
     margin-left: 20px;
 }
+.responsive-img {
+    height: auto;
+    max-width: 100%;
+}
 
 .navbar-admin a {
     top: 80%;
@@ -280,6 +284,10 @@ form.childPageSwitch div label {
     font-style: italic;
 }*/
 
+.navMultifunction ul {
+    display: flex;
+}
+
 .userProfile button.reportButton {
     background: #e9300b;
     float: right;
@@ -453,7 +461,7 @@ menu-icon {
 
 
 
-@media screen and (max-width: 800px)
+@media screen and (max-width: 1600px)
 {
     .mobile_nav {
         display: none;
@@ -465,6 +473,17 @@ menu-icon {
 
     .mobile_footer_bold{
         font-weight: bolder;
+    }
+    .mobile_vertical {
+        -webkit-flex-wrap: nowrap;
+        -ms-flex-wrap: nowrap;
+        flex-wrap: nowrap;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -webkit-flex-direction: column;
+        -ms-flex-direction: column;
+        flex-direction: column;
+        text-align: center;
     }
 
     .navbar a {
