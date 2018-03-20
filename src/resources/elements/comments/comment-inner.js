@@ -96,8 +96,10 @@ export class CommentInner
 
     report()
     {
+        /* eslint-disable no-alert */
         let reason = prompt('Warum möchten Sie diesen Beitrag melden?\nBitte geben Sie eine kurze Begründung ein:');
-        if (reason.length > 0)
+        console.log(reason);
+        if (reason && reason.length > 0)
         {
             this.discussionService.reportComment(this.commentId, reason).then(() =>
             {
@@ -108,6 +110,7 @@ export class CommentInner
                 console.log(error);
             });
         }
+        /* eslint-enable no-alert */
     }
 
     voteUp()
