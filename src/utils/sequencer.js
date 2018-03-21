@@ -11,7 +11,7 @@ export class Sequencer
 
     next()
     {
-        return (this._counter += this.step);
+        return (this._counter += this._step);
     }
 
     previous()
