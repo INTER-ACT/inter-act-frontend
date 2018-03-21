@@ -1,9 +1,15 @@
 <template>
+    <require from="./multiaspect-aspect"></require>
+
+
     <div class="large-5 small-12 cell">
         <h5>
             <b>Reaktion</b>
         </h5>
-        <form>
+
+        <multiaspect-aspect repeat.for="aspect of aspects" aspect.bind="aspect.aspect" changed.bind="aspectChanged"></multiaspect-aspect>
+
+        <!--<form>
             <div class="button-group round toggle">
                 <input type="radio" id="r1" name="r-group" checked.bind="selectedG1a">
                 <label class="button btn-color" for="r1" click.trigger="sync()">fair</label>
@@ -22,6 +28,6 @@
                 <input type="radio" id="r6" name="r-group2" checked.bind="selectedG2c">
                 <label class="button btn-color" for="r6" click.trigger="sync()">ablehnend</label>
             </div>
-        </form>
+        </form>-->
     </div>
 </template>
