@@ -66,7 +66,7 @@ export class MultiaspectCustomElement
             aspect.aspect[0].name = name;
             aspect.aspect[0].count = mar.total_rating['aspect' + i];
 
-            if (mar.user_rating['aspect' + i] > 0)
+            if (this.discussionService.authService.isLoggedIn() && mar.user_rating['aspect' + i] > 0)
             {
                 aspect.aspect[0].selected = true;
             }
@@ -81,7 +81,7 @@ export class MultiaspectCustomElement
                 aspect.aspect[2].name = name2;
                 aspect.aspect[2].count = mar.total_rating['aspect' + i];
 
-                if (mar.user_rating['aspect' + i] > 0)
+                if (this.discussionService.authService.isLoggedIn() && mar.user_rating['aspect' + i] > 0)
                 {
                     aspect.aspect[2].selected = true;
                 }
