@@ -1,0 +1,98 @@
+<template>
+    <div class="title-bar change-header-color" data-responsive-toggle="nav-menu" data-hide-for="xlarge">
+        <button class="burger-icon" type="button" data-toggle="nav-menu"><i class="fas fa-bars titlecolor"></i></button>
+        <div class="title-bar-title center-logo">
+            <a route-href="home">
+                <img src="images/INTER-ACT.png" height="5px"/>
+            </a>
+        </div>
+    </div>
+
+    <div class="top-bar" id="nav-menu">
+        <div class="top-bar-left" id="topLeft">
+            <ul class="dropdown menu mobile_vertical" data-dropdown-menu>
+                <li class="mobile_nav">
+                    <a route-href="home">
+                        <img class="responsive-img" src="images/INTER-ACT.png"/>
+                    </a>
+                </li>
+                <li if.bind="isLoggedIn" class="navbarer"><a route-href="dashboard">Dashboard</a></li>
+                <li class="navbarer"><a route-href="groups">Diskussionen</a></li>
+                <li class="navbarer">
+                    <a href="#" if.bind="isAdmin || isScientist">Funktionen</a>
+                    <ul data-options="align:right" class="menu vertical" id="center-drop">
+
+                        <template if.bind="isAdmin">
+                            <li class="navbarer">
+                                <a route-href="create">Neu anlegen</a>
+                            </li>
+                            <li class="navbarer">
+                                <a route-href="reports">Meldungen</a>
+                            </li>
+                            <li class="navbarer">
+                                <a route-href="download">Downloads</a>
+                            </li>
+                            <li class="navbarer">
+                                <a route-href="elevate">Rechteverwaltung</a>
+                            </li>
+                        </template>
+
+                        <template if.bind="isScientist">
+                            <li class="navbarer">
+                                <a route-href="download">Downloads</a>
+                            </li>
+                        </template>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <div class="top-bar-right">
+            <ul class="dropdown menu searcher clearfix float-center" data-dropdown-menu>
+                <template if.bind="isLoggedIn">
+                    <li class="float-left">
+                        <div class="input-group">
+                            <input class="input-group-field" type="search">
+                            <div class="input-group-button">
+                                <input type="button" class="button" value="Search">
+                            </div>
+                        </div>
+                    </li>
+                </template>
+
+                <li class="navbar float-right" if.bind="isLoggedIn">
+                    <a class="zahnrad">
+                        <p><i class="fa fa-cog" aria-hidden="false"></i></p>
+                    </a>
+                    <ul class=" dropdown menu" data-dropdown-menu>
+                        <li>
+                            <a route-href="settings" id="nav-spacer">Einstellungen</a>
+                        </li>
+                        <li>
+                            <a click.trigger="submitLogout()">Abmelden</a>
+                        </li>
+                    </ul>
+                </li>
+
+                <!-- LogIn/Registrierung Button-->
+                <li if.bind="!isLoggedIn">
+                    <button type="button" class="button center-buttons" click.trigger="gotoLogin()">Anmelden
+                    </button>
+                </li>
+                <li if.bind="!isLoggedIn" id="nav-button">
+                    <button type="button" class="button center-buttons" click.trigger="gotoSignup()">Registrieren
+                    </button>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <script src="js/vendor/jquery.js"></script>
+    <script src="js/vendor/what-input.js"></script>
+    <script src="js/vendor/foundation.js"></script>
+    <script src="js/app.js"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/solid.js"
+            integrity="sha384-+Ga2s7YBbhOD6nie0DzrZpJes+b2K1xkpKxTFFcx59QmVPaSA8c7pycsNaFwUK6l"
+            crossorigin="anonymous"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/fontawesome.js"
+            integrity="sha384-7ox8Q2yzO/uWircfojVuCQOZl+ZZBg2D2J5nkpLqzH1HY0C1dHlTKIbpRz/LG23c"
+            crossorigin="anonymous"></script>
+</template>

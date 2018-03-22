@@ -21,15 +21,57 @@
     margin-left: 20px;
 }
 
+.navbarer {
+    top: 30%;
+    -webkit-transform: translateY(30%);
+    -moz-transform: translateY(30%);
+    -ms-transform: translateY(30%);
+    -o-transform: translateY(30%);
+    transform: translateY(30%);
+    /*font-size: 1.2em;*/
+    margin-left: 20px;
+
+    /*top: 80%;
+    -webkit-transform: translateY(80%);
+    -moz-transform: translateY(80%);
+    -ms-transform: translateY(80%);
+    -o-transform: translateY(80%);
+    transform: translateY(80%);
+    font-size: 1.2em;
+    margin-left: 20px;*/
+}
+
 .zahnrad{
     top: 15%;
-    -webkit-transform: translateY(15%);
+        -webkit-transform: translateY(15%);
+        -moz-transform: translateY(15%);
+        -ms-transform: translateY(15%);
+        -o-transform: translateY(15%);
+        transform: translateY(15%);
+    font-size: 1.2em;
+    margin-left: 20px;
+    padding-top: 2rem;
+}
+
+#topLeft{
+z-index: 100;
+}
+
+.searcher{
+    top: 15%;
+    /*-webkit-transform: translateY(15%);
     -moz-transform: translateY(15%);
     -ms-transform: translateY(15%);
     -o-transform: translateY(15%);
-    transform: translateY(15%);
+    transform: translateY(15%); */
     font-size: 1.2em;
     margin-left: 20px;
+    padding-top: 2rem;
+}
+
+.responsive-img {
+    height: auto;
+    max-width: 100%;
 }
 
 .navbar-admin a {
@@ -212,6 +254,7 @@ footer h4 {
 
 }
 
+
 /*
 #################################################
 REAKTIONS BUTTONS
@@ -280,6 +323,10 @@ form.childPageSwitch div label {
     font-style: italic;
 }*/
 
+.navMultifunction ul {
+    display: flex;
+}
+
 .userProfile button.reportButton {
     background: #e9300b;
     float: right;
@@ -299,10 +346,6 @@ form.childPageSwitch div label {
 
 .center-logo{
     margin-left: auto;
-}
-
-.change-header-color{
-    background-color: #f6f6f6;
 }
 
 .top-bar{
@@ -334,16 +377,23 @@ comment-host {
     width: 100%;
 }
 
-menu-icon {
-    -webkit-box-shadow: 0 10px 0 1px #1468a0, 0 16px 0 1px #1468a0, 0 22px 0 1px #1468a0;
-    box-shadow: 0px 10px 0px 1px #1468a0, 0px 16px 0px 1px #1468a0, 0px 22px 0px 1px #1468a0;
+.burger-icon {
+    color: black;
+    font-size: 1.5rem;
 }
 
-@media screen and (max-width: 640px)
+@media screen and (max-width: 1200px )
 {
     .mobile_nav {
         display: none;
         height: 0;
+    }
+
+    #center-drop{
+        /*top: 100%;*/
+        left: 50%;
+        right: 50%;
+        transform: translateX(-50%);
     }
 
     .mobile_footer{
@@ -380,9 +430,30 @@ menu-icon {
         -moz-transform: translateY(-40%);
         -ms-transform: translateY(-40%);
         -o-transform: translateY(-40%);
-        transform: translateY(-40%);
+        transform: translateY(-10%);
         font-size: 1.2em;
         margin-left: 5px;
+    }
+
+
+    .navbarer {
+        top: 30%;
+        -webkit-transform: translateY(30%);
+        -moz-transform: translateY(30%);
+        -ms-transform: translateY(30%);
+        -o-transform: translateY(30%);
+        transform: translateY(30%);
+        font-size: 1em;
+        margin-left: 10px;
+
+        /*top: 80%;
+        -webkit-transform: translateY(80%);
+        -moz-transform: translateY(80%);
+        -ms-transform: translateY(80%);
+        -o-transform: translateY(80%);
+        transform: translateY(80%);
+        font-size: 1.2em;
+        margin-left: 20px;*/
     }
 
     .navbar-admin a {
@@ -396,6 +467,7 @@ menu-icon {
         margin-left: 5px;
     }
 
+
     .navbar-sozi a {
         top: -40%;
         -webkit-transform: translateY(-40%);
@@ -407,6 +479,17 @@ menu-icon {
         margin-left: 1px;
         padding: .2rem 0.7rem;
     }
+    .title-bar {
+        background-color: #f6f6f6;
+    }
+    .menu-icon::after {
+        /* the block itself, the first line */
+        background: #fecf0f;
+        /* middle and bottom */
+        box-shadow: 0 7px 0 #fecf0f, 0 14px 0 #fecf0f;
+        /* respect WebKit */
+        -webkit-box-shadow: 0 7px 0 #fecf0f, 0 14px 0 #fecf0f;
+    }
 
     #zahnrad{
         top: -10%;
@@ -416,111 +499,16 @@ menu-icon {
         -o-transform: translateY(-10%);
         transform: translateY(-10%);
         font-size: 1.2em;
-        
+
     }
     #zahnrad p {
         text-align: center !important;
     }
 
-#nav-spacer{
-    margin-top: 30px;
-}
-
-    .center-buttons{
-        margin-left: 85%;
-        padding: .7rem 1rem;
-    }
-
-
-    body{
-        padding-bottom: 470px;
-    }
-
-    .navbar i {
-        transform: translateY(25%);
-        size: 2em;
-    }
-
-    form.authForm input, form.authForm fieldset label, .settingsPage section input {
-        max-width: 100%;
-    }
-
-    .elevatePage ul li {
-        border-bottom: 1px solid #1468a0;
-        margin-bottom: 5px;
-    }
-}
-
-
-
-@media screen and (max-width: 800px)
-{
-    .mobile_nav {
-        display: none;
-    }
-
-    .mobile_footer{
+    #nav-spacer{
         margin-top: 30px;
     }
 
-    .mobile_footer_bold{
-        font-weight: bolder;
-    }
-
-    .navbar a {
-        /*top: -15%;
-        -webkit-transform: translateY(-15%);
-        -moz-transform: translateY(-15%);
-        -ms-transform: translateY(-15%);
-        -o-transform: translateY(-15%);
-        transform: translateY(-15%);
-        font-size: 1.2em;
-        margin-left: 5px;*/
-
-        top: -40%;
-        -webkit-transform: translateY(-40%);
-        -moz-transform: translateY(-40%);
-        -ms-transform: translateY(-40%);
-        -o-transform: translateY(-40%);
-        transform: translateY(-40%);
-        font-size: 1.2em;
-        margin-left: 5px;
-    }
-
-    .navbar-admin a {
-        top: -40%;
-        -webkit-transform: translateY(-40%);
-        -moz-transform: translateY(-40%);
-        -ms-transform: translateY(-40%);
-        -o-transform: translateY(-40%);
-        transform: translateY(-40%);
-        font-size: 1.2em;
-        margin-left: 5px;
-    }
-
-    .navbar-sozi a {
-        top: -40%;
-        -webkit-transform: translateY(-40%);
-        -moz-transform: translateY(-40%);
-        -ms-transform: translateY(-40%);
-        -o-transform: translateY(-40%);
-        transform: translateY(-40%);
-        font-size: 1.2em;
-        margin-left: 1px;
-        padding: .2rem 0.7rem;
-    }
-
-    #zahnrad{
-        top: -10%;
-        -webkit-transform: translateY(-10%);
-        -moz-transform: translateY(-10%);
-        -ms-transform: translateY(-10%);
-        -o-transform: translateY(-10%);
-        transform: translateY(-10%);
-        font-size: 1.2em;
-        margin-left: 20px;
-    }
-
     .center-buttons{
         margin-left: 85%;
         padding: .7rem 1rem;
@@ -545,3 +533,110 @@ menu-icon {
         margin-bottom: 5px;
     }
 }
+
+
+
+@media screen and (min-width: 1020px )
+{
+/*
+.mobile_nav {
+    display: none;
+}
+
+.mobile_footer{
+    margin-top: 30px;
+}
+
+.mobile_footer_bold{
+    font-weight: bolder;
+}
+.mobile_vertical {
+    -webkit-flex-wrap: nowrap;
+    -ms-flex-wrap: nowrap;
+    flex-wrap: nowrap;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    text-align: center;
+}
+
+.navbar a {
+    /*top: -15%;
+    -webkit-transform: translateY(-15%);
+    -moz-transform: translateY(-15%);
+    -ms-transform: translateY(-15%);
+    -o-transform: translateY(-15%);
+    transform: translateY(-15%);
+    font-size: 1.2em;
+    margin-left: 5px;
+
+    top: -40%;
+    -webkit-transform: translateY(-40%);
+    -moz-transform: translateY(-40%);
+    -ms-transform: translateY(-40%);
+    -o-transform: translateY(-40%);
+    transform: translateY(-40%);
+    font-size: 1.2em;
+    margin-left: 5px;
+}
+
+.navbar-admin a {
+    top: -40%;
+    -webkit-transform: translateY(-40%);
+    -moz-transform: translateY(-40%);
+    -ms-transform: translateY(-40%);
+    -o-transform: translateY(-40%);
+    transform: translateY(-40%);
+    font-size: 1.2em;
+    margin-left: 5px;
+}
+
+.navbar-sozi a {
+    top: -40%;
+    -webkit-transform: translateY(-40%);
+    -moz-transform: translateY(-40%);
+    -ms-transform: translateY(-40%);
+    -o-transform: translateY(-40%);
+    transform: translateY(-40%);
+    font-size: 1.2em;
+    margin-left: 1px;
+    padding: .2rem 0.7rem;
+}
+
+#zahnrad{
+    top: -10%;
+    -webkit-transform: translateY(-10%);
+    -moz-transform: translateY(-10%);
+    -ms-transform: translateY(-10%);
+    -o-transform: translateY(-10%);
+    transform: translateY(-10%);
+    font-size: 1.2em;
+    margin-left: 20px;
+}
+
+.center-buttons{
+    margin-left: 85%;
+    padding: .7rem 1rem;
+}
+
+
+body{
+    padding-bottom: 470px;
+}
+
+.navbar i {
+    transform: translateY(25%);
+    size: 2em;
+}
+
+form.authForm input, form.authForm fieldset label, .settingsPage section input {
+    max-width: 100%;
+}
+
+.elevatePage ul li {
+    border-bottom: 1px solid #1468a0;
+    margin-bottom: 5px;
+}
+}*/

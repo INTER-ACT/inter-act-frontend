@@ -1,21 +1,21 @@
 <template>
     <div>
-        <div class="title-bar change-header-color" data-responsive-toggle="responsive-menu" data-hide-for="large">
+        <div class="title-bar change-header-color" data-responsive-toggle="responsive-menu" data-hide-for="xxlarge">
             <button class="menu-icon" id="buttonstyler" type="button" data-toggle="responsive-menu">☰</button>
             <div class="title-bar-title center-logo">
                 <a route-href="home">
-                    <img src="images/INTER-ACT.png" height="5px" />
+                    <img src="images/INTER-ACT.png" height="5px"/>
                 </a>
             </div>
         </div>
 
         <div class="top-bar" id="responsive-menu">
             <div class="top-bar-left">
-                <ul class="dropdown menu mobile_vertical" data-dropdown-menu>
+                <ul class="dropdown menu mobile_vertical navMultifunction" data-dropdown-menu>
 
                     <li class="mobile_nav">
                         <a route-href="home">
-                            <img src="images/INTER-ACT.png" />
+                            <img class="responsive-img" src="images/INTER-ACT.png"/>
                         </a>
                     </li>
                     <!-- wenn angemeldet -->
@@ -58,22 +58,26 @@
                     </template>
                 </ul>
             </div>
-            <div class="top-bar-right">
+            <div class="top-bar-right navMultifunction">
                 <ul class="dropdown menu" data-dropdown-menu>
                     <!-- Suchoption -->
-                    <li if.bind="isLoggedIn" class="mobile_nav">
-                        <input class="zahnrad" type="search" placeholder="Search" value.bind="searchTerm" />
-                    </li>
-                    <li if.bind="isLoggedIn" class="mobile_nav">
-                        <button type="button" class="button" click.trigger="submitSearch()">Search</button>
-                    </li>
+                    <template if.bind="isLoggedIn">
+                        <li class="mobile_nav">
+                            <input class="" type="search" placeholder="Search" value.bind="searchTerm"/>
+                        </li>
+                        <li class="mobile_nav">
+                            <button type="button" class="button" click.trigger="submitSearch()">Search</button>
+                        </li>
+                    </template>
 
                     <!-- LogIn/Registrierung Button-->
                     <li if.bind="!isLoggedIn">
-                        <button type="button" class="button center-buttons" click.trigger="gotoLogin()">Anmelden</button>
+                        <button type="button" class="button center-buttons" click.trigger="gotoLogin()">Anmelden
+                        </button>
                     </li>
                     <li if.bind="!isLoggedIn" id="nav-button">
-                        <button type="button" class="button center-buttons" click.trigger="gotoSignup()">Registrieren</button>
+                        <button type="button" class="button center-buttons" click.trigger="gotoSignup()">Registrieren
+                        </button>
                     </li>
 
                     <!-- Einstellungszahnrad -->
