@@ -80,19 +80,30 @@ export class MultiaspectAspect
             return;
         }
 
+        let oldSelection = this.selectedAspect2;
+        if (oldSelection.val !== null)
+        {
+            --oldSelection.count;
+        }
+
+        this.selectedAspect2 = this.selectedAspect;
+        this.selectedAspect.selected = true;
+
+        if (this.selectedAspect.count > -1)
+        {
+            ++this.selectedAspect.count;
+        }
+
+        this.aspect.forEach(a =>
+        {
+            if (a !== this.selectedAspect)
+            {
+                a.selected = false;
+            }
+        });
+
         if (this.changed)
         {
-            this.selectedAspect2 = this.selectedAspect;
-            this.selectedAspect.selected = true;
-
-            this.aspect.forEach(a =>
-            {
-                if (a !== this.selectedAspect)
-                {
-                    a.selected = false;
-                }
-            });
-
             this.changed();
         }
     }

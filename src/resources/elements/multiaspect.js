@@ -25,7 +25,6 @@ export class MultiaspectCustomElement
     {
         this.discussionService.getMultiAspectRating(this.resourceHref).then(mar =>
         {
-            console.log(mar);
             this.discussionService.getAspectCount().then(count =>
             {
                 this.loadAspect(1, count, mar).then(() =>
@@ -67,14 +66,29 @@ export class MultiaspectCustomElement
             aspect.aspect[0].name = name;
             aspect.aspect[0].count = mar.total_rating['aspect' + i];
 
+            if (mar.user_rating['aspect' + i] > 0)
+            {
+                aspect.aspect[0].selected = true;
+            }
+
             aspect.aspect[1].val = null;
             aspect.aspect[1].name = 'neutral';
+            aspect.aspect[1].selected = false;
 
             return this.discussionService.getAspectName('aspect' + (++i)).then(name2 =>
             {
                 aspect.aspect[2].val = 'aspect' + i;
                 aspect.aspect[2].name = name2;
                 aspect.aspect[2].count = mar.total_rating['aspect' + i];
+
+                if (mar.user_rating['aspect' + i] > 0)
+                {
+                    aspect.aspect[2].selected = true;
+                }
+                else if (!aspect.aspect[0].selected)
+                {
+                    aspect.aspect[1].selected = true;
+                }
 
                 this.aspects.push(aspect);
 
