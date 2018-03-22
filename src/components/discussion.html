@@ -12,9 +12,7 @@
             <notpermitted if.bind="notPermitted" noun-marker="die" what="Diskussion Nr. ${id}" more-text="Sie ist archiviert."></notpermitted>
 
             <template else>
-                <div class="grid-x">
                     <dsc resourceid.bind="id" rdata.bind="discussionData" comments.bind="comments" amendments.bind="amendments"></dsc>
-                </div>
             </template>
         </template>
     </template>
