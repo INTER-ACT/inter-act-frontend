@@ -96,17 +96,17 @@ export class DiscussionService
 
     replyToComment(commentID: number, reply: string)
     {
-        return this.bsSrvc.postIntoJSON('comments/' + commentID + '/comments', { content: reply, tags: [1] }, this.authService.createHeadersWithAccessToken());
+        return this.bsSrvc.postIntoJSON('comments/' + commentID + '/comments', { content: reply, tags: [] }, this.authService.createHeadersWithAccessToken());
     }
 
     commentDiscussion(discussionID: number, reply: string)
     {
-        return this.bsSrvc.postIntoJSON('discussions/' + discussionID + '/comments', { content: reply, tags: [1] }, this.authService.createHeadersWithAccessToken());
+        return this.bsSrvc.postIntoJSON('discussions/' + discussionID + '/comments', { content: reply, tags: [] }, this.authService.createHeadersWithAccessToken());
     }
 
     commentAmendment(amendmentID: number, reply: string)
     {
-        return this.bsSrvc.postIntoJSON('discussions/' + amendmentID + '/comments', { content: reply, tags: [2] }, this.authService.createHeadersWithAccessToken());
+        return this.bsSrvc.postIntoJSON('discussions/' + amendmentID + '/comments', { content: reply, tags: [] }, this.authService.createHeadersWithAccessToken());
     }
 
 
@@ -130,7 +130,7 @@ export class DiscussionService
 
     replyToAmendment(amendmentID: number, replyStatement: string, replyLaw: string)
     {
-        return this.bsSrvc.postIntoJSON('discussions/' + amendmentID + '/amendments/', { explanation: replyStatement, updated_text: replyLaw, tags: [1] }, this.authService.createHeadersWithAccessToken());
+        return this.bsSrvc.postIntoJSON('discussions/' + amendmentID + '/amendments/', { explanation: replyStatement, updated_text: replyLaw, tags: [] }, this.authService.createHeadersWithAccessToken());
     }
 
     submitAmendment(discussionID: number, amendText: string, reason: string, tagz: Array)
