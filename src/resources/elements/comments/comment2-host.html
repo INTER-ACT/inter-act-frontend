@@ -1,10 +1,11 @@
 <template bindable="commentId">
     <require from="./comment-inner"></require>
     <require from="./comment3-host.html"></require>
+    <require from="../../value-converters/sort"></require>
 
     <comment-inner comment-id.bind="commentId" resource-data.two-way="commentData"></comment-inner>
 
     <div class="replyCommentsHost">
-        <comment3-host repeat.for="c of commentData.comments" comment-id.bind="c.id"></comment3-host>
+        <comment3-host repeat.for="c of commentData.comments | sort:'created_at':'ascending'" comment-id.bind="c.id"></comment3-host>
     </div>
 </template>

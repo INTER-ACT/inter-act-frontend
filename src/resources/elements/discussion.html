@@ -2,6 +2,7 @@
     <require from="./amendment-preview"></require>
     <require from="./comments/comment-host.html"></require>
     <require from="./multiaspect"></require>
+    <require from="../value-converters/sort"></require>
 
     <div class="grid-x">
         <div class="large-3 small-12 cell"></div>
@@ -84,8 +85,7 @@
                     </div>
                 </div>
 
-                <multiaspect discussion="${id}"></multiaspect>
-
+                <multiaspect resource-href="discussions/${rdata.id}"></multiaspect>
 
             </div>
             <!-- INNERER TEIL ENDE -->
@@ -105,7 +105,7 @@
                     <p>Noch keine Kommentare vorhanden</p>
                 </template>
 
-                <template repeat.for="c of comments">
+                <template repeat.for="c of comments | sort:'created_at':'descending'">
                     <comment-host comment-id.bind="c.id"></comment-host>
                 </template>
                 <!-- INNERER TEIL ENDE -->

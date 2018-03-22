@@ -6,6 +6,7 @@ import { AuthService } from './auth-service';
 export class DiscussionService
 {
     _tags: Array = [];
+    _aspectNames: object = null;
 
     constructor(bsSrvc: BaseService, authService: AuthService)
     {
@@ -89,7 +90,7 @@ export class DiscussionService
 
     getCommentById(id: number)
     {
-        let headers = (this.authService.isLoggedIn()) ? this.authService.createHeadersWithAccessToken() : null;
+        let headers = (this.authService.isLoggedIn()) ? this.authService.createHeadersWithAccessToken() : {};
         return this.bsSrvc.getIntoJSON('comments/' + id, null, headers);
     }
 
@@ -278,5 +279,50 @@ export class DiscussionService
     {
         let val = (voteUp) ? 1 : -1;
         return this.bsSrvc.put('comments/' + commentID + '/user_rating', { user_rating: val }, this.authService.createHeadersWithAccessToken());
+    }
+
+    getAspectName(aspectID: string): Promise
+    {
+        return ((this._aspectNames !== null) ?
+            Promise.resolve() :
+            this._fetchAndStoreAllAspects()).then(() =>
+        {
+            return this._aspectNames[aspectID];
+        });
+    }
+
+    getAspectCount(): Promise
+    {
+        return ((this._aspectNames !== null) ?
+            Promise.resolve() :
+            this._fetchAndStoreAllAspects()).then(() =>
+        {
+            return Object.keys(this._aspectNames).length;
+        });
+    }
+
+    _fetchAllAspects()
+    {
+        return this.bsSrvc.getIntoJSON('aspects');
+    }
+
+    _fetchAndStoreAllAspects()
+    {
+        return this._fetchAllAspects().then(aspects =>
+        {
+            this._aspectNames = aspects.aspects;
+            return this._aspectNames;
+        });
+    }
+
+    getMultiAspectRating(resource: string)
+    {
+        let headers = (this.authService.isLoggedIn()) ? this.authService.createHeadersWithAccessToken() : {};
+        return this.bsSrvc.getIntoJSON(resource + '/rating', null, headers);
+    }
+
+    submitMultiAspectRating(resource: string, rating: object)
+    {
+        return this.bsSrvc.putIntoJSON(resource + '/rating', rating, this.authService.createHeadersWithAccessToken());
     }
 }

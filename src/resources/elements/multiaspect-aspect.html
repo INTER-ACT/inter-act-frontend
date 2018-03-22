@@ -1,0 +1,15 @@
+<template>
+    <form ref="fm">
+        <div class="button-group round toggle">
+            <template repeat.for="a of aspect">
+                <input type="radio" name="aspect-group" model.bind="a" checked.bind="selectedAspect" id.bind="a.forID" />
+                <label class="button btn-color" for.bind="a.forID">
+                    ${a.name}
+                    <template if.bind="a.count > -1">
+                        (${a.count})
+                    </template>
+                </label>
+            </template>
+        </div>
+    </form>
+</template>

@@ -98,7 +98,6 @@ export class CommentInner
     {
         /* eslint-disable no-alert */
         let reason = prompt('Warum möchten Sie diesen Beitrag melden?\nBitte geben Sie eine kurze Begründung ein:');
-        console.log(reason);
         if (reason && reason.length > 0)
         {
             this.discussionService.reportComment(this.commentId, reason).then(() =>
@@ -107,7 +106,7 @@ export class CommentInner
             }).catch(error =>
             {
                 alert('Es ist ein Fehler aufgetreten: ' + error.statusText);
-                console.log(error);
+                console.log(error); // eslint-disable-line no-console
             });
         }
         /* eslint-enable no-alert */

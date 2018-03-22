@@ -27,14 +27,21 @@ export class Signup
         this.authService.signup(this.signupData)
             .then(r =>
             {
-                alert('DONE');
+                alert('Erfolgreich registriert.\nSie sollten nun ein Bestätigungs-E-Mail erhalten haben.\nNach dem Bestätigen Ihrer E-Mail-Adresse können Sie sich einloggen.');
                 this.router.navigate('/auth/login');
             })
             .catch(error =>
             {
-                alert('Error');
-                console.log(error);
-                error.json().then(console.log);
+                if (error.status >= 400 && error.status <= 499)
+                {
+                    alert('Fehler:\nDie eingegebenen Infos waren ungültig.');
+                }
+                else
+                {
+                    alert('Unbekannter Fehler.');
+                    console.log(error);
+                    error.json().then(console.log);
+                }
             });
     }
 }
