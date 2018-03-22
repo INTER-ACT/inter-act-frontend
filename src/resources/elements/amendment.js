@@ -2,7 +2,7 @@ import { bindable, inject } from 'aurelia-framework';
 import { Author } from '../../models/author';
 import { AuthService } from '../../services/auth-service';
 import { DiscussionService } from '../../services/discussion-service';
-import {UserService} from "../../services/user-service";
+import {UserService} from '../../services/user-service';
 
 @inject(AuthService, DiscussionService, UserService)
 export class AmendmentCustomElement

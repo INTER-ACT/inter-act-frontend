@@ -155,6 +155,12 @@ export class DiscussionCustomElement
 
     amendmentBegin()
     {
+        if (!this.authService.isLoggedIn())
+        {
+            alert('Bitte loggen Sie sich ein, um mitdiskutieren zu können...');
+            return;
+        }
+
         this.amendmentText = this.rdata.law_text;
         this.hasAmendmentBoxOpen = true;
     }
