@@ -85,8 +85,8 @@ export class CommentInner
     {
         this.discussionService.replyToComment(this.commentId, this.replyText).then(r =>
         {
-            alert(r);
-            this.discussionService.getCommentById(r.id).then(c => this.subcomments.push(c));
+            this.discussionService.getCommentById(r.id).then(c => this.resourceData.comments.push(c));
+            this.replyCancel();
         }).catch(error =>
         {
             alert('ERROR');
