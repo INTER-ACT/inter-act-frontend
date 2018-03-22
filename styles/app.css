@@ -69,6 +69,18 @@ z-index: 100;
     padding-top: 2rem;
 }
 
+.loginer{
+    top: -15%;
+    /*-webkit-transform: translateY(15%);
+    -moz-transform: translateY(15%);
+    -ms-transform: translateY(15%);
+    -o-transform: translateY(15%);
+    transform: translateY(15%);
+    font-size: 1.2em;
+    margin-left: 20px;
+    padding-top: 2rem;*/
+}
+
 .responsive-img {
     height: auto;
     max-width: 100%;
