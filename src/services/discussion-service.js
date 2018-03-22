@@ -90,7 +90,7 @@ export class DiscussionService
 
     getCommentById(id: number)
     {
-        let headers = (this.authService.isLoggedIn()) ? this.authService.createHeadersWithAccessToken() : null;
+        let headers = (this.authService.isLoggedIn()) ? this.authService.createHeadersWithAccessToken() : {};
         return this.bsSrvc.getIntoJSON('comments/' + id, null, headers);
     }
 
@@ -286,16 +286,16 @@ export class DiscussionService
         return ((this._aspectNames !== null) ?
             Promise.resolve() :
             this._fetchAndStoreAllAspects()).then(() =>
-            {
-                return this._aspectNames[aspectID];
-            });
+        {
+            return this._aspectNames[aspectID];
+        });
     }
 
     getAspectCount(): Promise
     {
         return ((this._aspectNames !== null) ?
-        Promise.resolve() :
-        this._fetchAndStoreAllAspects()).then(() =>
+            Promise.resolve() :
+            this._fetchAndStoreAllAspects()).then(() =>
         {
             return Object.keys(this._aspectNames).length;
         });
@@ -313,5 +313,16 @@ export class DiscussionService
             this._aspectNames = aspects.aspects;
             return this._aspectNames;
         });
+    }
+
+    getMultiAspectRating(resource: string)
+    {
+        let headers = (this.authService.isLoggedIn()) ? this.authService.createHeadersWithAccessToken() : {};
+        return this.bsSrvc.getIntoJSON(resource + '/rating', null, headers);
+    }
+
+    submitMultiAspectRating(resource: string, rating: object)
+    {
+        return this.bsSrvc.putIntoJSON(resource + '/rating', rating, this.authService.createHeadersWithAccessToken());
     }
 }

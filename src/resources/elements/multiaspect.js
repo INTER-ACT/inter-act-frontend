@@ -6,93 +6,98 @@ export class MultiaspectCustomElement
 {
     aspects = [];
 
-    selectedG1a = false;
-    selectedG1b = true;
-    selectedG1c = false;
-
-    selectedG2a = false;
-    selectedG2b = true;
-    selectedG2c = false;
+    isReady: boolean = false;
 
     /**
      * discussionID
      */
     @bindable discussion: number;
 
-    @bindable disucssionHref: string = '';
+    @bindable resourceHref: string = '';
 
     constructor(discussionService: DiscussionService)
     {
         this.discussionService = discussionService;
+        this.this = this;
     }
 
     attached()
     {
-        this.discussionService.getAspectCount().then(count =>
+        this.discussionService.getMultiAspectRating(this.resourceHref).then(mar =>
         {
-            console.log(count);
-            //let cnt = count / 2;
-
-            for (let i = 1; i < count; ++i)
+            console.log(mar);
+            this.discussionService.getAspectCount().then(count =>
             {
-                let aspect = {
-                    aspect: [
-                        {
-                            name: '+',
-                            forID: 'aspect-a',
-                            val: 'aspect1'
-                        },
-                        {
-                            name: '=',
-                            forID: 'aspect-b',
-                            val: null
-                        },
-                        {
-                            name: '-',
-                            forID: 'aspect-c',
-                            val: 'aspect2'
-                        }
-                    ]
-                };
-
-                this.discussionService.getAspectName('aspect' + i).then(name =>
+                this.loadAspect(1, count, mar).then(() =>
                 {
-                    aspect.aspect[0].val = 'aspect' + i;
-                    aspect.aspect[0].name = name;
+                    this.isReady = true;
                 });
+            });
+        });
+    }
 
-                aspect.aspect[1].val = null;
-                aspect.aspect[1].name = 'neutral';
-
-                this.discussionService.getAspectName('aspect' + (++i)).then(name =>
+    loadAspect(i: number, count: number, mar: object)
+    {
+        let aspect = {
+            aspect: [
                 {
-                    aspect.aspect[2].val = 'aspect' + i;
-                    aspect.aspect[2].name = name;
-                });
+                    name: '+',
+                    forID: 'aspect-a',
+                    val: 'aspect1',
+                    selected: false
+                },
+                {
+                    name: '=',
+                    forID: 'aspect-b',
+                    val: null,
+                    selected: true
+                },
+                {
+                    name: '-',
+                    forID: 'aspect-c',
+                    val: 'aspect2',
+                    selected: false
+                }
+            ]
+        };
+
+        return this.discussionService.getAspectName('aspect' + i).then(name =>
+        {
+            aspect.aspect[0].val = 'aspect' + i;
+            aspect.aspect[0].name = name;
+            aspect.aspect[0].count = mar.total_rating['aspect' + i];
+
+            aspect.aspect[1].val = null;
+            aspect.aspect[1].name = 'neutral';
+
+            return this.discussionService.getAspectName('aspect' + (++i)).then(name2 =>
+            {
+                aspect.aspect[2].val = 'aspect' + i;
+                aspect.aspect[2].name = name2;
+                aspect.aspect[2].count = mar.total_rating['aspect' + i];
 
                 this.aspects.push(aspect);
-            }
 
-            /*let n = 1;
-            this.aspects.forEach(aspect =>
-            {
-                this.discussionService.getAspectName('aspect' + n++).then(name =>
-                {
-                    aspect.aspect[0].name = name;
-                });
-
-                aspect.aspect[1].name = 'neutral';
-
-                this.discussionService.getAspectName('aspect' + n++).then(name =>
-                {
-                    aspect.aspect[2].name = name;
-                });
-            });*/
+                return (i < count) ? this.loadAspect(++i, count, mar) : Promise.resolve();
+            });
         });
     }
 
     aspectChanged()
     {
-        console.log('detect child change');
+        let s = {};
+
+        this.callbackThis.aspects.forEach(a =>
+        {
+            a.aspect.forEach(a2 =>
+            {
+                if (a2.val !== null)
+                {
+                    s[a2.val] = a2.selected;
+                }
+            });
+        });
+
+        this.discussionService.submitMultiAspectRating(this.callbackThis.resourceHref, s);
     }
 }
