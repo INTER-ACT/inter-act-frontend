@@ -266,6 +266,9 @@ footer h4 {
 
 }
 
+.lawspacer{
+    padding-right: 10px;
+}
 
 /*
 #################################################
@@ -295,7 +298,7 @@ REAKTIONS BUTTONS
 }
 
 .top-spacer{
-    margin-top: 20px;
+    margin-top: 10px;
 }
 
 /*
