@@ -9,6 +9,12 @@
         />
         <input type="password" placeholder="Passwort wiederholen" required ref="pwInputConfirm" />
 
+        <p>
+            <strong>Hinweis zum Passwort:</strong>
+            mindestens 10 Zeichen,
+            <br/> davon mindestens 1 Sonderzeichen
+        </p>
+
         <input type="text" value.bind="signupData.first_name" placeholder="Vorname" maxlength="254" required />
         <input type="text" value.bind="signupData.last_name" placeholder="Nachname" maxlength="254" required />
         <input type="number" value.bind="signupData.year_of_birth" placeholder="Geburtsjahr" min="1900" required />
