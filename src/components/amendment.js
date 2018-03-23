@@ -1,6 +1,6 @@
 import { inject } from 'aurelia-framework';
 import { DiscussionService } from '../services/discussion-service';
-import { UserService } from "../services/user-service";
+import { UserService } from '../services/user-service';
 import { UsernameService } from '../services/username-service';
 
 @inject(DiscussionService, UserService, UsernameService)
@@ -73,6 +73,8 @@ export class Amendent
 
                 this.discussionService.getSubamendmentsByAmendment(did, aid).then(ams =>
                 {
+                    console.log('AMS');
+                    console.log(ams);
                     ams.data.subamendments.forEach(a =>
                     {
                         this.discussionService.getSubAmendmentById(did, aid, a.id).then(aa =>

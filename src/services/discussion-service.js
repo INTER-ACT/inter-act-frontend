@@ -275,6 +275,11 @@ export class DiscussionService
         return this._reportReportable('comment', commentID, reason);
     }
 
+    reportSubamendment(subamendmentID: number, reason: string)
+    {
+        return this._reportReportable('subamendment', subamendmentID, reason);
+    }
+
     postVoteForComment(commentID: number, voteUp: boolean)
     {
         let val = (voteUp) ? 1 : -1;
@@ -285,10 +290,12 @@ export class DiscussionService
     {
         return ((this._aspectNames !== null) ?
             Promise.resolve() :
-            this._fetchAndStoreAllAspects()).then(() =>
-        {
-            return this._aspectNames[aspectID];
-        });
+            this._fetchAndStoreAllAspects()).then(
+            () =>
+            {
+                return this._aspectNames[aspectID];
+            }
+        );
     }
 
     getAspectCount(): Promise
@@ -324,5 +331,27 @@ export class DiscussionService
     submitMultiAspectRating(resource: string, rating: object)
     {
         return this.bsSrvc.put(resource, rating, this.authService.createHeadersWithAccessToken());
+    }
+
+    _patchSubamendment(discussionID: number, amendmentID: number, subamendmentID: number, accept: boolean, reason: string = '')
+    {
+        return this.bsSrvc.patch(
+            'discussions/' + discussionID + '/amendments/' + amendmentID + '/subamendments/' + subamendmentID,
+            {
+                accept: accept,
+                explanation: reason
+            },
+            this.authService.createHeadersWithAccessToken()
+        );
+    }
+
+    acceptSubamendment(discussionID: number, amendmentID: number, subamendmentID: number)
+    {
+        return this._patchSubamendment(discussionID, amendmentID, subamendmentID, true, '');
+    }
+
+    rejectSubamendment(discussionID: number, amendmentID: number, subamendmentID: number, reason: string)
+    {
+        return this._patchSubamendment(discussionID, amendmentID, subamendmentID, false, reason);
     }
 }

@@ -46,23 +46,14 @@ export class AmendmentCustomElement
         this.authService = authService;
         this.discussionService = discussionService;
         this.userService = userService;
+
+        this.meID = this.authService.getSelfID();
     }
 
     attached()
     {
         console.log('RDATA');
         console.log(this.rdata);
-    }
-
-    commentateBegin()
-    {
-        if (!this.authService.isLoggedIn())
-        {
-            alert('Bitte loggen Sie sich ein, um mitdiskutieren zu können...');
-            return;
-        }
-
-        this.hasCommentateBoxOpen = true;
     }
 
     shareBegin()
@@ -84,6 +75,18 @@ export class AmendmentCustomElement
         {
             this.shareCopied = true;
         }
+    }
+
+    commentateBegin()
+    {
+        if (!this.authService.isLoggedIn())
+        {
+            alert('Bitte loggen Sie sich ein, um mitdiskutieren zu können...');
+            return;
+        }
+
+        this.hasCommentateBoxOpen = true;
+        this.hasShareBoxOpen = false;
     }
 
     submitComment()
@@ -108,7 +111,7 @@ export class AmendmentCustomElement
 
     submitAmendment()
     {
-        let ts = [1]; // TODO: fix
+        let ts = [];
         this.rdata.tags.forEach(t =>
         {
             ts.push(t.id);
@@ -118,8 +121,12 @@ export class AmendmentCustomElement
 
         this.discussionService.submitSubamendment(this.discussionId, this.rdata.id, this.amendmentText, this.amendmentReason, ts).then(r =>
         {
-            window.location.reload();
-            this.discussionService.getAmendmentById(r.id).then(c => this.amendments.push(c));
+            console.log(r);
+            this.discussionService.getSubAmendmentById(this.discussionId, this.rdata.id, r.id).then(c =>
+            {
+                this.amendments.push(c);
+                this.submitAmendmentCancel();
+            });
         }).catch(error =>
         {
             alert('ERROR');
@@ -130,19 +137,22 @@ export class AmendmentCustomElement
     submitAmendmentCancel()
     {
         this.hasAmendmentBoxOpen = false;
+        this.amendmentText = '';
+        this.amendmentReason = '';
     }
 
     amendmentBegin()
     {
         if (!this.authService.isLoggedIn())
         {
-            alert('Bitte loggen Sie sich ein, um mitdiskutieren zu können...');
+            alert('Bitte loggen Sie sich ein, um mitdiskutieren zu können...'); // eslint-disable-line no-alert
             return;
         }
 
         //this.amendmentText = this.rdata.law_text;
         this.amendmentText = '';
         this.hasAmendmentBoxOpen = true;
+        this.hasShareBoxOpen = false;
     }
 
     report()
