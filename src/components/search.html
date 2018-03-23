@@ -1,33 +1,55 @@
 <template>
+    <require from="../resources/elements/loading.html"></require>
+
     <div class="grid-x">
         <div class="large-3 cell"></div>
         <div class="large-6 cell mainshow2">
-            <h2>Suche nach: <em>${searchTerm}</em></h2>
+            <h2>Suche nach:
+                <em>${searchTerm}</em>
+            </h2>
         </div>
         <div class="large-3 cell"></div>
 
-        <template repeat.for="dsc of discussions">
+        <template if.bind="!isReady">
             <div class="large-3 cell"></div>
-
-            <div class="large-6 cell mainshow">
-
-                <h4 class="titlecolor">§ ${dsc.title}</h4>
-
-                <div class="grid-x">
-
-                    <div class="large-2 cell"></div>
-
-                    <div class="large-8 cell showparagraph">
-                        <h5>Gesetz</h5>
-                        <p>${dsc.law_text}</p>
-                        <a route-href="discussion; params.bind: { id: dsc.id }" class="button">zur Diskussion</a>
-                    </div>
-
-                    <div class="large-2 cell"></div>
-
-                </div>
+            <div class="large-6 cell mainshow2">
+                <loading what="Suchergebnisse" plural="true"></loading>
             </div>
             <div class="large-3 cell"></div>
+        </template>
+
+        <template else>
+            <template if.bind="discussions.length < 1">
+                <div class="large-3 cell"></div>
+                <div class="large-6 cell mainshow2">
+                    Keine Ergebnisse gefunden...
+                </div>
+                <div class="large-3 cell"></div>
+            </template>
+
+            <template repeat.for="dsc of discussions">
+                <div class="large-3 cell"></div>
+
+                <div class="large-6 cell mainshow">
+
+                    <h4 class="titlecolor">§ ${dsc.title}</h4>
+
+                    <div class="grid-x">
+
+                        <div class="large-2 cell"></div>
+
+                        <div class="large-8 cell showparagraph">
+                            <h5>Gesetz</h5>
+                            <p>${dsc.law_text}</p>
+                            <a route-href="discussion; params.bind: { id: dsc.id }" class="button">zur Diskussion</a>
+                        </div>
+
+                        <div class="large-2 cell"></div>
+
+                    </div>
+                </div>
+                <div class="large-3 cell"></div>
+            </template>
         </template>
     </div>
 </template>

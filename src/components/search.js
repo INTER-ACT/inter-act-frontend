@@ -6,6 +6,7 @@ export class Search
 {
     discussions: Array = [];
     searchTerm: string = '';
+    isReady: boolean = false;
 
     constructor(discussionService)
     {
@@ -14,11 +15,11 @@ export class Search
 
     activate(args: object)
     {
+        this.discussions = [];
         this.searchTerm = args.term;
 
         this.discussionService.searchForDiscussions(this.searchTerm).then(jsonResponse =>
         {
-            console.log(jsonResponse);
             jsonResponse.data.search_results.forEach(d =>
             {
                 this.discussionService.getDiscussionById(d.id).then(dsc =>
@@ -26,6 +27,7 @@ export class Search
                     this.discussions.push(dsc);
                 });
             });
+            this.isReady = true;
         });
     }
 }
