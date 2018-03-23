@@ -48,6 +48,12 @@ export class AmendmentCustomElement
         this.userService = userService;
     }
 
+    attached()
+    {
+        console.log('RDATA');
+        console.log(this.rdata);
+    }
+
     commentateBegin()
     {
         if (!this.authService.isLoggedIn())
@@ -128,6 +134,12 @@ export class AmendmentCustomElement
 
     amendmentBegin()
     {
+        if (!this.authService.isLoggedIn())
+        {
+            alert('Bitte loggen Sie sich ein, um mitdiskutieren zu können...');
+            return;
+        }
+
         //this.amendmentText = this.rdata.law_text;
         this.amendmentText = '';
         this.hasAmendmentBoxOpen = true;

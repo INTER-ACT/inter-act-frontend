@@ -9,7 +9,7 @@
     <template else>
         <notfound if.bind="notFound" missing-thing="Änderungsvorschlag Nr. ${aid}" missing-thing-title="Änderungsvorschlag"></notfound>
         <template else>
-            <notpermitted if.bind="notPermitted" noun-marker="die" what="Änderungsvorschlag Nr. ${aid}" more-text="Sie ist archiviert."></notpermitted>
+            <notpermitted if.bind="notPermitted" noun-marker="der" what="Änderungsvorschlag Nr. ${aid}" more-text="Er ist archiviert."></notpermitted>
 
             <template else>
                     <amd resourceid.bind="id" discussion-id.bind="did" rdata.bind="amendmentData" comments.bind="comments" amendments.bind="amendments"></amd>

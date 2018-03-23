@@ -17,7 +17,7 @@
                 </div>
                 <div class="large-3 cell">
                     <template repeat.for="s of rdata.tags">
-                        <img src="/images/discussion/${s.id}.svg" style="height: 20px"/>
+                        <img src="/images/discussion/${s.id}.svg" style="height: 20px" />
                     </template>
                 </div>
             </div>
@@ -30,28 +30,30 @@
                 <!-- INNERER TEIL -->
                 <div class="grid-x">
                     <div class="large-6 cell">
-                        <h5><b>Änderung</b></h5>
+                        <h5>
+                            <b>Änderung</b>
+                        </h5>
                         <p>
                             <changes-viewer changes.bind="rdata.changes"></changes-viewer>
                         </p>
-                        <h5><b>Erklärung</b></h5>
+                        <h5>
+                            <b>Erklärung</b>
+                        </h5>
                         <p>${rdata.explanation}</p>
                     </div>
                     <div class="large-1 cell"></div>
                     <div class="large-5 cell">
-                        <multiaspect discussion="${id}"></multiaspect>
+                        <multiaspect resource-href="discussions/${rdata.parentDiscussion}/amendments/${rdata.id}/ratings"></multiaspect>
                     </div>
                     <div class="large-12 cell">
-                        <a click.trigger="amendmentBegin()" class="button"
-                           if.bind="!hasAmendmentBoxOpen">Änderungsvorschlag</a>
+                        <a click.trigger="amendmentBegin()" class="button" if.bind="!hasAmendmentBoxOpen">Änderungsvorschlag</a>
                         <a click.trigger="report()" class="button" if.bind="!hasCommentateBoxOpen">Melden</a>
 
                         <div if.bind="hasAmendmentBoxOpen">
                             <form>
                                 <textarea placeholder="Gesetzestext" value.bind="amendmentText"></textarea>
                                 <textarea placeholder="Erklärung" value.bind="amendmentReason"></textarea>
-                                <button class="button comment-btn" click.trigger="submitAmendment()">Änderung
-                                    vorschlagen
+                                <button class="button comment-btn" click.trigger="submitAmendment()">Änderung vorschlagen
                                 </button>
                                 <button class="button comment-btn" click.trigger="submitAmendmentCancel()">Abbrechen
                                 </button>

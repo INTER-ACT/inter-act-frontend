@@ -318,11 +318,11 @@ export class DiscussionService
     getMultiAspectRating(resource: string)
     {
         let headers = (this.authService.isLoggedIn()) ? this.authService.createHeadersWithAccessToken() : {};
-        return this.bsSrvc.getIntoJSON(resource + '/rating', null, headers);
+        return this.bsSrvc.getIntoJSON(resource, null, headers);
     }
 
     submitMultiAspectRating(resource: string, rating: object)
     {
-        return this.bsSrvc.putIntoJSON(resource + '/rating', rating, this.authService.createHeadersWithAccessToken());
+        return this.bsSrvc.put(resource, rating, this.authService.createHeadersWithAccessToken());
     }
 }
