@@ -31,7 +31,7 @@
                     <button class="button" click.trigger="accept()">Annehmen</button>
                     <button class="button" click.trigger="reject()">Ablehnen</button>
                 </template>
-                <template else>
+                <template if.bind="!isSubamendment">
                     <a class="button" route-href="amendment; params.bind: { did: discussionId, aid: amendmentId }">Zum Änderungsvorschlag</a>
                     <button class="button" click.trigger="report()">Melden</button>
                 </template>
