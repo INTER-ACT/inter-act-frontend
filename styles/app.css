@@ -553,6 +553,7 @@ comment-host {
 
 @media screen and (min-width: 1020px )
 {
+
 /*
 .mobile_nav {
     display: none;
@@ -653,5 +654,12 @@ form.authForm input, form.authForm fieldset label, .settingsPage section input {
 .elevatePage ul li {
     border-bottom: 1px solid #1468a0;
     margin-bottom: 5px;
-}
 }*/
+}
+
+@media screen and (orientation: portrait)
+{
+    .amendmentAuthor {
+        text-align: right;
+    }
+}

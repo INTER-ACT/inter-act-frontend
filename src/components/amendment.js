@@ -1,8 +1,9 @@
 import { inject } from 'aurelia-framework';
 import { DiscussionService } from '../services/discussion-service';
 import { UserService } from "../services/user-service";
+import { UsernameService } from '../services/username-service';
 
-@inject(DiscussionService, UserService)
+@inject(DiscussionService, UserService, UsernameService)
 export class Amendent
 {
     amendments: Array = [];
@@ -13,10 +14,11 @@ export class Amendent
     };
 
 
-    constructor(discussionService: DiscussionService, userService: UserService)
+    constructor(discussionService: DiscussionService, userService: UserService, usernameService: UsernameService)
     {
         this.discussionService = discussionService;
         this.userService = userService;
+        this.usernameService = usernameService;
     }
 
     activate(args: object)
@@ -62,6 +64,11 @@ export class Amendent
                             this.comments.push(cc);
                         });
                     });
+                }),
+
+                this.usernameService.getUsername(am.author.id).then(username =>
+                {
+                    this.amendmentData.author.username = username;
                 }),
 
                 this.discussionService.getSubamendmentsByAmendment(did, aid).then(ams =>

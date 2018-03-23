@@ -2,7 +2,7 @@ import { bindable, inject } from 'aurelia-framework';
 import { Author } from '../../models/author';
 import { AuthService } from '../../services/auth-service';
 import { DiscussionService } from '../../services/discussion-service';
-import {UserService} from '../../services/user-service';
+import { UserService } from '../../services/user-service';
 
 @inject(AuthService, DiscussionService, UserService)
 export class AmendmentCustomElement
@@ -144,6 +144,28 @@ export class AmendmentCustomElement
         this.amendmentText = '';
         this.hasAmendmentBoxOpen = true;
     }
+
+    report()
+    {
+        /* eslint-disable no-alert */
+        if (!this.authService.isLoggedIn())
+        {
+            alert('Bitte loggen Sie sich ein, um Beiträge melden zu können...');
+            return;
+        }
+
+        let reason = prompt('Warum möchten Sie diesen Beitrag melden?\nBitte geben Sie eine kurze Begründung ein:');
+        if (reason && reason.length > 0)
+        {
+            this.discussionService.reportAmendment(this.rdata.id, reason).then(() =>
+            {
+                alert('Meldung gesendeet.\nDanke für deine Mithilfe.');
+            }).catch(error =>
+            {
+                alert('Es ist ein Fehler aufgetreten: ' + error.statusText);
+                console.log(error); // eslint-disable-line no-console
+            });
+        }
+        /* eslint-enable no-alert */
+    }
 }
-
-

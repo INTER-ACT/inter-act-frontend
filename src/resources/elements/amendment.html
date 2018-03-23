@@ -3,6 +3,7 @@
     <require from="./comments/comment-host.html"></require>
     <require from="./multiaspect"></require>
     <require from="./changes-viewer.html"></require>
+    <require from="./author-link.html"></require>
 
     <div class="grid-x">
 
@@ -12,7 +13,6 @@
 
             <div class="grid-x">
                 <div class="large-9 cell">
-
                     <h4 class="titlecolor">Änderungsvorschlag</h4>
                 </div>
                 <div class="large-3 cell">
@@ -30,6 +30,10 @@
                 <!-- INNERER TEIL -->
                 <div class="grid-x">
                     <div class="large-6 cell">
+                        <p class="amendmentAuthor">
+                            von
+                            <author-link userid.bind="rdata.author.id" username.bind="rdata.author.username"></author-link>
+                        </p>
                         <h5>
                             <b>Änderung</b>
                         </h5>
