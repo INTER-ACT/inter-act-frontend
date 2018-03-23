@@ -33,6 +33,7 @@ export class Login
         {
             this.router.navigateToRoute('dashboard');
             this.formLocker.unlockForm(this.loginForm);
+            window.location.reload();
         }).catch(error =>
         {
             if (error.status === 401)

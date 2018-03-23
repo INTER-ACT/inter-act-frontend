@@ -37,9 +37,11 @@
             <a route-href="terms-of-service" target="_blank">Nutzungsbedingungen</a> gelesen und bin mit ihnen einverstanden.
         </label>
 
-        <div style="height: 50px; width: 250px; background: #DDD; border: 1px solid #AAA; border-radius: 3px;margin-top: 40px; margin-bottom: 40px;">
+        <!--<div style="height: 50px; width: 250px; background: #DDD; border: 1px solid #AAA; border-radius: 3px;margin-top: 40px; margin-bottom: 40px;">
             [Y] NoCAPTCHA
-        </div>
+        </div>-->
+
+        <div id="g-recaptcha"></div>
 
         <input type="submit" disabled.bind="!cbx_tos.checked" value="Registrieren" class="button" />
     </form>

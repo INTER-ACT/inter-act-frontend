@@ -15,6 +15,26 @@ export class Signup
         this.signupData.sex = 'f';
     }
 
+    attached()
+    {
+        // Load reCAPTCHA
+        let captcha = document.createElement('script');
+        captcha.src = 'https://www.google.com/recaptcha/api.js?onload=captchaCallback&render=explicit';
+        captcha.async = true;
+        captcha.defer = true;
+        document.body.appendChild(captcha);
+
+        window.captchaCallback = function()
+        {
+            grecaptcha.render(
+                'g-recaptcha',
+                {
+                    'sitekey': '6Lfu3EcUAAAAAJ0NpEKbJpr722J4FxbdzfXEsBNb'
+                }
+            );
+        };
+    }
+
     submitSignup()
     {
         // verify pw
