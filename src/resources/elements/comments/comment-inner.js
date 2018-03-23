@@ -97,6 +97,12 @@ export class CommentInner
     report()
     {
         /* eslint-disable no-alert */
+        if (!this.authService.isLoggedIn())
+        {
+            alert('Bitte loggen Sie sich ein, um Kommentare melden zu können...');
+            return;
+        }
+
         let reason = prompt('Warum möchten Sie diesen Beitrag melden?\nBitte geben Sie eine kurze Begründung ein:');
         if (reason && reason.length > 0)
         {
