@@ -58,7 +58,14 @@ export class CommentInner
                 }),
                 this.discussionService.getCommentReplies(this.commentId).then(replies =>
                 {
-                    this.resourceData.comments = replies.data.comments;
+                    replies.data.comments.forEach(cm =>
+                    {
+                        this.discussionService.getCommentById(cm.id).then(cmm =>
+                        {
+                            this.resourceData.comments.push(cmm);
+                        });
+                    });
+                    //this.resourceData.comments = replies.data.comments;
                 })
             ]);
         });

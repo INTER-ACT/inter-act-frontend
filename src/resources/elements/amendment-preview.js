@@ -18,6 +18,7 @@ export class AmendmentPreview
     }
     @bindable changes = [];
     @bindable reason = '';
+    @bindable createdAt = '0000-00-00T00:00:00+00';
 
     constructor(discussionService: DiscussionService)
     {

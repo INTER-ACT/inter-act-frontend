@@ -124,7 +124,8 @@
             <div class="large-6 cell">
                 <template repeat.for="a of amendments">
                     <amendment-preview author.bind="a.author" amendment-id.bind="a.id" discussion-id.bind="rdata.parentDiscussion" changes.bind="a.changes"
-                        accept-box.bind="rdata.author.id == meID" is-subamendment="true" parent-amendment-id.bind="rdata.id" reason.bind="a.explanation"></amendment-preview>
+                        accept-box.bind="rdata.author.id == meID" is-subamendment="true" parent-amendment-id.bind="rdata.id"
+                        reason.bind="a.explanation" created-at.bind="a.created_at"></amendment-preview>
                 </template>
             </div>
             <div class="large-3 cell"></div>

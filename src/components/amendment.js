@@ -73,8 +73,6 @@ export class Amendent
 
                 this.discussionService.getSubamendmentsByAmendment(did, aid).then(ams =>
                 {
-                    console.log('AMS');
-                    console.log(ams);
                     ams.data.subamendments.forEach(a =>
                     {
                         this.discussionService.getSubAmendmentById(did, aid, a.id).then(aa =>

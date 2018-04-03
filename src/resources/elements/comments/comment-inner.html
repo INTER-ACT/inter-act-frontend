@@ -1,6 +1,7 @@
 <template>
     <require from="../loading.html"></require>
     <require from="../author-link.html"></require>
+    <require from="../../value-converters/timestamp"></require>
 
 
     <div class="large-1 cell"></div>
@@ -9,6 +10,7 @@
         <div class="comment-line">
             <loading what="Kommentar" if.bind="!isReady"></loading>
             <template else>
+                <p class="timestamp" inner-text.bind="resourceData.created_at | timestamp"></p>
                 <h5>
                     <author-link username.bind="resourceData.author.username" userid.bind="resourceData.author.id"></author-link>
                 </h5>
@@ -30,7 +32,7 @@
             </form>
         </div>
         <template repeat.for="c of resourceData.tags">
-            <img id="comment-tag" src="/images/comment/${c.id}.svg"/>
+            <img id="comment-tag" src="/images/comment/${c.id}.svg" />
         </template>
     </div>
 
