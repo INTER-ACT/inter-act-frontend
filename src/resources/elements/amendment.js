@@ -66,6 +66,10 @@ export class AmendmentCustomElement
         this.shareCopied = false;
         this.shareLink = window.location.href;
         this.hasShareBoxOpen = true;
+        window.setTimeout(() =>
+        {
+            this.shareLinkBox.select();
+        }, 200);
     }
 
     shareCopy()
