@@ -1,5 +1,6 @@
 <template>
     <require from="../resources/elements/elevate-user"></require>
+    <require from="../resources/value-converters/sort"></require>
 
     <div class="grid-x">
         <div class="large-3 cell"></div>
@@ -8,7 +9,7 @@
             <h2 class="titlecolor">Rechteverwaltung</h2>
 
             <ul>
-                <li repeat.for="u of users">
+                <li repeat.for="u of users | sort:'username':'ascending'">
                     <elevate-user user-id.bind="u.id"></elevate-user>
                 </li>
             </ul>

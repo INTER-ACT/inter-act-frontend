@@ -1,14 +1,16 @@
 import { inject } from 'aurelia-framework';
 import { UserService } from '../services/user-service';
+import { UsernameService } from '../services/username-service';
 
-@inject(UserService)
+@inject(UserService, UsernameService)
 export class Elevate
 {
     users: Array = [];
 
-    constructor(userService: UserService)
+    constructor(userService: UserService, usernameService: UsernameService)
     {
         this.userService = userService;
+        this.usernameService = usernameService;
     }
 
     activate()
@@ -22,7 +24,11 @@ export class Elevate
         {
             u.data.users.forEach(user =>
             {
-                this.users.push(user);
+                this.usernameService.getUsername(user.id).then(username =>
+                {
+                    user.username = username;
+                    this.users.push(user);
+                });
             });
         });
     }
