@@ -5,35 +5,13 @@
 
     <div class="large-5 small-12 cell">
 
-        <loading if.bind="!isReady" what="Reaktionen" plural="true"></loading>
+        <loading if.bind="!isReady" what="Beurteilung" plural="false"></loading>
 
         <template else>
-            <h5>
-                <b>Reaktion</b>
+            <h5 style="font-weight: bold;">
+                Beurteilung
             </h5>
-
             <multiaspect-aspect repeat.for="aspect of aspects" aspect.two-way="aspect.aspect" changed.bind="aspectChanged" callback-this.bind="this"></multiaspect-aspect>
-
-            <!--<form>
-            <div class="button-group round toggle">
-                <input type="radio" id="r1" name="r-group" checked.bind="selectedG1a">
-                <label class="button btn-color" for="r1" click.trigger="sync()">fair</label>
-                <input type="radio" id="r2" name="r-group" checked.bind="selectedG1b">
-                <label class="button btn-color" for="r2" click.trigger="sync()">neutral</label>
-                <input type="radio" id="r3" name="r-group" checked.bind="selectedG1c">
-                <label class="button btn-color" for="r3" click.trigger="sync()">unfair</label>
-            </div>
-        </form>
-        <form>
-            <div class="button-group round toggle">
-                <input type="radio" id="r4" name="r-group2" checked.bind="selectedG2a">
-                <label class="button btn-color" for="r4" click.trigger="sync()">zustimmend</label>
-                <input type="radio" id="r5" name="r-group2" checked.bind="selectedG2b">
-                <label class="button btn-color" for="r5" click.trigger="sync()">neutral</label>
-                <input type="radio" id="r6" name="r-group2" checked.bind="selectedG2c">
-                <label class="button btn-color" for="r6" click.trigger="sync()">ablehnend</label>
-            </div>
-        </form>-->
         </template>
     </div>
 </template>
