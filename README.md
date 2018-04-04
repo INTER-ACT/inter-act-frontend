@@ -22,7 +22,7 @@ This is the frontend web app of the INTER!ACT discussion platform.
 ## License and dependencies
 
 Please note that some files in this repository are NOT covered by the following license,
-for further information check the [additional license notes](LICENSE-ADDTITON).
+for further information check the [additional license notes](LICENSE-ADDITION).
 
     Copyright (C) 2017-2018  Manuel Weissensteiner
     Copyright (C) 2017-2018  Elias Batek
