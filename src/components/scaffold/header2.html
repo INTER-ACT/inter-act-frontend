@@ -59,20 +59,21 @@
                     </li>
                 </template>
 
-                <li class="navbar float-right" if.bind="isLoggedIn">
-                    <a class="zahnrad">
-                        <p><i class="fa fa-cog" aria-hidden="false"></i></p>
-                    </a>
-                    <ul class="dropdown menu" data-dropdown-menu>
-                        <li>
-                            <a route-href="settings" id="nav-spacer">Einstellungen</a>
-                        </li>
-                        <li>
-                            <a click.trigger="submitLogout()">Abmelden</a>
-                        </li>
-                    </ul>
-                </li>
-
+                <template if.bind="isLoggedIn">
+                    <li class="navbar float-right">
+                        <a class="zahnrad">
+                            <p><i class="fa fa-cog" aria-hidden="false"></i></p>
+                        </a>
+                        <ul class="dropdown menu" data-dropdown-menu>
+                            <li>
+                                <a route-href="settings" id="nav-spacer">Einstellungen</a>
+                            </li>
+                            <li>
+                                <a click.trigger="submitLogout()">Abmelden</a>
+                            </li>
+                        </ul>
+                    </li>
+                </template>
                 <!-- LogIn/Registrierung Button-->
                 <!--<template class="loginer">
                     <li class="float-right" if.bind="!isLoggedIn">
