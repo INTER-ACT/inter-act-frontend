@@ -31,6 +31,7 @@
                 <button class="button comment-btn" click.trigger="replyCancel()">Abbrechen</button>
             </form>
         </div>
+        <strong class="comment-tagger">Tags:</strong></strong>
         <template repeat.for="c of resourceData.tags">
             <img id="comment-tag" src="/images/tags/${c.id}.svg" />
         </template>
